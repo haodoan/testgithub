@@ -5,7 +5,7 @@
   * @param  None
   * @retval None
   */
-void FLASH_Config(void)
+void FLASH_Config_addd(void)
 {
  /* Define flash programming Time*/
   FLASH_SetProgrammingTime(FLASH_PROGRAMTIME_STANDARD);
