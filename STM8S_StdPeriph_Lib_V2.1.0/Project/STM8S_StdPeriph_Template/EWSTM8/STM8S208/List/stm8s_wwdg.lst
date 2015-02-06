@@ -1,0 +1,271 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.1.50036 for STM8             24/Jan/2015  12:32:29 #
+# Copyright 2010-2011 IAR Systems AB.                                         #
+#                                                                             #
+#    Source file  =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_St #
+#                    dPeriph_Driver\src\stm8s_wwdg.c                          #
+#    Command line =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_St #
+#                    dPeriph_Driver\src\stm8s_wwdg.c -e -Ol --no_cse          #
+#                    --no_unroll --no_inline --no_code_motion --no_tbaa       #
+#                    --no_cross_call --debug --code_model medium              #
+#                    --data_model medium -o D:\Project\STM8S_StdPeriph_Lib_V2 #
+#                    .1.0\Project\STM8S_StdPeriph_Template\EWSTM8\STM8S208\Ob #
+#                    j\ --dlib_config "C:\Program Files\IAR Systems\Embedded  #
+#                    Workbench 6.0\stm8\LIB\dlstm8mmn.h" -D                   #
+#                    USE_STM8_128_EVAL -D STM8S003 -lC                        #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\List\ -lb                 #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\List\ -I                  #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\..\ -I                             #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\..\..\..\Libraries\STM8S_StdPeriph #
+#                    _Driver\inc\ -I D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Pr #
+#                    oject\STM8S_StdPeriph_Template\EWSTM8\..\..\..\Utilities #
+#                    \STM8S_EVAL\ -I D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Pr #
+#                    oject\STM8S_StdPeriph_Template\EWSTM8\..\..\..\Utilities #
+#                    \STM8S_EVAL\STM8S-128_EVAL\ -I                           #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\..\..\..\Utilities\STM8S_EVAL\Comm #
+#                    on\ --vregs 16                                           #
+#    List file    =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\List\stm8s_wwdg.lst       #
+#    Object file  =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\Obj\stm8s_wwdg.o          #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_StdPeriph_Driver\src\stm8s_wwdg.c
+      1          /**
+      2            ********************************************************************************
+      3            * @file    stm8s_wwdg.c
+      4            * @author  MCD Application Team
+      5            * @version V2.1.0
+      6            * @date    18-November-2011
+      7            * @brief   This file contains all the functions for the WWDG peripheral.
+      8            ******************************************************************************
+      9            * @attention
+     10            *
+     11            * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+     12            * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+     13            * TIME. AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY
+     14            * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+     15            * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+     16            * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+     17            *
+     18            * <h2><center>&copy; COPYRIGHT 2011 STMicroelectronics</center></h2>
+     19            ******************************************************************************
+     20            */
+     21          
+     22          /* Includes ------------------------------------------------------------------*/
+     23          #include "stm8s_wwdg.h"
+     24          
+     25          /** @addtogroup STM8S_StdPeriph_Driver
+     26            * @{
+     27            */
+     28          /* Private define ------------------------------------------------------------*/
+     29          #define BIT_MASK          ((uint8_t)0x7F)
+     30          /* Private macro -------------------------------------------------------------*/
+     31          /* Private variables ---------------------------------------------------------*/
+     32          /* Private function prototypes -----------------------------------------------*/
+     33          /* Private functions ---------------------------------------------------------*/
+     34          
+     35          /** @addtogroup WWDG_Public_Functions
+     36            * @{
+     37            */
+     38          
+     39          /**
+     40            * @brief  Initializes the WWDG peripheral.
+     41            *         This function set Window Register = WindowValue, Counter Register
+     42            *         according to Counter and \b ENABLE \b WWDG
+     43            * @param  Counter : WWDG counter value
+     44            * @param  WindowValue : specifies the WWDG Window Register, range is 0x00 to 0x7F.
+     45            * @retval None
+     46            */
+
+   \                                 In section .far_func.text, align 1
+     47          void WWDG_Init(uint8_t Counter, uint8_t WindowValue)
+     48          {
+   \                     WWDG_Init:
+   \   000000 8D000000              CALLF     L:?push_w4
+   \   000004 B700                  LD        S:?b8, A
+   \   000006 450000                MOV       S:?b9, S:?b0
+     49              /* Check the parameters */
+     50              assert_param(IS_WWDG_WINDOWLIMITVALUE_OK(WindowValue));
+   \   000009 B600                  LD        A, S:?b9
+   \   00000B A180                  CP        A, #0x80
+   \   00000D 250F                  JRC       L:??WWDG_Init_0
+   \   00000F AE0032                LDW       X, #0x32
+   \   000012 BF00                  LDW       S:?w1, X
+   \   000014 5F                    CLRW      X
+   \   000015 BF00                  LDW       S:?w0, X
+   \   000017 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00001A 8D000000              CALLF     assert_failed
+     51              
+     52              WWDG->WR = WWDG_WR_RESET_VALUE;
+   \                     ??WWDG_Init_0:
+   \   00001E 357F50D2              MOV       L:0x50d2, #0x7f
+     53              WWDG->CR = (uint8_t)((uint8_t)(WWDG_CR_WDGA | WWDG_CR_T6) | (uint8_t)Counter);
+   \   000022 B600                  LD        A, S:?b8
+   \   000024 AAC0                  OR        A, #0xc0
+   \   000026 C750D1                LD        L:0x50d1, A
+     54              WWDG->WR = (uint8_t)((uint8_t)(~WWDG_CR_WDGA) & (uint8_t)(WWDG_CR_T6 | WindowValue));
+   \   000029 B600                  LD        A, S:?b9
+   \   00002B AA40                  OR        A, #0x40
+   \   00002D A47F                  AND       A, #0x7f
+   \   00002F C750D2                LD        L:0x50d2, A
+     55          }
+   \   000032 AC000000              JPF       L:?epilogue_w4
+     56          
+     57          /**
+     58            * @brief  Refreshes the WWDG peripheral.
+     59            * @param  Counter :  WWDG Counter Value
+     60            *         This parameter must be a number between 0x40 and 0x7F.
+     61            * @retval None
+     62            */
+
+   \                                 In section .far_func.text, align 1
+     63          void WWDG_SetCounter(uint8_t Counter)
+     64          {
+   \                     WWDG_SetCounter:
+   \   000000 3B0000                PUSH      S:?b8
+   \   000003 B700                  LD        S:?b8, A
+     65          
+     66              /* Check the parameters */
+     67              assert_param(IS_WWDG_COUNTERVALUE_OK(Counter));
+   \   000005 B600                  LD        A, S:?b8
+   \   000007 A180                  CP        A, #0x80
+   \   000009 250F                  JRC       L:??WWDG_SetCounter_0
+   \   00000B AE0043                LDW       X, #0x43
+   \   00000E BF00                  LDW       S:?w1, X
+   \   000010 5F                    CLRW      X
+   \   000011 BF00                  LDW       S:?w0, X
+   \   000013 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   000016 8D000000              CALLF     assert_failed
+     68          
+     69             /* Write to T[6:0] bits to configure the counter value, no need to do
+     70               a read-modify-write; writing a 0 to WDGA bit does nothing */
+     71            WWDG->CR = (uint8_t)(Counter & (uint8_t)BIT_MASK);
+   \                     ??WWDG_SetCounter_0:
+   \   00001A B600                  LD        A, S:?b8
+   \   00001C A47F                  AND       A, #0x7f
+   \   00001E C750D1                LD        L:0x50d1, A
+     72          
+     73          }
+   \   000021 320000                POP       S:?b8
+   \   000024 87                    RETF
+     74          
+     75          /**
+     76            * @brief Gets the WWDG Counter Value.
+     77            *        This value could be used to check if WWDG is in the window, where
+     78            *        refresh is allowed.
+     79            * @param  None
+     80            * @retval WWDG Counter Value
+     81            */
+
+   \                                 In section .far_func.text, align 1
+     82          uint8_t WWDG_GetCounter(void)
+     83          {
+     84              return(WWDG->CR);
+   \                     WWDG_GetCounter:
+   \   000000 C650D1                LD        A, L:0x50d1
+   \   000003 87                    RETF
+     85          }
+     86          
+     87          /**
+     88            * @brief  Generates immediate WWDG RESET.
+     89            * @param  None
+     90            * @retval None
+     91            */
+
+   \                                 In section .far_func.text, align 1
+     92          void WWDG_SWReset(void)
+     93          {
+     94              WWDG->CR = WWDG_CR_WDGA; /* Activate WWDG, with clearing T6 */
+   \                     WWDG_SWReset:
+   \   000000 358050D1              MOV       L:0x50d1, #0x80
+     95          }
+   \   000004 87                    RETF
+     96          
+     97          /**
+     98            * @brief  Sets the WWDG window value.
+     99            * @param  WindowValue: specifies the window value to be compared to the
+    100            *         downcounter.
+    101            *         This parameter value must be lower than 0x80.
+    102            * @retval None
+    103            */
+
+   \                                 In section .far_func.text, align 1
+    104          void WWDG_SetWindowValue(uint8_t WindowValue)
+    105          {
+   \                     WWDG_SetWindowValue:
+   \   000000 3B0000                PUSH      S:?b8
+   \   000003 B700                  LD        S:?b8, A
+    106              /* Check the parameters */
+    107              assert_param(IS_WWDG_WINDOWLIMITVALUE_OK(WindowValue));
+   \   000005 B600                  LD        A, S:?b8
+   \   000007 A180                  CP        A, #0x80
+   \   000009 250F                  JRC       L:??WWDG_SetWindowValue_0
+   \   00000B AE006B                LDW       X, #0x6b
+   \   00000E BF00                  LDW       S:?w1, X
+   \   000010 5F                    CLRW      X
+   \   000011 BF00                  LDW       S:?w0, X
+   \   000013 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   000016 8D000000              CALLF     assert_failed
+    108              
+    109              WWDG->WR = (uint8_t)((uint8_t)(~WWDG_CR_WDGA) & (uint8_t)(WWDG_CR_T6 | WindowValue));
+   \                     ??WWDG_SetWindowValue_0:
+   \   00001A B600                  LD        A, S:?b8
+   \   00001C AA40                  OR        A, #0x40
+   \   00001E A47F                  AND       A, #0x7f
+   \   000020 C750D2                LD        L:0x50d2, A
+    110          }
+   \   000023 320000                POP       S:?b8
+   \   000026 87                    RETF
+
+   \                                 In section .near.rodata, align 1
+   \                     `?<Constant "D:\\\\Project\\\\STM8S_StdP...">`:
+   \   000000 443A5C50726F          DC8 44H, 3AH, 5CH, 50H, 72H, 6FH, 6AH, 65H
+   \   000008 63745C53544D          DC8 63H, 74H, 5CH, 53H, 54H, 4DH, 38H, 53H
+   \   000010 5F5374645065          DC8 5FH, 53H, 74H, 64H, 50H, 65H, 72H, 69H
+   \   000018 70685F4C6962          DC8 70H, 68H, 5FH, 4CH, 69H, 62H, 5FH, 56H
+   \   000020 322E312E305C          DC8 32H, 2EH, 31H, 2EH, 30H, 5CH, 4CH, 69H
+   \   000028 627261726965          DC8 62H, 72H, 61H, 72H, 69H, 65H, 73H, 5CH
+   \   000030 53544D38535F          DC8 53H, 54H, 4DH, 38H, 53H, 5FH, 53H, 74H
+   \   000038 645065726970          DC8 64H, 50H, 65H, 72H, 69H, 70H, 68H, 5FH
+   \   000040 447269766572          DC8 44H, 72H, 69H, 76H, 65H, 72H, 5CH, 73H
+   \   000048 72635C73746D          DC8 72H, 63H, 5CH, 73H, 74H, 6DH, 38H, 73H
+   \   000050 5F777764672E          DC8 5FH, 77H, 77H, 64H, 67H, 2EH, 63H, 0
+    111          /**
+    112            * @}
+    113            */
+    114            
+    115          /**
+    116            * @}
+    117            */
+    118            
+    119          /******************* (C) COPYRIGHT 2011 STMicroelectronics *****END OF FILE****/
+
+   Section sizes:
+
+     Function/Label                           Bytes
+     --------------                           -----
+     WWDG_Init                                  54
+     WWDG_SetCounter                            37
+     WWDG_GetCounter                             4
+     WWDG_SWReset                                5
+     WWDG_SetWindowValue                        39
+     ?<Constant "D:\\Project\\STM8S_StdP...">   88
+
+ 
+ 139 bytes in section .far_func.text
+  88 bytes in section .near.rodata
+ 
+ 139 bytes of CODE  memory
+  88 bytes of CONST memory
+
+Errors: none
+Warnings: none

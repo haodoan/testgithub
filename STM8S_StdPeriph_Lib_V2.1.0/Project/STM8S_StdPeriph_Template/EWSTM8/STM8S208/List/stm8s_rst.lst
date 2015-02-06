@@ -1,0 +1,215 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.1.50036 for STM8             24/Jan/2015  12:33:28 #
+# Copyright 2010-2011 IAR Systems AB.                                         #
+#                                                                             #
+#    Source file  =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_St #
+#                    dPeriph_Driver\src\stm8s_rst.c                           #
+#    Command line =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_St #
+#                    dPeriph_Driver\src\stm8s_rst.c -e -Ol --no_cse           #
+#                    --no_unroll --no_inline --no_code_motion --no_tbaa       #
+#                    --no_cross_call --debug --code_model medium              #
+#                    --data_model medium -o D:\Project\STM8S_StdPeriph_Lib_V2 #
+#                    .1.0\Project\STM8S_StdPeriph_Template\EWSTM8\STM8S208\Ob #
+#                    j\ --dlib_config "C:\Program Files\IAR Systems\Embedded  #
+#                    Workbench 6.0\stm8\LIB\dlstm8mmn.h" -D                   #
+#                    USE_STM8_128_EVAL -D STM8S003 -lC                        #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\List\ -lb                 #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\List\ -I                  #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\..\ -I                             #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\..\..\..\Libraries\STM8S_StdPeriph #
+#                    _Driver\inc\ -I D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Pr #
+#                    oject\STM8S_StdPeriph_Template\EWSTM8\..\..\..\Utilities #
+#                    \STM8S_EVAL\ -I D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Pr #
+#                    oject\STM8S_StdPeriph_Template\EWSTM8\..\..\..\Utilities #
+#                    \STM8S_EVAL\STM8S-128_EVAL\ -I                           #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\..\..\..\Utilities\STM8S_EVAL\Comm #
+#                    on\ --vregs 16                                           #
+#    List file    =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\List\stm8s_rst.lst        #
+#    Object file  =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\Obj\stm8s_rst.o           #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_StdPeriph_Driver\src\stm8s_rst.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    stm8s_rst.c
+      4            * @author  MCD Application Team
+      5            * @version V2.1.0
+      6            * @date    18-November-2011
+      7            * @brief   This file contains all the functions for the RST peripheral.
+      8            ******************************************************************************
+      9            * @attention
+     10            *
+     11            * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+     12            * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+     13            * TIME. AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY
+     14            * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+     15            * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+     16            * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+     17            *
+     18            * <h2><center>&copy; COPYRIGHT 2011 STMicroelectronics</center></h2>
+     19            ******************************************************************************
+     20            */
+     21          
+     22          /* Includes ------------------------------------------------------------------*/
+     23          
+     24          #include "stm8s_rst.h"
+     25          
+     26          /** @addtogroup STM8S_StdPeriph_Driver
+     27            * @{
+     28            */
+     29          /* Private typedef -----------------------------------------------------------*/
+     30          /* Private define ------------------------------------------------------------*/
+     31          /* Private macro -------------------------------------------------------------*/
+     32          /* Private variables ---------------------------------------------------------*/
+     33          /* Private function prototypes -----------------------------------------------*/
+     34          /* Private Constants ---------------------------------------------------------*/
+     35          /* Public functions ----------------------------------------------------------*/
+     36          /**
+     37            * @addtogroup RST_Public_Functions
+     38            * @{
+     39            */
+     40          
+     41          
+     42          /**
+     43            * @brief   Checks whether the specified RST flag is set or not.
+     44            * @param   RST_Flag : specify the reset flag to check.
+     45            *          This parameter can be a value of @ref RST_FLAG_TypeDef.
+     46            * @retval  FlagStatus: status of the given RST flag.
+     47            */
+
+   \                                 In section .far_func.text, align 1
+     48          FlagStatus RST_GetFlagStatus(RST_Flag_TypeDef RST_Flag)
+     49          {
+   \                     RST_GetFlagStatus:
+   \   000000 3B0000                PUSH      S:?b8
+   \   000003 B700                  LD        S:?b8, A
+     50              /* Check the parameters */
+     51              assert_param(IS_RST_FLAG_OK(RST_Flag));
+   \   000005 B600                  LD        A, S:?b8
+   \   000007 A110                  CP        A, #0x10
+   \   000009 2727                  JREQ      L:??RST_GetFlagStatus_0
+   \   00000B B600                  LD        A, S:?b8
+   \   00000D A108                  CP        A, #0x8
+   \   00000F 2721                  JREQ      L:??RST_GetFlagStatus_0
+   \   000011 B600                  LD        A, S:?b8
+   \   000013 A104                  CP        A, #0x4
+   \   000015 271B                  JREQ      L:??RST_GetFlagStatus_0
+   \   000017 B600                  LD        A, S:?b8
+   \   000019 A102                  CP        A, #0x2
+   \   00001B 2715                  JREQ      L:??RST_GetFlagStatus_0
+   \   00001D B600                  LD        A, S:?b8
+   \   00001F A101                  CP        A, #0x1
+   \   000021 270F                  JREQ      L:??RST_GetFlagStatus_0
+   \   000023 AE0033                LDW       X, #0x33
+   \   000026 BF00                  LDW       S:?w1, X
+   \   000028 5F                    CLRW      X
+   \   000029 BF00                  LDW       S:?w0, X
+   \   00002B AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00002E 8D000000              CALLF     assert_failed
+     52          
+     53              /* Get flag status */
+     54          
+     55              return ((FlagStatus)((uint8_t)RST->SR & (uint8_t)RST_Flag));
+   \                     ??RST_GetFlagStatus_0:
+   \   000032 B600                  LD        A, S:?b8
+   \   000034 C450B3                AND       A, L:0x50b3
+   \   000037 320000                POP       S:?b8
+   \   00003A 87                    RETF
+     56          }
+     57          
+     58          /**
+     59            * @brief  Clears the specified RST flag.
+     60            * @param  RST_Flag : specify the reset flag to clear.
+     61            *         This parameter can be a value of @ref RST_FLAG_TypeDef.
+     62            * @retval None
+     63            */
+
+   \                                 In section .far_func.text, align 1
+     64          void RST_ClearFlag(RST_Flag_TypeDef RST_Flag)
+     65          {
+   \                     RST_ClearFlag:
+   \   000000 3B0000                PUSH      S:?b8
+   \   000003 B700                  LD        S:?b8, A
+     66              /* Check the parameters */
+     67              assert_param(IS_RST_FLAG_OK(RST_Flag));
+   \   000005 B600                  LD        A, S:?b8
+   \   000007 A110                  CP        A, #0x10
+   \   000009 2727                  JREQ      L:??RST_ClearFlag_0
+   \   00000B B600                  LD        A, S:?b8
+   \   00000D A108                  CP        A, #0x8
+   \   00000F 2721                  JREQ      L:??RST_ClearFlag_0
+   \   000011 B600                  LD        A, S:?b8
+   \   000013 A104                  CP        A, #0x4
+   \   000015 271B                  JREQ      L:??RST_ClearFlag_0
+   \   000017 B600                  LD        A, S:?b8
+   \   000019 A102                  CP        A, #0x2
+   \   00001B 2715                  JREQ      L:??RST_ClearFlag_0
+   \   00001D B600                  LD        A, S:?b8
+   \   00001F A101                  CP        A, #0x1
+   \   000021 270F                  JREQ      L:??RST_ClearFlag_0
+   \   000023 AE0043                LDW       X, #0x43
+   \   000026 BF00                  LDW       S:?w1, X
+   \   000028 5F                    CLRW      X
+   \   000029 BF00                  LDW       S:?w0, X
+   \   00002B AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00002E 8D000000              CALLF     assert_failed
+     68          
+     69              RST->SR = (uint8_t)RST_Flag;
+   \                     ??RST_ClearFlag_0:
+   \   000032 B600                  LD        A, S:?b8
+   \   000034 C750B3                LD        L:0x50b3, A
+     70          }
+   \   000037 320000                POP       S:?b8
+   \   00003A 87                    RETF
+
+   \                                 In section .near.rodata, align 1
+   \                     `?<Constant "D:\\\\Project\\\\STM8S_StdP...">`:
+   \   000000 443A5C50726F          DC8 44H, 3AH, 5CH, 50H, 72H, 6FH, 6AH, 65H
+   \   000008 63745C53544D          DC8 63H, 74H, 5CH, 53H, 54H, 4DH, 38H, 53H
+   \   000010 5F5374645065          DC8 5FH, 53H, 74H, 64H, 50H, 65H, 72H, 69H
+   \   000018 70685F4C6962          DC8 70H, 68H, 5FH, 4CH, 69H, 62H, 5FH, 56H
+   \   000020 322E312E305C          DC8 32H, 2EH, 31H, 2EH, 30H, 5CH, 4CH, 69H
+   \   000028 627261726965          DC8 62H, 72H, 61H, 72H, 69H, 65H, 73H, 5CH
+   \   000030 53544D38535F          DC8 53H, 54H, 4DH, 38H, 53H, 5FH, 53H, 74H
+   \   000038 645065726970          DC8 64H, 50H, 65H, 72H, 69H, 70H, 68H, 5FH
+   \   000040 447269766572          DC8 44H, 72H, 69H, 76H, 65H, 72H, 5CH, 73H
+   \   000048 72635C73746D          DC8 72H, 63H, 5CH, 73H, 74H, 6DH, 38H, 73H
+   \   000050 5F7273742E63          DC8 5FH, 72H, 73H, 74H, 2EH, 63H, 0
+     71          
+     72          /**
+     73            * @}
+     74            */
+     75            
+     76          /**
+     77            * @}
+     78            */
+     79            
+     80          /******************* (C) COPYRIGHT 2011 STMicroelectronics *****END OF FILE****/
+
+   Section sizes:
+
+     Function/Label                           Bytes
+     --------------                           -----
+     RST_GetFlagStatus                          59
+     RST_ClearFlag                              59
+     ?<Constant "D:\\Project\\STM8S_StdP...">   87
+
+ 
+ 118 bytes in section .far_func.text
+  87 bytes in section .near.rodata
+ 
+ 118 bytes of CODE  memory
+  87 bytes of CONST memory
+
+Errors: none
+Warnings: none

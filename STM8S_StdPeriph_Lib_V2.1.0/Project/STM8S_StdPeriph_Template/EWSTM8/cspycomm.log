@@ -1,0 +1,20 @@
+Fri Dec 05 00:49:25 2014: Log started
+Fri Dec 05 00:49:26 2014: DiGdiOpen(VersionH = 294, VersionL = 294, Parameters = -stlink3 -mcuname STM8S003F3)
+Fri Dec 05 00:49:26 2014: DiGdiInitIO(DeviceFile = usb://usb)
+Fri Dec 05 00:49:26 2014: DiGdiVersion()
+Fri Dec 05 00:49:26 2014: DiGdiGetFeatures()
+Fri Dec 05 00:49:32 2014: An error occurred while retrieving GDI features: gdi-error [40201]: Can't access configuration database
+Fri Dec 05 00:49:32 2014: DiGdiInitRegisterMap()
+Fri Dec 05 00:49:32 2014: Couldn't find STM8S003F3 in the list of supported MCUs.
+Fri Dec 05 00:50:32 2014: DiGdiOpen(VersionH = 294, VersionL = 294, Parameters = -stlink3 -mcuname STM8S003F3)
+Fri Dec 05 00:50:32 2014: DiGdiInitIO(DeviceFile = usb://usb)
+Fri Dec 05 00:50:32 2014: Failed to initialize communcation with hardware: SWIM error [3]: Detected hardware not compatible with software
+Fri Dec 05 00:50:34 2014: DiGdiOpen(VersionH = 294, VersionL = 294, Parameters = -stlink3 -mcuname STM8S003F3)
+Fri Dec 05 00:50:34 2014: DiGdiInitIO(DeviceFile = usb://usb)
+Fri Dec 05 00:50:34 2014: Failed to initialize communcation with hardware: SWIM error [3]: Detected hardware not compatible with software
+Fri Dec 05 00:50:55 2014: DiGdiOpen(VersionH = 294, VersionL = 294, Parameters = -stlink3 -mcuname STM8S003F3)
+Fri Dec 05 00:50:55 2014: DiGdiInitIO(DeviceFile = usb://usb)
+Fri Dec 05 00:50:55 2014: Failed to initialize communcation with hardware: SWIM error [3]: Detected hardware not compatible with software
+Fri Dec 05 00:51:03 2014: DiGdiOpen(VersionH = 294, VersionL = 294, Parameters = -stlink3 -mcuname STM8S003F3)
+Fri Dec 05 00:51:03 2014: DiGdiInitIO(DeviceFile = usb://usb)
+Fri Dec 05 00:51:03 2014: Failed to initialize communcation with hardware: SWIM error [3]: Detected hardware not compatible with software

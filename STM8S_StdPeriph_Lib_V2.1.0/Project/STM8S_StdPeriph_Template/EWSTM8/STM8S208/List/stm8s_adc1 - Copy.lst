@@ -1,0 +1,2156 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.1.50036 for STM8             24/Jan/2015  12:32:25 #
+# Copyright 2010-2011 IAR Systems AB.                                         #
+#                                                                             #
+#    Source file  =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_St #
+#                    dPeriph_Driver\src\stm8s_adc1 - Copy.c                   #
+#    Command line =  "D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_S #
+#                    tdPeriph_Driver\src\stm8s_adc1 - Copy.c" -e -Ol          #
+#                    --no_cse --no_unroll --no_inline --no_code_motion        #
+#                    --no_tbaa --no_cross_call --debug --code_model medium    #
+#                    --data_model medium -o D:\Project\STM8S_StdPeriph_Lib_V2 #
+#                    .1.0\Project\STM8S_StdPeriph_Template\EWSTM8\STM8S208\Ob #
+#                    j\ --dlib_config "C:\Program Files\IAR Systems\Embedded  #
+#                    Workbench 6.0\stm8\LIB\dlstm8mmn.h" -D                   #
+#                    USE_STM8_128_EVAL -D STM8S003 -lC                        #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\List\ -lb                 #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\List\ -I                  #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\..\ -I                             #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\..\..\..\Libraries\STM8S_StdPeriph #
+#                    _Driver\inc\ -I D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Pr #
+#                    oject\STM8S_StdPeriph_Template\EWSTM8\..\..\..\Utilities #
+#                    \STM8S_EVAL\ -I D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Pr #
+#                    oject\STM8S_StdPeriph_Template\EWSTM8\..\..\..\Utilities #
+#                    \STM8S_EVAL\STM8S-128_EVAL\ -I                           #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\..\..\..\Utilities\STM8S_EVAL\Comm #
+#                    on\ --vregs 16                                           #
+#    List file    =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\List\stm8s_adc1 -         #
+#                    Copy.lst                                                 #
+#    Object file  =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\Obj\stm8s_adc1 - Copy.o   #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_StdPeriph_Driver\src\stm8s_adc1 - Copy.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    stm8s_adc1.c
+      4            * @author  MCD Application Team
+      5            * @version V2.1.0
+      6            * @date    18-November-2011
+      7            * @brief   This file contains all the functions/macros for the ADC1 peripheral.
+      8            ******************************************************************************
+      9            * @attention
+     10            *
+     11            * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+     12            * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+     13            * TIME. AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY
+     14            * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+     15            * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+     16            * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+     17            *
+     18            * <h2><center>&copy; COPYRIGHT 2011 STMicroelectronics</center></h2>
+     19            ******************************************************************************
+     20            */
+     21          
+     22          /* Includes ------------------------------------------------------------------*/
+     23          #include "stm8s_adc1.h"
+     24          
+     25          /** @addtogroup STM8S_StdPeriph_Driver
+     26            * @{
+     27            */
+     28          /* Private typedef -----------------------------------------------------------*/
+     29          /* Private define ------------------------------------------------------------*/
+     30          /* Private macro -------------------------------------------------------------*/
+     31          /* Private variables ---------------------------------------------------------*/
+     32          /* Private function prototypes -----------------------------------------------*/
+     33          /* Private functions ---------------------------------------------------------*/
+     34          
+     35          /* Public functions ----------------------------------------------------------*/
+     36          
+     37          /**
+     38            * @addtogroup ADC1_Public_Functions
+     39            * @{
+     40            */
+     41          
+     42          /**
+     43            * @brief  Deinitializes the ADC1 peripheral registers to their default reset
+     44            * values.
+     45            * @param  None
+     46            * @retval None
+     47            */
+
+   \                                 In section .far_func.text, align 1
+     48          void ADC1_DeInit(void)
+     49          {
+     50              ADC1->CSR  = ADC1_CSR_RESET_VALUE;
+   \                     ADC1_DeInit:
+   \   000000 35005400              MOV       L:0x5400, #0x0
+     51              ADC1->CR1  = ADC1_CR1_RESET_VALUE;
+   \   000004 35005401              MOV       L:0x5401, #0x0
+     52              ADC1->CR2  = ADC1_CR2_RESET_VALUE;
+   \   000008 35005402              MOV       L:0x5402, #0x0
+     53              ADC1->CR3  = ADC1_CR3_RESET_VALUE;
+   \   00000C 35005403              MOV       L:0x5403, #0x0
+     54              ADC1->TDRH = ADC1_TDRH_RESET_VALUE;
+   \   000010 35005406              MOV       L:0x5406, #0x0
+     55              ADC1->TDRL = ADC1_TDRL_RESET_VALUE;
+   \   000014 35005407              MOV       L:0x5407, #0x0
+     56              ADC1->HTRH = ADC1_HTRH_RESET_VALUE;
+   \   000018 35FF5408              MOV       L:0x5408, #0xff
+     57              ADC1->HTRL = ADC1_HTRL_RESET_VALUE;
+   \   00001C 35035409              MOV       L:0x5409, #0x3
+     58              ADC1->LTRH = ADC1_LTRH_RESET_VALUE;
+   \   000020 3500540A              MOV       L:0x540a, #0x0
+     59              ADC1->LTRL = ADC1_LTRL_RESET_VALUE;
+   \   000024 3500540B              MOV       L:0x540b, #0x0
+     60              ADC1->AWCRH = ADC1_AWCRH_RESET_VALUE;
+   \   000028 3500540E              MOV       L:0x540e, #0x0
+     61              ADC1->AWCRL = ADC1_AWCRL_RESET_VALUE;
+   \   00002C 3500540F              MOV       L:0x540f, #0x0
+     62          }
+   \   000030 87                    RETF
+     63          
+     64          
+     65          /**
+     66            * @brief  Initializes the ADC1 peripheral according to the specified parameters
+     67            * @param   ADC1_ConversionMode: specifies the conversion mode
+     68            * can be one of the values of @ref ADC1_ConvMode_TypeDef.
+     69            * @param   ADC1_Channel: specifies the channel to convert
+     70            * can be one of the values of @ref ADC1_Channel_TypeDef.
+     71            * @param   ADC1_PrescalerSelection: specifies the ADC1 prescaler
+     72            * can be one of the values of @ref ADC1_PresSel_TypeDef.
+     73            * @param   ADC1_ExtTrigger: specifies the external trigger
+     74            * can be one of the values of @ref ADC1_ExtTrig_TypeDef.
+     75            * @param   ADC1_ExtTriggerState: specifies the external trigger new state
+     76            * can be one of the values of @ref FunctionalState.
+     77            * @param   ADC1_Align: specifies the converted data alignment
+     78            * can be one of the values of @ref ADC1_Align_TypeDef.
+     79            * @param   ADC1_SchmittTriggerChannel: specifies the schmitt trigger channel
+     80            * can be one of the values of @ref ADC1_SchmittTrigg_TypeDef.
+     81            * @param   ADC1_SchmittTriggerState: specifies the schmitt trigger state
+     82            * can be one of the values of @ref FunctionalState.
+     83            * @retval None
+     84            */
+
+   \                                 In section .far_func.text, align 1
+     85          void ADC1_Init(ADC1_ConvMode_TypeDef ADC1_ConversionMode, ADC1_Channel_TypeDef ADC1_Channel, ADC1_PresSel_TypeDef ADC1_PrescalerSelection, ADC1_ExtTrig_TypeDef ADC1_ExtTrigger, FunctionalState ADC1_ExtTriggerState, ADC1_Align_TypeDef ADC1_Align, ADC1_SchmittTrigg_TypeDef ADC1_SchmittTriggerChannel, FunctionalState ADC1_SchmittTriggerState)
+     86          {
+   \                     ADC1_Init:
+   \   000000 8D000000              CALLF     L:?push_l2
+   \   000004 8D000000              CALLF     L:?push_l3
+   \   000008 B700                  LD        S:?b15, A
+   \   00000A 450000                MOV       S:?b8, S:?b0
+   \   00000D 450000                MOV       S:?b9, S:?b1
+   \   000010 450000                MOV       S:?b14, S:?b2
+   \   000013 450000                MOV       S:?b13, S:?b3
+   \   000016 450000                MOV       S:?b12, S:?b4
+   \   000019 450000                MOV       S:?b10, S:?b5
+   \   00001C 450000                MOV       S:?b11, S:?b6
+     87          
+     88              /* Check the parameters */
+     89              assert_param(IS_ADC1_CONVERSIONMODE_OK(ADC1_ConversionMode));
+   \   00001F 3D00                  TNZ       S:?b15
+   \   000021 2715                  JREQ      L:??ADC1_Init_0
+   \   000023 B600                  LD        A, S:?b15
+   \   000025 A101                  CP        A, #0x1
+   \   000027 270F                  JREQ      L:??ADC1_Init_0
+   \   000029 AE0059                LDW       X, #0x59
+   \   00002C BF00                  LDW       S:?w1, X
+   \   00002E 5F                    CLRW      X
+   \   00002F BF00                  LDW       S:?w0, X
+   \   000031 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   000034 8D000000              CALLF     assert_failed
+     90              assert_param(IS_ADC1_CHANNEL_OK(ADC1_Channel));
+   \                     ??ADC1_Init_0:
+   \   000038 3D00                  TNZ       S:?b8
+   \   00003A 274B                  JREQ      L:??ADC1_Init_1
+   \   00003C B600                  LD        A, S:?b8
+   \   00003E A101                  CP        A, #0x1
+   \   000040 2745                  JREQ      L:??ADC1_Init_1
+   \   000042 B600                  LD        A, S:?b8
+   \   000044 A102                  CP        A, #0x2
+   \   000046 273F                  JREQ      L:??ADC1_Init_1
+   \   000048 B600                  LD        A, S:?b8
+   \   00004A A103                  CP        A, #0x3
+   \   00004C 2739                  JREQ      L:??ADC1_Init_1
+   \   00004E B600                  LD        A, S:?b8
+   \   000050 A104                  CP        A, #0x4
+   \   000052 2733                  JREQ      L:??ADC1_Init_1
+   \   000054 B600                  LD        A, S:?b8
+   \   000056 A105                  CP        A, #0x5
+   \   000058 272D                  JREQ      L:??ADC1_Init_1
+   \   00005A B600                  LD        A, S:?b8
+   \   00005C A106                  CP        A, #0x6
+   \   00005E 2727                  JREQ      L:??ADC1_Init_1
+   \   000060 B600                  LD        A, S:?b8
+   \   000062 A107                  CP        A, #0x7
+   \   000064 2721                  JREQ      L:??ADC1_Init_1
+   \   000066 B600                  LD        A, S:?b8
+   \   000068 A108                  CP        A, #0x8
+   \   00006A 271B                  JREQ      L:??ADC1_Init_1
+   \   00006C B600                  LD        A, S:?b8
+   \   00006E A10C                  CP        A, #0xc
+   \   000070 2715                  JREQ      L:??ADC1_Init_1
+   \   000072 B600                  LD        A, S:?b8
+   \   000074 A109                  CP        A, #0x9
+   \   000076 270F                  JREQ      L:??ADC1_Init_1
+   \   000078 AE005A                LDW       X, #0x5a
+   \   00007B BF00                  LDW       S:?w1, X
+   \   00007D 5F                    CLRW      X
+   \   00007E BF00                  LDW       S:?w0, X
+   \   000080 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   000083 8D000000              CALLF     assert_failed
+     91              assert_param(IS_ADC1_PRESSEL_OK(ADC1_PrescalerSelection));
+   \                     ??ADC1_Init_1:
+   \   000087 3D00                  TNZ       S:?b9
+   \   000089 2739                  JREQ      L:??ADC1_Init_2
+   \   00008B B600                  LD        A, S:?b9
+   \   00008D A110                  CP        A, #0x10
+   \   00008F 2733                  JREQ      L:??ADC1_Init_2
+   \   000091 B600                  LD        A, S:?b9
+   \   000093 A120                  CP        A, #0x20
+   \   000095 272D                  JREQ      L:??ADC1_Init_2
+   \   000097 B600                  LD        A, S:?b9
+   \   000099 A130                  CP        A, #0x30
+   \   00009B 2727                  JREQ      L:??ADC1_Init_2
+   \   00009D B600                  LD        A, S:?b9
+   \   00009F A140                  CP        A, #0x40
+   \   0000A1 2721                  JREQ      L:??ADC1_Init_2
+   \   0000A3 B600                  LD        A, S:?b9
+   \   0000A5 A150                  CP        A, #0x50
+   \   0000A7 271B                  JREQ      L:??ADC1_Init_2
+   \   0000A9 B600                  LD        A, S:?b9
+   \   0000AB A160                  CP        A, #0x60
+   \   0000AD 2715                  JREQ      L:??ADC1_Init_2
+   \   0000AF B600                  LD        A, S:?b9
+   \   0000B1 A170                  CP        A, #0x70
+   \   0000B3 270F                  JREQ      L:??ADC1_Init_2
+   \   0000B5 AE005B                LDW       X, #0x5b
+   \   0000B8 BF00                  LDW       S:?w1, X
+   \   0000BA 5F                    CLRW      X
+   \   0000BB BF00                  LDW       S:?w0, X
+   \   0000BD AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   0000C0 8D000000              CALLF     assert_failed
+     92              assert_param(IS_ADC1_EXTTRIG_OK(ADC1_ExtTrigger));
+   \                     ??ADC1_Init_2:
+   \   0000C4 3D00                  TNZ       S:?b14
+   \   0000C6 2715                  JREQ      L:??ADC1_Init_3
+   \   0000C8 B600                  LD        A, S:?b14
+   \   0000CA A110                  CP        A, #0x10
+   \   0000CC 270F                  JREQ      L:??ADC1_Init_3
+   \   0000CE AE005C                LDW       X, #0x5c
+   \   0000D1 BF00                  LDW       S:?w1, X
+   \   0000D3 5F                    CLRW      X
+   \   0000D4 BF00                  LDW       S:?w0, X
+   \   0000D6 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   0000D9 8D000000              CALLF     assert_failed
+     93              assert_param(IS_FUNCTIONALSTATE_OK(((ADC1_ExtTriggerState))));
+   \                     ??ADC1_Init_3:
+   \   0000DD 3D00                  TNZ       S:?b13
+   \   0000DF 2715                  JREQ      L:??ADC1_Init_4
+   \   0000E1 B600                  LD        A, S:?b13
+   \   0000E3 A101                  CP        A, #0x1
+   \   0000E5 270F                  JREQ      L:??ADC1_Init_4
+   \   0000E7 AE005D                LDW       X, #0x5d
+   \   0000EA BF00                  LDW       S:?w1, X
+   \   0000EC 5F                    CLRW      X
+   \   0000ED BF00                  LDW       S:?w0, X
+   \   0000EF AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   0000F2 8D000000              CALLF     assert_failed
+     94              assert_param(IS_ADC1_ALIGN_OK(ADC1_Align));
+   \                     ??ADC1_Init_4:
+   \   0000F6 3D00                  TNZ       S:?b12
+   \   0000F8 2715                  JREQ      L:??ADC1_Init_5
+   \   0000FA B600                  LD        A, S:?b12
+   \   0000FC A108                  CP        A, #0x8
+   \   0000FE 270F                  JREQ      L:??ADC1_Init_5
+   \   000100 AE005E                LDW       X, #0x5e
+   \   000103 BF00                  LDW       S:?w1, X
+   \   000105 5F                    CLRW      X
+   \   000106 BF00                  LDW       S:?w0, X
+   \   000108 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00010B 8D000000              CALLF     assert_failed
+     95              assert_param(IS_ADC1_SCHMITTTRIG_OK(ADC1_SchmittTriggerChannel));
+   \                     ??ADC1_Init_5:
+   \   00010F 3D00                  TNZ       S:?b10
+   \   000111 2751                  JREQ      L:??ADC1_Init_6
+   \   000113 B600                  LD        A, S:?b10
+   \   000115 A101                  CP        A, #0x1
+   \   000117 274B                  JREQ      L:??ADC1_Init_6
+   \   000119 B600                  LD        A, S:?b10
+   \   00011B A102                  CP        A, #0x2
+   \   00011D 2745                  JREQ      L:??ADC1_Init_6
+   \   00011F B600                  LD        A, S:?b10
+   \   000121 A103                  CP        A, #0x3
+   \   000123 273F                  JREQ      L:??ADC1_Init_6
+   \   000125 B600                  LD        A, S:?b10
+   \   000127 A104                  CP        A, #0x4
+   \   000129 2739                  JREQ      L:??ADC1_Init_6
+   \   00012B B600                  LD        A, S:?b10
+   \   00012D A105                  CP        A, #0x5
+   \   00012F 2733                  JREQ      L:??ADC1_Init_6
+   \   000131 B600                  LD        A, S:?b10
+   \   000133 A106                  CP        A, #0x6
+   \   000135 272D                  JREQ      L:??ADC1_Init_6
+   \   000137 B600                  LD        A, S:?b10
+   \   000139 A107                  CP        A, #0x7
+   \   00013B 2727                  JREQ      L:??ADC1_Init_6
+   \   00013D B600                  LD        A, S:?b10
+   \   00013F A108                  CP        A, #0x8
+   \   000141 2721                  JREQ      L:??ADC1_Init_6
+   \   000143 B600                  LD        A, S:?b10
+   \   000145 A10C                  CP        A, #0xc
+   \   000147 271B                  JREQ      L:??ADC1_Init_6
+   \   000149 B600                  LD        A, S:?b10
+   \   00014B A1FF                  CP        A, #0xff
+   \   00014D 2715                  JREQ      L:??ADC1_Init_6
+   \   00014F B600                  LD        A, S:?b10
+   \   000151 A109                  CP        A, #0x9
+   \   000153 270F                  JREQ      L:??ADC1_Init_6
+   \   000155 AE005F                LDW       X, #0x5f
+   \   000158 BF00                  LDW       S:?w1, X
+   \   00015A 5F                    CLRW      X
+   \   00015B BF00                  LDW       S:?w0, X
+   \   00015D AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   000160 8D000000              CALLF     assert_failed
+     96              assert_param(IS_FUNCTIONALSTATE_OK(ADC1_SchmittTriggerState));
+   \                     ??ADC1_Init_6:
+   \   000164 3D00                  TNZ       S:?b11
+   \   000166 2715                  JREQ      L:??ADC1_Init_7
+   \   000168 B600                  LD        A, S:?b11
+   \   00016A A101                  CP        A, #0x1
+   \   00016C 270F                  JREQ      L:??ADC1_Init_7
+   \   00016E AE0060                LDW       X, #0x60
+   \   000171 BF00                  LDW       S:?w1, X
+   \   000173 5F                    CLRW      X
+   \   000174 BF00                  LDW       S:?w0, X
+   \   000176 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   000179 8D000000              CALLF     assert_failed
+     97          
+     98              /*-----------------CR1 & CSR configuration --------------------*/
+     99              /* Configure the conversion mode and the channel to convert
+    100              respectively according to ADC1_ConversionMode & ADC1_Channel values  &  ADC1_Align values */
+    101              ADC1_ConversionConfig(ADC1_ConversionMode, ADC1_Channel, ADC1_Align);
+   \                     ??ADC1_Init_7:
+   \   00017D 450000                MOV       S:?b1, S:?b12
+   \   000180 450000                MOV       S:?b0, S:?b8
+   \   000183 B600                  LD        A, S:?b15
+   \   000185 8D000000              CALLF     ADC1_ConversionConfig
+    102              /* Select the prescaler division factor according to ADC1_PrescalerSelection values */
+    103              ADC1_PrescalerConfig(ADC1_PrescalerSelection);
+   \   000189 B600                  LD        A, S:?b9
+   \   00018B 8D000000              CALLF     ADC1_PrescalerConfig
+    104          
+    105              /*-----------------CR2 configuration --------------------*/
+    106              /* Configure the external trigger state and event respectively
+    107              according to NewState, ADC1_ExtTrigger */
+    108              ADC1_ExternalTriggerConfig(ADC1_ExtTrigger, ADC1_ExtTriggerState);
+   \   00018F 450000                MOV       S:?b0, S:?b13
+   \   000192 B600                  LD        A, S:?b14
+   \   000194 8D000000              CALLF     ADC1_ExternalTriggerConfig
+    109          
+    110              /*------------------TDR configuration ---------------------------*/
+    111              /* Configure the schmitt trigger channel and state respectively
+    112              according to ADC1_SchmittTriggerChannel & ADC1_SchmittTriggerNewState  values */
+    113              ADC1_SchmittTriggerConfig(ADC1_SchmittTriggerChannel, ADC1_SchmittTriggerState);
+   \   000198 450000                MOV       S:?b0, S:?b11
+   \   00019B B600                  LD        A, S:?b10
+   \   00019D 8D000000              CALLF     ADC1_SchmittTriggerConfig
+    114          
+    115              /* Enable the ADC1 peripheral */
+    116              ADC1->CR1 |= ADC1_CR1_ADON;
+   \   0001A1 72105401              BSET      L:0x5401, #0x0
+    117          
+    118          }
+   \   0001A5 AC000000              JPF       L:?epilogue_l2_l3
+    119          
+    120          
+    121          /**
+    122            * @brief  Enables or Disables the ADC1 peripheral.
+    123            * @param   NewState: specifies the peripheral enabled or disabled state.
+    124            * @retval None
+    125            */
+
+   \                                 In section .far_func.text, align 1
+    126          void ADC1_Cmd(FunctionalState NewState)
+    127          {
+   \                     ADC1_Cmd:
+   \   000000 3B0000                PUSH      S:?b8
+   \   000003 B700                  LD        S:?b8, A
+    128          
+    129              /* Check the parameters */
+    130              assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+   \   000005 3D00                  TNZ       S:?b8
+   \   000007 2715                  JREQ      L:??ADC1_Cmd_0
+   \   000009 B600                  LD        A, S:?b8
+   \   00000B A101                  CP        A, #0x1
+   \   00000D 270F                  JREQ      L:??ADC1_Cmd_0
+   \   00000F AE0082                LDW       X, #0x82
+   \   000012 BF00                  LDW       S:?w1, X
+   \   000014 5F                    CLRW      X
+   \   000015 BF00                  LDW       S:?w0, X
+   \   000017 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00001A 8D000000              CALLF     assert_failed
+    131          
+    132              if (NewState != DISABLE)
+   \                     ??ADC1_Cmd_0:
+   \   00001E 3D00                  TNZ       S:?b8
+   \   000020 2706                  JREQ      L:??ADC1_Cmd_1
+    133              {
+    134                  ADC1->CR1 |= ADC1_CR1_ADON;
+   \   000022 72105401              BSET      L:0x5401, #0x0
+   \   000026 2004                  JRA       L:??ADC1_Cmd_2
+    135              }
+    136              else /* NewState == DISABLE */
+    137              {
+    138                  ADC1->CR1 &= (uint8_t)(~ADC1_CR1_ADON);
+   \                     ??ADC1_Cmd_1:
+   \   000028 72115401              BRES      L:0x5401, #0x0
+    139              }
+    140          
+    141          }
+   \                     ??ADC1_Cmd_2:
+   \   00002C 320000                POP       S:?b8
+   \   00002F 87                    RETF
+    142          
+    143          /**
+    144            * @brief  Enables or Disables the ADC1 scan mode.
+    145            * @param   NewState: specifies the selected mode enabled or disabled state.
+    146            * @retval None
+    147            */
+
+   \                                 In section .far_func.text, align 1
+    148          void ADC1_ScanModeCmd(FunctionalState NewState)
+    149          {
+   \                     ADC1_ScanModeCmd:
+   \   000000 3B0000                PUSH      S:?b8
+   \   000003 B700                  LD        S:?b8, A
+    150          
+    151              /* Check the parameters */
+    152              assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+   \   000005 3D00                  TNZ       S:?b8
+   \   000007 2715                  JREQ      L:??ADC1_ScanModeCmd_0
+   \   000009 B600                  LD        A, S:?b8
+   \   00000B A101                  CP        A, #0x1
+   \   00000D 270F                  JREQ      L:??ADC1_ScanModeCmd_0
+   \   00000F AE0098                LDW       X, #0x98
+   \   000012 BF00                  LDW       S:?w1, X
+   \   000014 5F                    CLRW      X
+   \   000015 BF00                  LDW       S:?w0, X
+   \   000017 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00001A 8D000000              CALLF     assert_failed
+    153          
+    154              if (NewState != DISABLE)
+   \                     ??ADC1_ScanModeCmd_0:
+   \   00001E 3D00                  TNZ       S:?b8
+   \   000020 2706                  JREQ      L:??ADC1_ScanModeCmd_1
+    155              {
+    156                  ADC1->CR2 |= ADC1_CR2_SCAN;
+   \   000022 72125402              BSET      L:0x5402, #0x1
+   \   000026 2004                  JRA       L:??ADC1_ScanModeCmd_2
+    157              }
+    158              else /* NewState == DISABLE */
+    159              {
+    160                  ADC1->CR2 &= (uint8_t)(~ADC1_CR2_SCAN);
+   \                     ??ADC1_ScanModeCmd_1:
+   \   000028 72135402              BRES      L:0x5402, #0x1
+    161              }
+    162          
+    163          }
+   \                     ??ADC1_ScanModeCmd_2:
+   \   00002C 320000                POP       S:?b8
+   \   00002F 87                    RETF
+    164          
+    165          /**
+    166            * @brief  Enables or Disables the ADC1 data store into the Data Buffer registers rather than in the Data Register
+    167            * @param   NewState: specifies the selected mode enabled or disabled state.
+    168            * @retval None
+    169            */
+
+   \                                 In section .far_func.text, align 1
+    170          void ADC1_DataBufferCmd(FunctionalState NewState)
+    171          {
+   \                     ADC1_DataBufferCmd:
+   \   000000 3B0000                PUSH      S:?b8
+   \   000003 B700                  LD        S:?b8, A
+    172          
+    173              /* Check the parameters */
+    174              assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+   \   000005 3D00                  TNZ       S:?b8
+   \   000007 2715                  JREQ      L:??ADC1_DataBufferCmd_0
+   \   000009 B600                  LD        A, S:?b8
+   \   00000B A101                  CP        A, #0x1
+   \   00000D 270F                  JREQ      L:??ADC1_DataBufferCmd_0
+   \   00000F AE00AE                LDW       X, #0xae
+   \   000012 BF00                  LDW       S:?w1, X
+   \   000014 5F                    CLRW      X
+   \   000015 BF00                  LDW       S:?w0, X
+   \   000017 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00001A 8D000000              CALLF     assert_failed
+    175          
+    176              if (NewState != DISABLE)
+   \                     ??ADC1_DataBufferCmd_0:
+   \   00001E 3D00                  TNZ       S:?b8
+   \   000020 2706                  JREQ      L:??ADC1_DataBufferCmd_1
+    177              {
+    178                  ADC1->CR3 |= ADC1_CR3_DBUF;
+   \   000022 721E5403              BSET      L:0x5403, #0x7
+   \   000026 2004                  JRA       L:??ADC1_DataBufferCmd_2
+    179              }
+    180              else /* NewState == DISABLE */
+    181              {
+    182                  ADC1->CR3 &= (uint8_t)(~ADC1_CR3_DBUF);
+   \                     ??ADC1_DataBufferCmd_1:
+   \   000028 721F5403              BRES      L:0x5403, #0x7
+    183              }
+    184          
+    185          }
+   \                     ??ADC1_DataBufferCmd_2:
+   \   00002C 320000                POP       S:?b8
+   \   00002F 87                    RETF
+    186          
+    187          /**
+    188            * @brief  Enables or disables the ADC1 interrupt.
+    189            * @param   ADC1_IT specifies the name of the interrupt to enable or disable.
+    190            * This parameter can be one of the following values:
+    191            *    - ADC1_IT_AWDITEN : Analog WDG interrupt enable
+    192            *    - ADC1_IT_EOCITEN  : EOC iterrupt enable
+    193            * @param   NewState specifies the state of the interrupt to apply.
+    194            * @retval None
+    195            */
+
+   \                                 In section .far_func.text, align 1
+    196          void ADC1_ITConfig(ADC1_IT_TypeDef ADC1_IT, FunctionalState NewState)
+    197          {
+   \                     ADC1_ITConfig:
+   \   000000 8D000000              CALLF     L:?push_w4
+   \   000004 3B0000                PUSH      S:?b10
+   \   000007 BF00                  LDW       S:?w4, X
+   \   000009 B700                  LD        S:?b10, A
+    198          
+    199              /* Check the parameters */
+    200              assert_param(IS_ADC1_IT_OK(ADC1_IT));
+   \   00000B BE00                  LDW       X, S:?w4
+   \   00000D A30020                CPW       X, #0x20
+   \   000010 2716                  JREQ      L:??ADC1_ITConfig_0
+   \   000012 BE00                  LDW       X, S:?w4
+   \   000014 A30010                CPW       X, #0x10
+   \   000017 270F                  JREQ      L:??ADC1_ITConfig_0
+   \   000019 AE00C8                LDW       X, #0xc8
+   \   00001C BF00                  LDW       S:?w1, X
+   \   00001E 5F                    CLRW      X
+   \   00001F BF00                  LDW       S:?w0, X
+   \   000021 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   000024 8D000000              CALLF     assert_failed
+    201              assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+   \                     ??ADC1_ITConfig_0:
+   \   000028 3D00                  TNZ       S:?b10
+   \   00002A 2715                  JREQ      L:??ADC1_ITConfig_1
+   \   00002C B600                  LD        A, S:?b10
+   \   00002E A101                  CP        A, #0x1
+   \   000030 270F                  JREQ      L:??ADC1_ITConfig_1
+   \   000032 AE00C9                LDW       X, #0xc9
+   \   000035 BF00                  LDW       S:?w1, X
+   \   000037 5F                    CLRW      X
+   \   000038 BF00                  LDW       S:?w0, X
+   \   00003A AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00003D 8D000000              CALLF     assert_failed
+    202          
+    203              if (NewState != DISABLE)
+   \                     ??ADC1_ITConfig_1:
+   \   000041 3D00                  TNZ       S:?b10
+   \   000043 270A                  JREQ      L:??ADC1_ITConfig_2
+    204              {
+    205                  /* Enable the ADC1 interrupts */
+    206                  ADC1->CSR |= (uint8_t)ADC1_IT;
+   \   000045 B600                  LD        A, S:?b9
+   \   000047 CA5400                OR        A, L:0x5400
+   \   00004A C75400                LD        L:0x5400, A
+   \   00004D 2009                  JRA       L:??ADC1_ITConfig_3
+    207              }
+    208              else  /* NewState == DISABLE */
+    209              {
+    210                  /* Disable the ADC1 interrupts */
+    211                  ADC1->CSR &= (uint8_t)((uint16_t)~(uint16_t)ADC1_IT);
+   \                     ??ADC1_ITConfig_2:
+   \   00004F B600                  LD        A, S:?b9
+   \   000051 43                    CPL       A
+   \   000052 C45400                AND       A, L:0x5400
+   \   000055 C75400                LD        L:0x5400, A
+    212              }
+    213          
+    214          }
+   \                     ??ADC1_ITConfig_3:
+   \   000058 320000                POP       S:?b10
+   \   00005B AC000000              JPF       L:?epilogue_w4
+    215          
+    216          /**
+    217            * @brief  Configure the ADC1 prescaler division factor.
+    218            * @param   ADC1_Prescaler: the selected precaler.
+    219            * It can be one of the values of @ref ADC1_PresSel_TypeDef.
+    220            * @retval None
+    221            */
+
+   \                                 In section .far_func.text, align 1
+    222          void ADC1_PrescalerConfig(ADC1_PresSel_TypeDef ADC1_Prescaler)
+    223          {
+   \                     ADC1_PrescalerConfig:
+   \   000000 3B0000                PUSH      S:?b8
+   \   000003 B700                  LD        S:?b8, A
+    224          
+    225              /* Check the parameter */
+    226              assert_param(IS_ADC1_PRESSEL_OK(ADC1_Prescaler));
+   \   000005 3D00                  TNZ       S:?b8
+   \   000007 2739                  JREQ      L:??ADC1_PrescalerConfig_0
+   \   000009 B600                  LD        A, S:?b8
+   \   00000B A110                  CP        A, #0x10
+   \   00000D 2733                  JREQ      L:??ADC1_PrescalerConfig_0
+   \   00000F B600                  LD        A, S:?b8
+   \   000011 A120                  CP        A, #0x20
+   \   000013 272D                  JREQ      L:??ADC1_PrescalerConfig_0
+   \   000015 B600                  LD        A, S:?b8
+   \   000017 A130                  CP        A, #0x30
+   \   000019 2727                  JREQ      L:??ADC1_PrescalerConfig_0
+   \   00001B B600                  LD        A, S:?b8
+   \   00001D A140                  CP        A, #0x40
+   \   00001F 2721                  JREQ      L:??ADC1_PrescalerConfig_0
+   \   000021 B600                  LD        A, S:?b8
+   \   000023 A150                  CP        A, #0x50
+   \   000025 271B                  JREQ      L:??ADC1_PrescalerConfig_0
+   \   000027 B600                  LD        A, S:?b8
+   \   000029 A160                  CP        A, #0x60
+   \   00002B 2715                  JREQ      L:??ADC1_PrescalerConfig_0
+   \   00002D B600                  LD        A, S:?b8
+   \   00002F A170                  CP        A, #0x70
+   \   000031 270F                  JREQ      L:??ADC1_PrescalerConfig_0
+   \   000033 AE00E2                LDW       X, #0xe2
+   \   000036 BF00                  LDW       S:?w1, X
+   \   000038 5F                    CLRW      X
+   \   000039 BF00                  LDW       S:?w0, X
+   \   00003B AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00003E 8D000000              CALLF     assert_failed
+    227          
+    228              /* Clear the SPSEL bits */
+    229              ADC1->CR1 &= (uint8_t)(~ADC1_CR1_SPSEL);
+   \                     ??ADC1_PrescalerConfig_0:
+   \   000042 C65401                LD        A, L:0x5401
+   \   000045 A48F                  AND       A, #0x8f
+   \   000047 C75401                LD        L:0x5401, A
+    230              /* Select the prescaler division factor according to ADC1_PrescalerSelection values */
+    231              ADC1->CR1 |= (uint8_t)(ADC1_Prescaler);
+   \   00004A B600                  LD        A, S:?b8
+   \   00004C CA5401                OR        A, L:0x5401
+   \   00004F C75401                LD        L:0x5401, A
+    232          
+    233          }
+   \   000052 320000                POP       S:?b8
+   \   000055 87                    RETF
+    234          
+    235          
+    236          /**
+    237            * @brief  Enables or disables the ADC1 Schmitt Trigger on a selected channel.
+    238            * @param   ADC1_SchmittTriggerChannel specifies the desired Channel.
+    239            * It can be set of the values of @ref ADC1_SchmittTrigg_TypeDef.
+    240            * @param   NewState specifies Channel new status.
+    241            * can have one of the values of @ref FunctionalState.
+    242            * @retval None
+    243            */
+
+   \                                 In section .far_func.text, align 1
+    244          void ADC1_SchmittTriggerConfig(ADC1_SchmittTrigg_TypeDef ADC1_SchmittTriggerChannel, FunctionalState NewState)
+    245          {
+   \                     ADC1_SchmittTriggerConfig:
+   \   000000 8D000000              CALLF     L:?push_w4
+   \   000004 B700                  LD        S:?b8, A
+   \   000006 450000                MOV       S:?b9, S:?b0
+    246          
+    247              /* Check the parameters */
+    248              assert_param(IS_ADC1_SCHMITTTRIG_OK(ADC1_SchmittTriggerChannel));
+   \   000009 3D00                  TNZ       S:?b8
+   \   00000B 2751                  JREQ      L:??ADC1_SchmittTriggerConfig_0
+   \   00000D B600                  LD        A, S:?b8
+   \   00000F A101                  CP        A, #0x1
+   \   000011 274B                  JREQ      L:??ADC1_SchmittTriggerConfig_0
+   \   000013 B600                  LD        A, S:?b8
+   \   000015 A102                  CP        A, #0x2
+   \   000017 2745                  JREQ      L:??ADC1_SchmittTriggerConfig_0
+   \   000019 B600                  LD        A, S:?b8
+   \   00001B A103                  CP        A, #0x3
+   \   00001D 273F                  JREQ      L:??ADC1_SchmittTriggerConfig_0
+   \   00001F B600                  LD        A, S:?b8
+   \   000021 A104                  CP        A, #0x4
+   \   000023 2739                  JREQ      L:??ADC1_SchmittTriggerConfig_0
+   \   000025 B600                  LD        A, S:?b8
+   \   000027 A105                  CP        A, #0x5
+   \   000029 2733                  JREQ      L:??ADC1_SchmittTriggerConfig_0
+   \   00002B B600                  LD        A, S:?b8
+   \   00002D A106                  CP        A, #0x6
+   \   00002F 272D                  JREQ      L:??ADC1_SchmittTriggerConfig_0
+   \   000031 B600                  LD        A, S:?b8
+   \   000033 A107                  CP        A, #0x7
+   \   000035 2727                  JREQ      L:??ADC1_SchmittTriggerConfig_0
+   \   000037 B600                  LD        A, S:?b8
+   \   000039 A108                  CP        A, #0x8
+   \   00003B 2721                  JREQ      L:??ADC1_SchmittTriggerConfig_0
+   \   00003D B600                  LD        A, S:?b8
+   \   00003F A10C                  CP        A, #0xc
+   \   000041 271B                  JREQ      L:??ADC1_SchmittTriggerConfig_0
+   \   000043 B600                  LD        A, S:?b8
+   \   000045 A1FF                  CP        A, #0xff
+   \   000047 2715                  JREQ      L:??ADC1_SchmittTriggerConfig_0
+   \   000049 B600                  LD        A, S:?b8
+   \   00004B A109                  CP        A, #0x9
+   \   00004D 270F                  JREQ      L:??ADC1_SchmittTriggerConfig_0
+   \   00004F AE00F8                LDW       X, #0xf8
+   \   000052 BF00                  LDW       S:?w1, X
+   \   000054 5F                    CLRW      X
+   \   000055 BF00                  LDW       S:?w0, X
+   \   000057 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00005A 8D000000              CALLF     assert_failed
+    249              assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+   \                     ??ADC1_SchmittTriggerConfig_0:
+   \   00005E 3D00                  TNZ       S:?b9
+   \   000060 2715                  JREQ      L:??ADC1_SchmittTriggerConfig_1
+   \   000062 B600                  LD        A, S:?b9
+   \   000064 A101                  CP        A, #0x1
+   \   000066 270F                  JREQ      L:??ADC1_SchmittTriggerConfig_1
+   \   000068 AE00F9                LDW       X, #0xf9
+   \   00006B BF00                  LDW       S:?w1, X
+   \   00006D 5F                    CLRW      X
+   \   00006E BF00                  LDW       S:?w0, X
+   \   000070 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   000073 8D000000              CALLF     assert_failed
+    250          
+    251              if (ADC1_SchmittTriggerChannel == ADC1_SCHMITTTRIG_ALL)
+   \                     ??ADC1_SchmittTriggerConfig_1:
+   \   000077 B600                  LD        A, S:?b8
+   \   000079 A1FF                  CP        A, #0xff
+   \   00007B 262C                  JRNE      L:??ADC1_SchmittTriggerConfig_2
+    252              {
+    253                  if (NewState != DISABLE)
+   \   00007D 3D00                  TNZ       S:?b9
+   \   00007F 2714                  JREQ      L:??ADC1_SchmittTriggerConfig_3
+    254                  {
+    255                      ADC1->TDRL &= (uint8_t)0x0;
+   \   000081 C65407                LD        A, L:0x5407
+   \   000084 B700                  LD        S:?b0, A
+   \   000086 35005407              MOV       L:0x5407, #0x0
+    256                      ADC1->TDRH &= (uint8_t)0x0;
+   \   00008A C65406                LD        A, L:0x5406
+   \   00008D 35005406              MOV       L:0x5406, #0x0
+   \   000091 AC000000              JPF       L:?epilogue_w4
+    257                  }
+    258                  else /* NewState == DISABLE */
+    259                  {
+    260                      ADC1->TDRL |= (uint8_t)0xFF;
+   \                     ??ADC1_SchmittTriggerConfig_3:
+   \   000095 C65407                LD        A, L:0x5407
+   \   000098 B700                  LD        S:?b0, A
+   \   00009A 35FF5407              MOV       L:0x5407, #0xff
+    261                      ADC1->TDRH |= (uint8_t)0xFF;
+   \   00009E C65406                LD        A, L:0x5406
+   \   0000A1 35FF5406              MOV       L:0x5406, #0xff
+   \   0000A5 AC000000              JPF       L:?epilogue_w4
+    262                  }
+    263              }
+    264              else if (ADC1_SchmittTriggerChannel < ADC1_SCHMITTTRIG_CHANNEL8)
+   \                     ??ADC1_SchmittTriggerConfig_2:
+   \   0000A9 B600                  LD        A, S:?b8
+   \   0000AB A108                  CP        A, #0x8
+   \   0000AD 242B                  JRNC      L:??ADC1_SchmittTriggerConfig_4
+    265              {
+    266                  if (NewState != DISABLE)
+   \   0000AF 3D00                  TNZ       S:?b9
+   \   0000B1 2714                  JREQ      L:??ADC1_SchmittTriggerConfig_5
+    267                  {
+    268                      ADC1->TDRL &= (uint8_t)(~(uint8_t)((uint8_t)0x01 << (uint8_t)ADC1_SchmittTriggerChannel));
+   \   0000B3 5F                    CLRW      X
+   \   0000B4 5C                    INCW      X
+   \   0000B5 B600                  LD        A, S:?b8
+   \   0000B7 8D000000              CALLF     L:?sll16_x_x_a
+   \   0000BB 9F                    LD        A, XL
+   \   0000BC 43                    CPL       A
+   \   0000BD C45407                AND       A, L:0x5407
+   \   0000C0 C75407                LD        L:0x5407, A
+   \   0000C3 AC000000              JPF       L:?epilogue_w4
+    269                  }
+    270                  else /* NewState == DISABLE */
+    271                  {
+    272                      ADC1->TDRL |= (uint8_t)((uint8_t)0x01 << (uint8_t)ADC1_SchmittTriggerChannel);
+   \                     ??ADC1_SchmittTriggerConfig_5:
+   \   0000C7 5F                    CLRW      X
+   \   0000C8 5C                    INCW      X
+   \   0000C9 B600                  LD        A, S:?b8
+   \   0000CB 8D000000              CALLF     L:?sll16_x_x_a
+   \   0000CF 9F                    LD        A, XL
+   \   0000D0 CA5407                OR        A, L:0x5407
+   \   0000D3 C75407                LD        L:0x5407, A
+   \   0000D6 AC000000              JPF       L:?epilogue_w4
+    273                  }
+    274              }
+    275              else /* ADC1_SchmittTriggerChannel >= ADC1_SCHMITTTRIG_CHANNEL8 */
+    276              {
+    277                  if (NewState != DISABLE)
+   \                     ??ADC1_SchmittTriggerConfig_4:
+   \   0000DA 3D00                  TNZ       S:?b9
+   \   0000DC 2716                  JREQ      L:??ADC1_SchmittTriggerConfig_6
+    278                  {
+    279                      ADC1->TDRH &= (uint8_t)(~(uint8_t)((uint8_t)0x01 << ((uint8_t)ADC1_SchmittTriggerChannel - (uint8_t)8)));
+   \   0000DE B600                  LD        A, S:?b8
+   \   0000E0 ABF8                  ADD       A, #0xf8
+   \   0000E2 5F                    CLRW      X
+   \   0000E3 5C                    INCW      X
+   \   0000E4 8D000000              CALLF     L:?sll16_x_x_a
+   \   0000E8 9F                    LD        A, XL
+   \   0000E9 43                    CPL       A
+   \   0000EA C45406                AND       A, L:0x5406
+   \   0000ED C75406                LD        L:0x5406, A
+   \   0000F0 AC000000              JPF       L:?epilogue_w4
+    280                  }
+    281                  else /* NewState == DISABLE */
+    282                  {
+    283                      ADC1->TDRH |= (uint8_t)((uint8_t)0x01 << ((uint8_t)ADC1_SchmittTriggerChannel - (uint8_t)8));
+   \                     ??ADC1_SchmittTriggerConfig_6:
+   \   0000F4 B600                  LD        A, S:?b8
+   \   0000F6 ABF8                  ADD       A, #0xf8
+   \   0000F8 5F                    CLRW      X
+   \   0000F9 5C                    INCW      X
+   \   0000FA 8D000000              CALLF     L:?sll16_x_x_a
+   \   0000FE 9F                    LD        A, XL
+   \   0000FF CA5406                OR        A, L:0x5406
+   \   000102 C75406                LD        L:0x5406, A
+    284                  }
+    285              }
+    286          
+    287          }
+   \   000105 AC000000              JPF       L:?epilogue_w4
+    288          
+    289          
+    290          /**
+    291            * @brief  Configure the ADC1 conversion on selected channel.
+    292            * @param   ADC1_ConversionMode Specifies the conversion type.
+    293            * It can be set of the values of @ref ADC1_ConvMode_TypeDef
+    294            * @param   ADC1_Channel specifies the ADC1 Channel.
+    295            * It can be set of the values of @ref ADC1_Channel_TypeDef
+    296            * @param   ADC1_Align specifies the conerted data alignment.
+    297            * It can be set of the values of @ref ADC1_Align_TypeDef
+    298            * @retval None
+    299            */
+
+   \                                 In section .far_func.text, align 1
+    300          void ADC1_ConversionConfig(ADC1_ConvMode_TypeDef ADC1_ConversionMode, ADC1_Channel_TypeDef ADC1_Channel, ADC1_Align_TypeDef ADC1_Align)
+    301          {
+   \                     ADC1_ConversionConfig:
+   \   000000 8D000000              CALLF     L:?push_w4
+   \   000004 3B0000                PUSH      S:?b10
+   \   000007 B700                  LD        S:?b8, A
+   \   000009 450000                MOV       S:?b9, S:?b0
+   \   00000C 450000                MOV       S:?b10, S:?b1
+    302          
+    303              /* Check the parameters */
+    304              assert_param(IS_ADC1_CONVERSIONMODE_OK(ADC1_ConversionMode));
+   \   00000F 3D00                  TNZ       S:?b8
+   \   000011 2715                  JREQ      L:??ADC1_ConversionConfig_0
+   \   000013 B600                  LD        A, S:?b8
+   \   000015 A101                  CP        A, #0x1
+   \   000017 270F                  JREQ      L:??ADC1_ConversionConfig_0
+   \   000019 AE0130                LDW       X, #0x130
+   \   00001C BF00                  LDW       S:?w1, X
+   \   00001E 5F                    CLRW      X
+   \   00001F BF00                  LDW       S:?w0, X
+   \   000021 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   000024 8D000000              CALLF     assert_failed
+    305              assert_param(IS_ADC1_CHANNEL_OK(ADC1_Channel));
+   \                     ??ADC1_ConversionConfig_0:
+   \   000028 3D00                  TNZ       S:?b9
+   \   00002A 274B                  JREQ      L:??ADC1_ConversionConfig_1
+   \   00002C B600                  LD        A, S:?b9
+   \   00002E A101                  CP        A, #0x1
+   \   000030 2745                  JREQ      L:??ADC1_ConversionConfig_1
+   \   000032 B600                  LD        A, S:?b9
+   \   000034 A102                  CP        A, #0x2
+   \   000036 273F                  JREQ      L:??ADC1_ConversionConfig_1
+   \   000038 B600                  LD        A, S:?b9
+   \   00003A A103                  CP        A, #0x3
+   \   00003C 2739                  JREQ      L:??ADC1_ConversionConfig_1
+   \   00003E B600                  LD        A, S:?b9
+   \   000040 A104                  CP        A, #0x4
+   \   000042 2733                  JREQ      L:??ADC1_ConversionConfig_1
+   \   000044 B600                  LD        A, S:?b9
+   \   000046 A105                  CP        A, #0x5
+   \   000048 272D                  JREQ      L:??ADC1_ConversionConfig_1
+   \   00004A B600                  LD        A, S:?b9
+   \   00004C A106                  CP        A, #0x6
+   \   00004E 2727                  JREQ      L:??ADC1_ConversionConfig_1
+   \   000050 B600                  LD        A, S:?b9
+   \   000052 A107                  CP        A, #0x7
+   \   000054 2721                  JREQ      L:??ADC1_ConversionConfig_1
+   \   000056 B600                  LD        A, S:?b9
+   \   000058 A108                  CP        A, #0x8
+   \   00005A 271B                  JREQ      L:??ADC1_ConversionConfig_1
+   \   00005C B600                  LD        A, S:?b9
+   \   00005E A10C                  CP        A, #0xc
+   \   000060 2715                  JREQ      L:??ADC1_ConversionConfig_1
+   \   000062 B600                  LD        A, S:?b9
+   \   000064 A109                  CP        A, #0x9
+   \   000066 270F                  JREQ      L:??ADC1_ConversionConfig_1
+   \   000068 AE0131                LDW       X, #0x131
+   \   00006B BF00                  LDW       S:?w1, X
+   \   00006D 5F                    CLRW      X
+   \   00006E BF00                  LDW       S:?w0, X
+   \   000070 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   000073 8D000000              CALLF     assert_failed
+    306              assert_param(IS_ADC1_ALIGN_OK(ADC1_Align));
+   \                     ??ADC1_ConversionConfig_1:
+   \   000077 3D00                  TNZ       S:?b10
+   \   000079 2715                  JREQ      L:??ADC1_ConversionConfig_2
+   \   00007B B600                  LD        A, S:?b10
+   \   00007D A108                  CP        A, #0x8
+   \   00007F 270F                  JREQ      L:??ADC1_ConversionConfig_2
+   \   000081 AE0132                LDW       X, #0x132
+   \   000084 BF00                  LDW       S:?w1, X
+   \   000086 5F                    CLRW      X
+   \   000087 BF00                  LDW       S:?w0, X
+   \   000089 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00008C 8D000000              CALLF     assert_failed
+    307          
+    308              /* Clear the align bit */
+    309              ADC1->CR2 &= (uint8_t)(~ADC1_CR2_ALIGN);
+   \                     ??ADC1_ConversionConfig_2:
+   \   000090 72175402              BRES      L:0x5402, #0x3
+    310              /* Configure the data alignment */
+    311              ADC1->CR2 |= (uint8_t)(ADC1_Align);
+   \   000094 B600                  LD        A, S:?b10
+   \   000096 CA5402                OR        A, L:0x5402
+   \   000099 C75402                LD        L:0x5402, A
+    312          
+    313              if (ADC1_ConversionMode == ADC1_CONVERSIONMODE_CONTINUOUS)
+   \   00009C B600                  LD        A, S:?b8
+   \   00009E A101                  CP        A, #0x1
+   \   0000A0 2606                  JRNE      L:??ADC1_ConversionConfig_3
+    314              {
+    315                  /* Set the continuous coversion mode */
+    316                  ADC1->CR1 |= ADC1_CR1_CONT;
+   \   0000A2 72125401              BSET      L:0x5401, #0x1
+   \   0000A6 2004                  JRA       L:??ADC1_ConversionConfig_4
+    317              }
+    318              else /* ADC1_ConversionMode == ADC1_CONVERSIONMODE_SINGLE */
+    319              {
+    320                  /* Set the single conversion mode */
+    321                  ADC1->CR1 &= (uint8_t)(~ADC1_CR1_CONT);
+   \                     ??ADC1_ConversionConfig_3:
+   \   0000A8 72135401              BRES      L:0x5401, #0x1
+    322              }
+    323          
+    324              /* Clear the ADC1 channels */
+    325              ADC1->CSR &= (uint8_t)(~ADC1_CSR_CH);
+   \                     ??ADC1_ConversionConfig_4:
+   \   0000AC C65400                LD        A, L:0x5400
+   \   0000AF A4F0                  AND       A, #0xf0
+   \   0000B1 C75400                LD        L:0x5400, A
+    326              /* Select the ADC1 channel */
+    327              ADC1->CSR |= (uint8_t)(ADC1_Channel);
+   \   0000B4 B600                  LD        A, S:?b9
+   \   0000B6 CA5400                OR        A, L:0x5400
+   \   0000B9 C75400                LD        L:0x5400, A
+    328          
+    329          }
+   \   0000BC 320000                POP       S:?b10
+   \   0000BF AC000000              JPF       L:?epilogue_w4
+    330          
+    331          
+    332          /**
+    333            * @brief  Configure the ADC1 conversion on external trigger event.
+    334            * @par Full description:
+    335            * The selected external trigger evant can be enabled or disabled.
+    336            * @param   ADC1_ExtTrigger to select the External trigger event.
+    337            * can have one of the values of @ref ADC1_ExtTrig_TypeDef.
+    338            * @param   NewState to enable/disable the selected external trigger
+    339            * can have one of the values of @ref FunctionalState.
+    340            * @retval None
+    341            */
+
+   \                                 In section .far_func.text, align 1
+    342          void ADC1_ExternalTriggerConfig(ADC1_ExtTrig_TypeDef ADC1_ExtTrigger, FunctionalState NewState)
+    343          {
+   \                     ADC1_ExternalTriggerConfig:
+   \   000000 8D000000              CALLF     L:?push_w4
+   \   000004 B700                  LD        S:?b8, A
+   \   000006 450000                MOV       S:?b9, S:?b0
+    344          
+    345              /* Check the parameters */
+    346              assert_param(IS_ADC1_EXTTRIG_OK(ADC1_ExtTrigger));
+   \   000009 3D00                  TNZ       S:?b8
+   \   00000B 2715                  JREQ      L:??ADC1_ExternalTriggerConfig_0
+   \   00000D B600                  LD        A, S:?b8
+   \   00000F A110                  CP        A, #0x10
+   \   000011 270F                  JREQ      L:??ADC1_ExternalTriggerConfig_0
+   \   000013 AE015A                LDW       X, #0x15a
+   \   000016 BF00                  LDW       S:?w1, X
+   \   000018 5F                    CLRW      X
+   \   000019 BF00                  LDW       S:?w0, X
+   \   00001B AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00001E 8D000000              CALLF     assert_failed
+    347              assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+   \                     ??ADC1_ExternalTriggerConfig_0:
+   \   000022 3D00                  TNZ       S:?b9
+   \   000024 2715                  JREQ      L:??ADC1_ExternalTriggerConfig_1
+   \   000026 B600                  LD        A, S:?b9
+   \   000028 A101                  CP        A, #0x1
+   \   00002A 270F                  JREQ      L:??ADC1_ExternalTriggerConfig_1
+   \   00002C AE015B                LDW       X, #0x15b
+   \   00002F BF00                  LDW       S:?w1, X
+   \   000031 5F                    CLRW      X
+   \   000032 BF00                  LDW       S:?w0, X
+   \   000034 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   000037 8D000000              CALLF     assert_failed
+    348          
+    349              /* Clear the external trigger selection bits */
+    350              ADC1->CR2 &= (uint8_t)(~ADC1_CR2_EXTSEL);
+   \                     ??ADC1_ExternalTriggerConfig_1:
+   \   00003B C65402                LD        A, L:0x5402
+   \   00003E A4CF                  AND       A, #0xcf
+   \   000040 C75402                LD        L:0x5402, A
+    351          
+    352              if (NewState != DISABLE)
+   \   000043 3D00                  TNZ       S:?b9
+   \   000045 2706                  JREQ      L:??ADC1_ExternalTriggerConfig_2
+    353              {
+    354                  /* Enable the selected external Trigger */
+    355                  ADC1->CR2 |= (uint8_t)(ADC1_CR2_EXTTRIG);
+   \   000047 721C5402              BSET      L:0x5402, #0x6
+   \   00004B 2004                  JRA       L:??ADC1_ExternalTriggerConfig_3
+    356              }
+    357              else /* NewState == DISABLE */
+    358              {
+    359                  /* Disable the selected external trigger */
+    360                  ADC1->CR2 &= (uint8_t)(~ADC1_CR2_EXTTRIG);
+   \                     ??ADC1_ExternalTriggerConfig_2:
+   \   00004D 721D5402              BRES      L:0x5402, #0x6
+    361              }
+    362          
+    363              /* Set the selected external trigger */
+    364              ADC1->CR2 |= (uint8_t)(ADC1_ExtTrigger);
+   \                     ??ADC1_ExternalTriggerConfig_3:
+   \   000051 B600                  LD        A, S:?b8
+   \   000053 CA5402                OR        A, L:0x5402
+   \   000056 C75402                LD        L:0x5402, A
+    365          
+    366          }
+   \   000059 AC000000              JPF       L:?epilogue_w4
+    367          
+    368          
+    369          /**
+    370            * @brief  Start ADC1 conversion
+    371            * @par Full description:
+    372            * This function  triggers the start of conversion, after ADC1 configuration.
+    373            * @param  None
+    374            * @retval None
+    375            * @par Required preconditions:
+    376            * Enable the ADC1 peripheral before calling this function
+    377            */
+
+   \                                 In section .far_func.text, align 1
+    378          void ADC1_StartConversion(void)
+    379          {
+    380              ADC1->CR1 |= ADC1_CR1_ADON;
+   \                     ADC1_StartConversion:
+   \   000000 72105401              BSET      L:0x5401, #0x0
+    381          }
+   \   000004 87                    RETF
+    382          
+    383          /**
+    384            * @brief  Get one sample of measured signal.
+    385            * @param  None
+    386            * @retval ConversionValue:  value of the measured signal.
+    387            * @par Required preconditions:
+    388            * ADC1 conversion finished.
+    389            */
+
+   \                                 In section .far_func.text, align 1
+    390          uint16_t ADC1_GetConversionValue(void)
+    391          {
+    392          
+    393              uint16_t temph = 0;
+   \                     ADC1_GetConversionValue:
+   \   000000 905F                  CLRW      Y
+    394              uint8_t templ = 0;
+   \   000002 3F00                  CLR       S:?b0
+    395          
+    396              if ((ADC1->CR2 & ADC1_CR2_ALIGN) != 0) /* Right alignment */
+   \   000004 7207540222            BTJF      L:0x5402, #0x3, L:??ADC1_GetConversionValue_0
+    397              {
+    398                  /* Read LSB first */
+    399                  templ = ADC1->DRL;
+   \   000009 C65405                LD        A, L:0x5405
+   \   00000C B700                  LD        S:?b0, A
+    400                  /* Then read MSB */
+    401                  temph = ADC1->DRH;
+   \   00000E C65404                LD        A, L:0x5404
+   \   000011 905F                  CLRW      Y
+   \   000013 9097                  LD        YL, A
+    402          
+    403                  temph = (uint16_t)(templ | (uint16_t)(temph << (uint8_t)8));
+   \   000015 93                    LDW       X, Y
+   \   000016 4F                    CLR       A
+   \   000017 02                    RLWA      X, A
+   \   000018 905F                  CLRW      Y
+   \   00001A 61                    EXG       A, YL
+   \   00001B B600                  LD        A, S:?b0
+   \   00001D 61                    EXG       A, YL
+   \   00001E BF00                  LDW       S:?w0, X
+   \   000020 51                    EXGW      X, Y
+   \   000021 01                    RRWA      X, A
+   \   000022 BA00                  OR        A, S:?b1
+   \   000024 01                    RRWA      X, A
+   \   000025 BA00                  OR        A, S:?b0
+   \   000027 01                    RRWA      X, A
+   \   000028 51                    EXGW      X, Y
+   \   000029 2028                  JRA       L:??ADC1_GetConversionValue_1
+    404              }
+    405              else /* Left alignment */
+    406              {
+    407                  /* Read MSB firts*/
+    408                  temph = ADC1->DRH;
+   \                     ??ADC1_GetConversionValue_0:
+   \   00002B C65404                LD        A, L:0x5404
+   \   00002E 905F                  CLRW      Y
+   \   000030 9097                  LD        YL, A
+    409                  /* Then read LSB */
+    410                  templ = ADC1->DRL;
+   \   000032 C65405                LD        A, L:0x5405
+   \   000035 B700                  LD        S:?b0, A
+    411          
+    412                  temph = (uint16_t)((uint16_t)((uint16_t)templ << 6) | (uint16_t)((uint16_t)temph << 8));
+   \   000037 5F                    CLRW      X
+   \   000038 41                    EXG       A, XL
+   \   000039 B600                  LD        A, S:?b0
+   \   00003B 41                    EXG       A, XL
+   \   00003C 8D000000              CALLF     L:?sll16_x_x_6
+   \   000040 BF00                  LDW       S:?w1, X
+   \   000042 93                    LDW       X, Y
+   \   000043 4F                    CLR       A
+   \   000044 02                    RLWA      X, A
+   \   000045 BF00                  LDW       S:?w0, X
+   \   000047 90BE00                LDW       Y, S:?w1
+   \   00004A 51                    EXGW      X, Y
+   \   00004B 01                    RRWA      X, A
+   \   00004C BA00                  OR        A, S:?b1
+   \   00004E 01                    RRWA      X, A
+   \   00004F BA00                  OR        A, S:?b0
+   \   000051 01                    RRWA      X, A
+   \   000052 51                    EXGW      X, Y
+    413              }
+    414          
+    415              return ((uint16_t)temph);
+   \                     ??ADC1_GetConversionValue_1:
+   \   000053 93                    LDW       X, Y
+   \   000054 87                    RETF
+    416          
+    417          }
+    418          
+    419          /**
+    420            * @brief  Enables or disables the analog watchdog for the given channel.
+    421            * @param   Channel specifies the desired Channel.
+    422            * It can be set of the values of @ref ADC1_Channel_TypeDef.
+    423            * @param   NewState specifies the analog watchdog new state.
+    424            * can have one of the values of @ref FunctionalState.
+    425            * @retval None
+    426            */
+
+   \                                 In section .far_func.text, align 1
+    427          void ADC1_AWDChannelConfig(ADC1_Channel_TypeDef Channel, FunctionalState NewState)
+    428          {
+   \                     ADC1_AWDChannelConfig:
+   \   000000 8D000000              CALLF     L:?push_w4
+   \   000004 B700                  LD        S:?b8, A
+   \   000006 450000                MOV       S:?b9, S:?b0
+    429              /* Check the parameters */
+    430              assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+   \   000009 3D00                  TNZ       S:?b9
+   \   00000B 2715                  JREQ      L:??ADC1_AWDChannelConfig_0
+   \   00000D B600                  LD        A, S:?b9
+   \   00000F A101                  CP        A, #0x1
+   \   000011 270F                  JREQ      L:??ADC1_AWDChannelConfig_0
+   \   000013 AE01AE                LDW       X, #0x1ae
+   \   000016 BF00                  LDW       S:?w1, X
+   \   000018 5F                    CLRW      X
+   \   000019 BF00                  LDW       S:?w0, X
+   \   00001B AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00001E 8D000000              CALLF     assert_failed
+    431              assert_param(IS_ADC1_CHANNEL_OK(Channel));
+   \                     ??ADC1_AWDChannelConfig_0:
+   \   000022 3D00                  TNZ       S:?b8
+   \   000024 274B                  JREQ      L:??ADC1_AWDChannelConfig_1
+   \   000026 B600                  LD        A, S:?b8
+   \   000028 A101                  CP        A, #0x1
+   \   00002A 2745                  JREQ      L:??ADC1_AWDChannelConfig_1
+   \   00002C B600                  LD        A, S:?b8
+   \   00002E A102                  CP        A, #0x2
+   \   000030 273F                  JREQ      L:??ADC1_AWDChannelConfig_1
+   \   000032 B600                  LD        A, S:?b8
+   \   000034 A103                  CP        A, #0x3
+   \   000036 2739                  JREQ      L:??ADC1_AWDChannelConfig_1
+   \   000038 B600                  LD        A, S:?b8
+   \   00003A A104                  CP        A, #0x4
+   \   00003C 2733                  JREQ      L:??ADC1_AWDChannelConfig_1
+   \   00003E B600                  LD        A, S:?b8
+   \   000040 A105                  CP        A, #0x5
+   \   000042 272D                  JREQ      L:??ADC1_AWDChannelConfig_1
+   \   000044 B600                  LD        A, S:?b8
+   \   000046 A106                  CP        A, #0x6
+   \   000048 2727                  JREQ      L:??ADC1_AWDChannelConfig_1
+   \   00004A B600                  LD        A, S:?b8
+   \   00004C A107                  CP        A, #0x7
+   \   00004E 2721                  JREQ      L:??ADC1_AWDChannelConfig_1
+   \   000050 B600                  LD        A, S:?b8
+   \   000052 A108                  CP        A, #0x8
+   \   000054 271B                  JREQ      L:??ADC1_AWDChannelConfig_1
+   \   000056 B600                  LD        A, S:?b8
+   \   000058 A10C                  CP        A, #0xc
+   \   00005A 2715                  JREQ      L:??ADC1_AWDChannelConfig_1
+   \   00005C B600                  LD        A, S:?b8
+   \   00005E A109                  CP        A, #0x9
+   \   000060 270F                  JREQ      L:??ADC1_AWDChannelConfig_1
+   \   000062 AE01AF                LDW       X, #0x1af
+   \   000065 BF00                  LDW       S:?w1, X
+   \   000067 5F                    CLRW      X
+   \   000068 BF00                  LDW       S:?w0, X
+   \   00006A AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00006D 8D000000              CALLF     assert_failed
+    432          
+    433              if (Channel < (uint8_t)8)
+   \                     ??ADC1_AWDChannelConfig_1:
+   \   000071 B600                  LD        A, S:?b8
+   \   000073 A108                  CP        A, #0x8
+   \   000075 242B                  JRNC      L:??ADC1_AWDChannelConfig_2
+    434              {
+    435                  if (NewState != DISABLE)
+   \   000077 3D00                  TNZ       S:?b9
+   \   000079 2713                  JREQ      L:??ADC1_AWDChannelConfig_3
+    436                  {
+    437                      ADC1->AWCRL |= (uint8_t)((uint8_t)1 << Channel);
+   \   00007B 5F                    CLRW      X
+   \   00007C 5C                    INCW      X
+   \   00007D B600                  LD        A, S:?b8
+   \   00007F 8D000000              CALLF     L:?sll16_x_x_a
+   \   000083 9F                    LD        A, XL
+   \   000084 CA540F                OR        A, L:0x540f
+   \   000087 C7540F                LD        L:0x540f, A
+   \   00008A AC000000              JPF       L:?epilogue_w4
+    438                  }
+    439                  else /* NewState == DISABLE */
+    440                  {
+    441                      ADC1->AWCRL &= (uint8_t)~(uint8_t)((uint8_t)1 << Channel);
+   \                     ??ADC1_AWDChannelConfig_3:
+   \   00008E 5F                    CLRW      X
+   \   00008F 5C                    INCW      X
+   \   000090 B600                  LD        A, S:?b8
+   \   000092 8D000000              CALLF     L:?sll16_x_x_a
+   \   000096 9F                    LD        A, XL
+   \   000097 43                    CPL       A
+   \   000098 C4540F                AND       A, L:0x540f
+   \   00009B C7540F                LD        L:0x540f, A
+   \   00009E AC000000              JPF       L:?epilogue_w4
+    442                  }
+    443              }
+    444              else
+    445              {
+    446                  if (NewState != DISABLE)
+   \                     ??ADC1_AWDChannelConfig_2:
+   \   0000A2 3D00                  TNZ       S:?b9
+   \   0000A4 2715                  JREQ      L:??ADC1_AWDChannelConfig_4
+    447                  {
+    448                      ADC1->AWCRH |= (uint8_t)((uint8_t)1 << (Channel - (uint8_t)8));
+   \   0000A6 B600                  LD        A, S:?b8
+   \   0000A8 ABF8                  ADD       A, #0xf8
+   \   0000AA 5F                    CLRW      X
+   \   0000AB 5C                    INCW      X
+   \   0000AC 8D000000              CALLF     L:?sll16_x_x_a
+   \   0000B0 9F                    LD        A, XL
+   \   0000B1 CA540E                OR        A, L:0x540e
+   \   0000B4 C7540E                LD        L:0x540e, A
+   \   0000B7 AC000000              JPF       L:?epilogue_w4
+    449                  }
+    450                  else /* NewState == DISABLE */
+    451                  {
+    452                      ADC1->AWCRH &= (uint8_t)~(uint8_t)((uint8_t)1 << (uint8_t)(Channel - (uint8_t)8));
+   \                     ??ADC1_AWDChannelConfig_4:
+   \   0000BB B600                  LD        A, S:?b8
+   \   0000BD ABF8                  ADD       A, #0xf8
+   \   0000BF 5F                    CLRW      X
+   \   0000C0 5C                    INCW      X
+   \   0000C1 8D000000              CALLF     L:?sll16_x_x_a
+   \   0000C5 9F                    LD        A, XL
+   \   0000C6 43                    CPL       A
+   \   0000C7 C4540E                AND       A, L:0x540e
+   \   0000CA C7540E                LD        L:0x540e, A
+    453                  }
+    454              }
+    455          }
+   \   0000CD AC000000              JPF       L:?epilogue_w4
+    456          
+    457          /**
+    458            * @brief  Sets the high threshold of the analog watchdog.
+    459            * @param   Threshold specifies the high threshold value.
+    460            * this value depends on the reference voltage range.
+    461            * @retval None
+    462            */
+
+   \                                 In section .far_func.text, align 1
+    463          void ADC1_SetHighThreshold(uint16_t Threshold)
+    464          {
+   \                     ADC1_SetHighThreshold:
+   \   000000 9093                  LDW       Y, X
+    465              ADC1->HTRH = (uint8_t)(Threshold >> (uint8_t)2);
+   \   000002 93                    LDW       X, Y
+   \   000003 54                    SRLW      X
+   \   000004 54                    SRLW      X
+   \   000005 9F                    LD        A, XL
+   \   000006 C75408                LD        L:0x5408, A
+    466              ADC1->HTRL = (uint8_t)Threshold;
+   \   000009 909F                  LD        A, YL
+   \   00000B C75409                LD        L:0x5409, A
+    467          }
+   \   00000E 87                    RETF
+    468          
+    469          /**
+    470            * @brief  Sets the low threshold of the analog watchdog.
+    471            * @param   Threshold specifies the low threshold value.
+    472            * this value depends on the reference voltage range.
+    473            * @retval None
+    474            */
+
+   \                                 In section .far_func.text, align 1
+    475          void ADC1_SetLowThreshold(uint16_t Threshold)
+    476          {
+    477              ADC1->LTRL = (uint8_t)Threshold;
+   \                     ADC1_SetLowThreshold:
+   \   000000 9F                    LD        A, XL
+   \   000001 C7540B                LD        L:0x540b, A
+    478              ADC1->LTRH = (uint8_t)(Threshold >> (uint8_t)2);
+   \   000004 54                    SRLW      X
+   \   000005 54                    SRLW      X
+   \   000006 9F                    LD        A, XL
+   \   000007 C7540A                LD        L:0x540a, A
+    479          }
+   \   00000A 87                    RETF
+    480          
+    481          /**
+    482            * @brief  Get one sample of measured signal.
+    483            * @param   Buffer specifies the buffer to read.
+    484            * @retval BufferValue:  value read from the given buffer.
+    485            * @par Required preconditions:
+    486            * ADC1 conversion finished.
+    487            */
+
+   \                                 In section .far_func.text, align 1
+    488          uint16_t ADC1_GetBufferValue(uint8_t Buffer)
+    489          {
+   \                     ADC1_GetBufferValue:
+   \   000000 3B0000                PUSH      S:?b8
+   \   000003 B700                  LD        S:?b8, A
+    490          
+    491              uint16_t temph = 0;
+   \   000005 905F                  CLRW      Y
+    492              uint8_t templ = 0;
+   \   000007 3F00                  CLR       S:?b0
+    493          
+    494              /* Check the parameters */
+    495              assert_param(IS_ADC1_BUFFER_OK(Buffer));
+   \   000009 B600                  LD        A, S:?b8
+   \   00000B A10A                  CP        A, #0xa
+   \   00000D 250F                  JRC       L:??ADC1_GetBufferValue_0
+   \   00000F AE01EF                LDW       X, #0x1ef
+   \   000012 BF00                  LDW       S:?w1, X
+   \   000014 5F                    CLRW      X
+   \   000015 BF00                  LDW       S:?w0, X
+   \   000017 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00001A 8D000000              CALLF     assert_failed
+    496          
+    497              if ((ADC1->CR2 & ADC1_CR2_ALIGN) != 0) /* Right alignment */
+   \                     ??ADC1_GetBufferValue_0:
+   \   00001E 720754022E            BTJF      L:0x5402, #0x3, L:??ADC1_GetBufferValue_1
+    498              {
+    499                  /* Read LSB first */
+    500                  templ = *(uint8_t*)(uint16_t)((uint16_t)ADC1_BaseAddress + (uint8_t)(Buffer << 1) + 1);
+   \   000023 B600                  LD        A, S:?b8
+   \   000025 48                    SLL       A
+   \   000026 5F                    CLRW      X
+   \   000027 97                    LD        XL, A
+   \   000028 1C53E1                ADDW      X, #0x53e1
+   \   00002B F6                    LD        A, (X)
+   \   00002C B700                  LD        S:?b0, A
+    501                  /* Then read MSB */
+    502                  temph = *(uint8_t*)(uint16_t)((uint16_t)ADC1_BaseAddress + (uint8_t)(Buffer << 1));
+   \   00002E B600                  LD        A, S:?b8
+   \   000030 48                    SLL       A
+   \   000031 5F                    CLRW      X
+   \   000032 97                    LD        XL, A
+   \   000033 1C53E0                ADDW      X, #0x53e0
+   \   000036 F6                    LD        A, (X)
+   \   000037 905F                  CLRW      Y
+   \   000039 9097                  LD        YL, A
+    503          
+    504                  temph = (uint16_t)(templ | (uint16_t)(temph << (uint8_t)8));
+   \   00003B 93                    LDW       X, Y
+   \   00003C 4F                    CLR       A
+   \   00003D 02                    RLWA      X, A
+   \   00003E 905F                  CLRW      Y
+   \   000040 61                    EXG       A, YL
+   \   000041 B600                  LD        A, S:?b0
+   \   000043 61                    EXG       A, YL
+   \   000044 BF00                  LDW       S:?w0, X
+   \   000046 51                    EXGW      X, Y
+   \   000047 01                    RRWA      X, A
+   \   000048 BA00                  OR        A, S:?b1
+   \   00004A 01                    RRWA      X, A
+   \   00004B BA00                  OR        A, S:?b0
+   \   00004D 01                    RRWA      X, A
+   \   00004E 51                    EXGW      X, Y
+   \   00004F 2034                  JRA       L:??ADC1_GetBufferValue_2
+    505              }
+    506              else /* Left alignment */
+    507              {
+    508                  /* Read MSB firts*/
+    509                  temph = *(uint8_t*)(uint16_t)((uint16_t)ADC1_BaseAddress + (uint8_t)(Buffer << 1));
+   \                     ??ADC1_GetBufferValue_1:
+   \   000051 B600                  LD        A, S:?b8
+   \   000053 48                    SLL       A
+   \   000054 5F                    CLRW      X
+   \   000055 97                    LD        XL, A
+   \   000056 1C53E0                ADDW      X, #0x53e0
+   \   000059 F6                    LD        A, (X)
+   \   00005A 905F                  CLRW      Y
+   \   00005C 9097                  LD        YL, A
+    510                  /* Then read LSB */
+    511                  templ = *(uint8_t*)(uint16_t)((uint16_t)ADC1_BaseAddress + (uint8_t)(Buffer << 1) + 1);
+   \   00005E B600                  LD        A, S:?b8
+   \   000060 48                    SLL       A
+   \   000061 5F                    CLRW      X
+   \   000062 97                    LD        XL, A
+   \   000063 1C53E1                ADDW      X, #0x53e1
+   \   000066 F6                    LD        A, (X)
+   \   000067 B700                  LD        S:?b0, A
+    512          
+    513                  temph = (uint16_t)((uint16_t)((uint16_t)templ << 6) | (uint16_t)(temph << 8));
+   \   000069 5F                    CLRW      X
+   \   00006A 41                    EXG       A, XL
+   \   00006B B600                  LD        A, S:?b0
+   \   00006D 41                    EXG       A, XL
+   \   00006E 8D000000              CALLF     L:?sll16_x_x_6
+   \   000072 BF00                  LDW       S:?w1, X
+   \   000074 93                    LDW       X, Y
+   \   000075 4F                    CLR       A
+   \   000076 02                    RLWA      X, A
+   \   000077 BF00                  LDW       S:?w0, X
+   \   000079 90BE00                LDW       Y, S:?w1
+   \   00007C 51                    EXGW      X, Y
+   \   00007D 01                    RRWA      X, A
+   \   00007E BA00                  OR        A, S:?b1
+   \   000080 01                    RRWA      X, A
+   \   000081 BA00                  OR        A, S:?b0
+   \   000083 01                    RRWA      X, A
+   \   000084 51                    EXGW      X, Y
+    514              }
+    515          
+    516              return ((uint16_t)temph);
+   \                     ??ADC1_GetBufferValue_2:
+   \   000085 93                    LDW       X, Y
+   \   000086 320000                POP       S:?b8
+   \   000089 87                    RETF
+    517          
+    518          }
+    519          
+    520          /**
+    521            * @brief  Checks the specified analog watchdog channel status.
+    522            * @param   Channel: specify the channel of which to check the analog watchdog
+    523            * can be one of the values of @ref ADC1_Channel_TypeDef.
+    524            * @retval FlagStatus Status of the analog watchdog.
+    525            */
+
+   \                                 In section .far_func.text, align 1
+    526          FlagStatus ADC1_GetAWDChannelStatus(ADC1_Channel_TypeDef Channel)
+    527          {
+   \                     ADC1_GetAWDChannelStatus:
+   \   000000 3B0000                PUSH      S:?b8
+   \   000003 B700                  LD        S:?b8, A
+    528              uint8_t status = 0;
+   \   000005 4F                    CLR       A
+    529          
+    530              /* Check the parameters */
+    531              assert_param(IS_ADC1_CHANNEL_OK(Channel));
+   \   000006 3D00                  TNZ       S:?b8
+   \   000008 274B                  JREQ      L:??ADC1_GetAWDChannelStatus_0
+   \   00000A B600                  LD        A, S:?b8
+   \   00000C A101                  CP        A, #0x1
+   \   00000E 2745                  JREQ      L:??ADC1_GetAWDChannelStatus_0
+   \   000010 B600                  LD        A, S:?b8
+   \   000012 A102                  CP        A, #0x2
+   \   000014 273F                  JREQ      L:??ADC1_GetAWDChannelStatus_0
+   \   000016 B600                  LD        A, S:?b8
+   \   000018 A103                  CP        A, #0x3
+   \   00001A 2739                  JREQ      L:??ADC1_GetAWDChannelStatus_0
+   \   00001C B600                  LD        A, S:?b8
+   \   00001E A104                  CP        A, #0x4
+   \   000020 2733                  JREQ      L:??ADC1_GetAWDChannelStatus_0
+   \   000022 B600                  LD        A, S:?b8
+   \   000024 A105                  CP        A, #0x5
+   \   000026 272D                  JREQ      L:??ADC1_GetAWDChannelStatus_0
+   \   000028 B600                  LD        A, S:?b8
+   \   00002A A106                  CP        A, #0x6
+   \   00002C 2727                  JREQ      L:??ADC1_GetAWDChannelStatus_0
+   \   00002E B600                  LD        A, S:?b8
+   \   000030 A107                  CP        A, #0x7
+   \   000032 2721                  JREQ      L:??ADC1_GetAWDChannelStatus_0
+   \   000034 B600                  LD        A, S:?b8
+   \   000036 A108                  CP        A, #0x8
+   \   000038 271B                  JREQ      L:??ADC1_GetAWDChannelStatus_0
+   \   00003A B600                  LD        A, S:?b8
+   \   00003C A10C                  CP        A, #0xc
+   \   00003E 2715                  JREQ      L:??ADC1_GetAWDChannelStatus_0
+   \   000040 B600                  LD        A, S:?b8
+   \   000042 A109                  CP        A, #0x9
+   \   000044 270F                  JREQ      L:??ADC1_GetAWDChannelStatus_0
+   \   000046 AE0213                LDW       X, #0x213
+   \   000049 BF00                  LDW       S:?w1, X
+   \   00004B 5F                    CLRW      X
+   \   00004C BF00                  LDW       S:?w0, X
+   \   00004E AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   000051 8D000000              CALLF     assert_failed
+    532          
+    533              if (Channel < (uint8_t)8)
+   \                     ??ADC1_GetAWDChannelStatus_0:
+   \   000055 B600                  LD        A, S:?b8
+   \   000057 A108                  CP        A, #0x8
+   \   000059 240E                  JRNC      L:??ADC1_GetAWDChannelStatus_1
+    534              {
+    535                  status = (uint8_t)(ADC1->AWSRL & (uint8_t)((uint8_t)1 << Channel));
+   \   00005B 5F                    CLRW      X
+   \   00005C 5C                    INCW      X
+   \   00005D B600                  LD        A, S:?b8
+   \   00005F 8D000000              CALLF     L:?sll16_x_x_a
+   \   000063 9F                    LD        A, XL
+   \   000064 C4540D                AND       A, L:0x540d
+   \   000067 200E                  JRA       L:??ADC1_GetAWDChannelStatus_2
+    536              }
+    537              else /* Channel = 8 | 9 */
+    538              {
+    539                  status = (uint8_t)(ADC1->AWSRH & (uint8_t)((uint8_t)1 << (Channel - (uint8_t)8)));
+   \                     ??ADC1_GetAWDChannelStatus_1:
+   \   000069 B600                  LD        A, S:?b8
+   \   00006B ABF8                  ADD       A, #0xf8
+   \   00006D 5F                    CLRW      X
+   \   00006E 5C                    INCW      X
+   \   00006F 8D000000              CALLF     L:?sll16_x_x_a
+   \   000073 9F                    LD        A, XL
+   \   000074 C4540C                AND       A, L:0x540c
+    540              }
+    541          
+    542              return ((FlagStatus)status);
+   \                     ??ADC1_GetAWDChannelStatus_2:
+   \   000077 320000                POP       S:?b8
+   \   00007A 87                    RETF
+    543          }
+    544          
+    545          /**
+    546            * @brief  Checks the specified ADC1 flag status.
+    547            * @param   Flag: ADC1 flag.
+    548            * can be one of the values of @ref ADC1_Flag_TypeDef.
+    549            * @retval FlagStatus Status of the ADC1 flag.
+    550            */
+
+   \                                 In section .far_func.text, align 1
+    551          FlagStatus ADC1_GetFlagStatus(ADC1_Flag_TypeDef Flag)
+    552          {
+   \                     ADC1_GetFlagStatus:
+   \   000000 3B0000                PUSH      S:?b8
+   \   000003 B700                  LD        S:?b8, A
+    553              uint8_t flagstatus = 0;
+   \   000005 3F00                  CLR       S:?b1
+    554              uint8_t temp = 0;
+   \   000007 3F00                  CLR       S:?b0
+    555          
+    556              /* Check the parameters */
+    557              assert_param(IS_ADC1_FLAG_OK(Flag));
+   \   000009 B600                  LD        A, S:?b8
+   \   00000B A180                  CP        A, #0x80
+   \   00000D 2757                  JREQ      L:??ADC1_GetFlagStatus_0
+   \   00000F B600                  LD        A, S:?b8
+   \   000011 A141                  CP        A, #0x41
+   \   000013 2751                  JREQ      L:??ADC1_GetFlagStatus_0
+   \   000015 B600                  LD        A, S:?b8
+   \   000017 A140                  CP        A, #0x40
+   \   000019 274B                  JREQ      L:??ADC1_GetFlagStatus_0
+   \   00001B B600                  LD        A, S:?b8
+   \   00001D A110                  CP        A, #0x10
+   \   00001F 2745                  JREQ      L:??ADC1_GetFlagStatus_0
+   \   000021 B600                  LD        A, S:?b8
+   \   000023 A111                  CP        A, #0x11
+   \   000025 273F                  JREQ      L:??ADC1_GetFlagStatus_0
+   \   000027 B600                  LD        A, S:?b8
+   \   000029 A112                  CP        A, #0x12
+   \   00002B 2739                  JREQ      L:??ADC1_GetFlagStatus_0
+   \   00002D B600                  LD        A, S:?b8
+   \   00002F A113                  CP        A, #0x13
+   \   000031 2733                  JREQ      L:??ADC1_GetFlagStatus_0
+   \   000033 B600                  LD        A, S:?b8
+   \   000035 A114                  CP        A, #0x14
+   \   000037 272D                  JREQ      L:??ADC1_GetFlagStatus_0
+   \   000039 B600                  LD        A, S:?b8
+   \   00003B A115                  CP        A, #0x15
+   \   00003D 2727                  JREQ      L:??ADC1_GetFlagStatus_0
+   \   00003F B600                  LD        A, S:?b8
+   \   000041 A116                  CP        A, #0x16
+   \   000043 2721                  JREQ      L:??ADC1_GetFlagStatus_0
+   \   000045 B600                  LD        A, S:?b8
+   \   000047 A117                  CP        A, #0x17
+   \   000049 271B                  JREQ      L:??ADC1_GetFlagStatus_0
+   \   00004B B600                  LD        A, S:?b8
+   \   00004D A118                  CP        A, #0x18
+   \   00004F 2715                  JREQ      L:??ADC1_GetFlagStatus_0
+   \   000051 B600                  LD        A, S:?b8
+   \   000053 A119                  CP        A, #0x19
+   \   000055 270F                  JREQ      L:??ADC1_GetFlagStatus_0
+   \   000057 AE022D                LDW       X, #0x22d
+   \   00005A BF00                  LDW       S:?w1, X
+   \   00005C 5F                    CLRW      X
+   \   00005D BF00                  LDW       S:?w0, X
+   \   00005F AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   000062 8D000000              CALLF     assert_failed
+    558          
+    559              if ((Flag & 0x0F) == 0x01)
+   \                     ??ADC1_GetFlagStatus_0:
+   \   000066 B600                  LD        A, S:?b8
+   \   000068 A40F                  AND       A, #0xf
+   \   00006A A101                  CP        A, #0x1
+   \   00006C 2609                  JRNE      L:??ADC1_GetFlagStatus_1
+    560              {
+    561                  /* Get OVR flag status */
+    562                  flagstatus = (uint8_t)(ADC1->CR3 & ADC1_CR3_OVR);
+   \   00006E C65403                LD        A, L:0x5403
+   \   000071 A440                  AND       A, #0x40
+   \   000073 B700                  LD        S:?b1, A
+   \   000075 203D                  JRA       L:??ADC1_GetFlagStatus_2
+    563              }
+    564              else if ((Flag & 0xF0) == 0x10)
+   \                     ??ADC1_GetFlagStatus_1:
+   \   000077 B600                  LD        A, S:?b8
+   \   000079 A4F0                  AND       A, #0xf0
+   \   00007B A110                  CP        A, #0x10
+   \   00007D 262E                  JRNE      L:??ADC1_GetFlagStatus_3
+    565              {
+    566                  /* Get analog watchdog channel status */
+    567                  temp = (uint8_t)(Flag & (uint8_t)0x0F);
+   \   00007F B600                  LD        A, S:?b8
+   \   000081 A40F                  AND       A, #0xf
+   \   000083 B700                  LD        S:?b0, A
+    568                  if (temp < 8)
+   \   000085 B600                  LD        A, S:?b0
+   \   000087 A108                  CP        A, #0x8
+   \   000089 2410                  JRNC      L:??ADC1_GetFlagStatus_4
+    569                  {
+    570                      flagstatus = (uint8_t)(ADC1->AWSRL & (uint8_t)((uint8_t)1 << temp));
+   \   00008B 5F                    CLRW      X
+   \   00008C 5C                    INCW      X
+   \   00008D B600                  LD        A, S:?b0
+   \   00008F 8D000000              CALLF     L:?sll16_x_x_a
+   \   000093 9F                    LD        A, XL
+   \   000094 C4540D                AND       A, L:0x540d
+   \   000097 B700                  LD        S:?b1, A
+   \   000099 2019                  JRA       L:??ADC1_GetFlagStatus_2
+    571                  }
+    572                  else
+    573                  {
+    574                      flagstatus = (uint8_t)(ADC1->AWSRH & (uint8_t)((uint8_t)1 << (temp - 8)));
+   \                     ??ADC1_GetFlagStatus_4:
+   \   00009B B600                  LD        A, S:?b0
+   \   00009D ABF8                  ADD       A, #0xf8
+   \   00009F 5F                    CLRW      X
+   \   0000A0 5C                    INCW      X
+   \   0000A1 8D000000              CALLF     L:?sll16_x_x_a
+   \   0000A5 9F                    LD        A, XL
+   \   0000A6 C4540C                AND       A, L:0x540c
+   \   0000A9 B700                  LD        S:?b1, A
+   \   0000AB 2007                  JRA       L:??ADC1_GetFlagStatus_2
+    575                  }
+    576              }
+    577              else  /* Get EOC | AWD flag status */
+    578              {
+    579                  flagstatus = (uint8_t)(ADC1->CSR & Flag);
+   \                     ??ADC1_GetFlagStatus_3:
+   \   0000AD B600                  LD        A, S:?b8
+   \   0000AF C45400                AND       A, L:0x5400
+   \   0000B2 B700                  LD        S:?b1, A
+    580              }
+    581              return ((FlagStatus)flagstatus);
+   \                     ??ADC1_GetFlagStatus_2:
+   \   0000B4 B600                  LD        A, S:?b1
+   \   0000B6 320000                POP       S:?b8
+   \   0000B9 87                    RETF
+    582          
+    583          }
+    584          
+    585          /**
+    586            * @brief  Clear the specified ADC1 Flag.
+    587            * @param   Flag: ADC1 flag.
+    588            * can be one of the values of @ref ADC1_Flag_TypeDef.
+    589            * @retval None
+    590            */
+
+   \                                 In section .far_func.text, align 1
+    591          void ADC1_ClearFlag(ADC1_Flag_TypeDef Flag)
+    592          {
+   \                     ADC1_ClearFlag:
+   \   000000 3B0000                PUSH      S:?b8
+   \   000003 B700                  LD        S:?b8, A
+    593              uint8_t temp = 0;
+   \   000005 3F00                  CLR       S:?b0
+    594          
+    595              /* Check the parameters */
+    596              assert_param(IS_ADC1_FLAG_OK(Flag));
+   \   000007 B600                  LD        A, S:?b8
+   \   000009 A180                  CP        A, #0x80
+   \   00000B 2757                  JREQ      L:??ADC1_ClearFlag_0
+   \   00000D B600                  LD        A, S:?b8
+   \   00000F A141                  CP        A, #0x41
+   \   000011 2751                  JREQ      L:??ADC1_ClearFlag_0
+   \   000013 B600                  LD        A, S:?b8
+   \   000015 A140                  CP        A, #0x40
+   \   000017 274B                  JREQ      L:??ADC1_ClearFlag_0
+   \   000019 B600                  LD        A, S:?b8
+   \   00001B A110                  CP        A, #0x10
+   \   00001D 2745                  JREQ      L:??ADC1_ClearFlag_0
+   \   00001F B600                  LD        A, S:?b8
+   \   000021 A111                  CP        A, #0x11
+   \   000023 273F                  JREQ      L:??ADC1_ClearFlag_0
+   \   000025 B600                  LD        A, S:?b8
+   \   000027 A112                  CP        A, #0x12
+   \   000029 2739                  JREQ      L:??ADC1_ClearFlag_0
+   \   00002B B600                  LD        A, S:?b8
+   \   00002D A113                  CP        A, #0x13
+   \   00002F 2733                  JREQ      L:??ADC1_ClearFlag_0
+   \   000031 B600                  LD        A, S:?b8
+   \   000033 A114                  CP        A, #0x14
+   \   000035 272D                  JREQ      L:??ADC1_ClearFlag_0
+   \   000037 B600                  LD        A, S:?b8
+   \   000039 A115                  CP        A, #0x15
+   \   00003B 2727                  JREQ      L:??ADC1_ClearFlag_0
+   \   00003D B600                  LD        A, S:?b8
+   \   00003F A116                  CP        A, #0x16
+   \   000041 2721                  JREQ      L:??ADC1_ClearFlag_0
+   \   000043 B600                  LD        A, S:?b8
+   \   000045 A117                  CP        A, #0x17
+   \   000047 271B                  JREQ      L:??ADC1_ClearFlag_0
+   \   000049 B600                  LD        A, S:?b8
+   \   00004B A118                  CP        A, #0x18
+   \   00004D 2715                  JREQ      L:??ADC1_ClearFlag_0
+   \   00004F B600                  LD        A, S:?b8
+   \   000051 A119                  CP        A, #0x19
+   \   000053 270F                  JREQ      L:??ADC1_ClearFlag_0
+   \   000055 AE0254                LDW       X, #0x254
+   \   000058 BF00                  LDW       S:?w1, X
+   \   00005A 5F                    CLRW      X
+   \   00005B BF00                  LDW       S:?w0, X
+   \   00005D AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   000060 8D000000              CALLF     assert_failed
+    597          
+    598              if ((Flag & 0x0F) == 0x01)
+   \                     ??ADC1_ClearFlag_0:
+   \   000064 B600                  LD        A, S:?b8
+   \   000066 A40F                  AND       A, #0xf
+   \   000068 A101                  CP        A, #0x1
+   \   00006A 2606                  JRNE      L:??ADC1_ClearFlag_1
+    599              {
+    600                  /* Clear OVR flag status */
+    601                  ADC1->CR3 &= (uint8_t)(~ADC1_CR3_OVR);
+   \   00006C 721D5403              BRES      L:0x5403, #0x6
+   \   000070 2044                  JRA       L:??ADC1_ClearFlag_2
+    602              }
+    603              else if ((Flag & 0xF0) == 0x10)
+   \                     ??ADC1_ClearFlag_1:
+   \   000072 B600                  LD        A, S:?b8
+   \   000074 A4F0                  AND       A, #0xf0
+   \   000076 A110                  CP        A, #0x10
+   \   000078 2632                  JRNE      L:??ADC1_ClearFlag_3
+    604              {
+    605                  /* Clear analog watchdog channel status */
+    606                  temp = (uint8_t)(Flag & (uint8_t)0x0F);
+   \   00007A B600                  LD        A, S:?b8
+   \   00007C A40F                  AND       A, #0xf
+   \   00007E B700                  LD        S:?b0, A
+    607                  if (temp < 8)
+   \   000080 B600                  LD        A, S:?b0
+   \   000082 A108                  CP        A, #0x8
+   \   000084 2412                  JRNC      L:??ADC1_ClearFlag_4
+    608                  {
+    609                      ADC1->AWSRL &= (uint8_t)~(uint8_t)((uint8_t)1 << temp);
+   \   000086 5F                    CLRW      X
+   \   000087 5C                    INCW      X
+   \   000088 B600                  LD        A, S:?b0
+   \   00008A 8D000000              CALLF     L:?sll16_x_x_a
+   \   00008E 9F                    LD        A, XL
+   \   00008F 43                    CPL       A
+   \   000090 C4540D                AND       A, L:0x540d
+   \   000093 C7540D                LD        L:0x540d, A
+   \   000096 201E                  JRA       L:??ADC1_ClearFlag_2
+    610                  }
+    611                  else
+    612                  {
+    613                      ADC1->AWSRH &= (uint8_t)~(uint8_t)((uint8_t)1 << (temp - 8));
+   \                     ??ADC1_ClearFlag_4:
+   \   000098 B600                  LD        A, S:?b0
+   \   00009A ABF8                  ADD       A, #0xf8
+   \   00009C 5F                    CLRW      X
+   \   00009D 5C                    INCW      X
+   \   00009E 8D000000              CALLF     L:?sll16_x_x_a
+   \   0000A2 9F                    LD        A, XL
+   \   0000A3 43                    CPL       A
+   \   0000A4 C4540C                AND       A, L:0x540c
+   \   0000A7 C7540C                LD        L:0x540c, A
+   \   0000AA 200A                  JRA       L:??ADC1_ClearFlag_2
+    614                  }
+    615              }
+    616              else  /* Clear EOC | AWD flag status */
+    617              {
+    618                  ADC1->CSR &= (uint8_t) (~Flag);
+   \                     ??ADC1_ClearFlag_3:
+   \   0000AC 3300                  CPL       S:?b8
+   \   0000AE B600                  LD        A, S:?b8
+   \   0000B0 C45400                AND       A, L:0x5400
+   \   0000B3 C75400                LD        L:0x5400, A
+    619              }
+    620          }
+   \                     ??ADC1_ClearFlag_2:
+   \   0000B6 320000                POP       S:?b8
+   \   0000B9 87                    RETF
+    621          
+    622          /**
+    623            * @brief  Returns the specified pending bit status
+    624            * @param   ITPendingBit : the IT pending bit to check.
+    625            * This parameter can be one of the following values:
+    626            *    - ADC1_IT_AWD   : Analog WDG IT status
+    627            *    - ADC1_IT_AWS0 : Analog channel 0 IT status
+    628            *    - ADC1_IT_AWS1 : Analog channel 1 IT status
+    629            *    - ADC1_IT_AWS2 : Analog channel 2 IT status
+    630            *    - ADC1_IT_AWS3 : Analog channel 3 IT status
+    631            *    - ADC1_IT_AWS4 : Analog channel 4 IT status
+    632            *    - ADC1_IT_AWS5 : Analog channel 5 IT status
+    633            *    - ADC1_IT_AWS6 : Analog channel 6 IT status
+    634            *    - ADC1_IT_AWS7 : Analog channel 7 IT status
+    635            *    - ADC1_IT_AWS8 : Analog channel 8 IT status
+    636            *    - ADC1_IT_AWS9 : Analog channel 9 IT status
+    637            *    - ADC1_IT_EOC    : EOC pending bit
+    638            * @retval ITStatus: status of the specified pending bit.
+    639            */
+
+   \                                 In section .far_func.text, align 1
+    640          ITStatus ADC1_GetITStatus(ADC1_IT_TypeDef ITPendingBit)
+    641          {
+   \                     ADC1_GetITStatus:
+   \   000000 8D000000              CALLF     L:?push_w4
+   \   000004 BF00                  LDW       S:?w4, X
+    642              ITStatus itstatus = RESET;
+   \   000006 3F00                  CLR       S:?b0
+    643              uint8_t temp = 0;
+   \   000008 4F                    CLR       A
+    644          
+    645              /* Check the parameters */
+    646              assert_param(IS_ADC1_ITPENDINGBIT_OK(ITPendingBit));
+   \   000009 BE00                  LDW       X, S:?w4
+   \   00000B A30080                CPW       X, #0x80
+   \   00000E 2763                  JREQ      L:??ADC1_GetITStatus_0
+   \   000010 BE00                  LDW       X, S:?w4
+   \   000012 A30140                CPW       X, #0x140
+   \   000015 275C                  JREQ      L:??ADC1_GetITStatus_0
+   \   000017 BE00                  LDW       X, S:?w4
+   \   000019 A30110                CPW       X, #0x110
+   \   00001C 2755                  JREQ      L:??ADC1_GetITStatus_0
+   \   00001E BE00                  LDW       X, S:?w4
+   \   000020 A30111                CPW       X, #0x111
+   \   000023 274E                  JREQ      L:??ADC1_GetITStatus_0
+   \   000025 BE00                  LDW       X, S:?w4
+   \   000027 A30112                CPW       X, #0x112
+   \   00002A 2747                  JREQ      L:??ADC1_GetITStatus_0
+   \   00002C BE00                  LDW       X, S:?w4
+   \   00002E A30113                CPW       X, #0x113
+   \   000031 2740                  JREQ      L:??ADC1_GetITStatus_0
+   \   000033 BE00                  LDW       X, S:?w4
+   \   000035 A30114                CPW       X, #0x114
+   \   000038 2739                  JREQ      L:??ADC1_GetITStatus_0
+   \   00003A BE00                  LDW       X, S:?w4
+   \   00003C A30115                CPW       X, #0x115
+   \   00003F 2732                  JREQ      L:??ADC1_GetITStatus_0
+   \   000041 BE00                  LDW       X, S:?w4
+   \   000043 A30116                CPW       X, #0x116
+   \   000046 272B                  JREQ      L:??ADC1_GetITStatus_0
+   \   000048 BE00                  LDW       X, S:?w4
+   \   00004A A30117                CPW       X, #0x117
+   \   00004D 2724                  JREQ      L:??ADC1_GetITStatus_0
+   \   00004F BE00                  LDW       X, S:?w4
+   \   000051 A30118                CPW       X, #0x118
+   \   000054 271D                  JREQ      L:??ADC1_GetITStatus_0
+   \   000056 BE00                  LDW       X, S:?w4
+   \   000058 A3011C                CPW       X, #0x11c
+   \   00005B 2716                  JREQ      L:??ADC1_GetITStatus_0
+   \   00005D BE00                  LDW       X, S:?w4
+   \   00005F A30119                CPW       X, #0x119
+   \   000062 270F                  JREQ      L:??ADC1_GetITStatus_0
+   \   000064 AE0286                LDW       X, #0x286
+   \   000067 BF00                  LDW       S:?w1, X
+   \   000069 5F                    CLRW      X
+   \   00006A BF00                  LDW       S:?w0, X
+   \   00006C AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00006F 8D000000              CALLF     assert_failed
+    647          
+    648              if (((uint16_t)ITPendingBit & 0xF0) == 0x10)
+   \                     ??ADC1_GetITStatus_0:
+   \   000073 B600                  LD        A, S:?b9
+   \   000075 A4F0                  AND       A, #0xf0
+   \   000077 A110                  CP        A, #0x10
+   \   000079 2626                  JRNE      L:??ADC1_GetITStatus_1
+    649              {
+    650                  /* Get analog watchdog channel status */
+    651                  temp = (uint8_t)((uint16_t)ITPendingBit & 0x0F);
+   \   00007B B600                  LD        A, S:?b9
+   \   00007D A40F                  AND       A, #0xf
+    652                  if (temp < 8)
+   \   00007F A108                  CP        A, #0x8
+   \   000081 240E                  JRNC      L:??ADC1_GetITStatus_2
+    653                  {
+    654                      itstatus = (ITStatus)(ADC1->AWSRL & (uint8_t)((uint8_t)1 << temp));
+   \   000083 5F                    CLRW      X
+   \   000084 5C                    INCW      X
+   \   000085 8D000000              CALLF     L:?sll16_x_x_a
+   \   000089 9F                    LD        A, XL
+   \   00008A C4540D                AND       A, L:0x540d
+   \   00008D B700                  LD        S:?b0, A
+   \   00008F 2017                  JRA       L:??ADC1_GetITStatus_3
+    655                  }
+    656                  else
+    657                  {
+    658                      itstatus = (ITStatus)(ADC1->AWSRH & (uint8_t)((uint8_t)1 << (temp - 8)));
+   \                     ??ADC1_GetITStatus_2:
+   \   000091 ABF8                  ADD       A, #0xf8
+   \   000093 5F                    CLRW      X
+   \   000094 5C                    INCW      X
+   \   000095 8D000000              CALLF     L:?sll16_x_x_a
+   \   000099 9F                    LD        A, XL
+   \   00009A C4540C                AND       A, L:0x540c
+   \   00009D B700                  LD        S:?b0, A
+   \   00009F 2007                  JRA       L:??ADC1_GetITStatus_3
+    659                  }
+    660              }
+    661              else  /* Get EOC | AWD flag status */
+    662              {
+    663                  itstatus = (ITStatus)(ADC1->CSR & (uint8_t)ITPendingBit);
+   \                     ??ADC1_GetITStatus_1:
+   \   0000A1 B600                  LD        A, S:?b9
+   \   0000A3 C45400                AND       A, L:0x5400
+   \   0000A6 B700                  LD        S:?b0, A
+    664              }
+    665              return ((ITStatus)itstatus);
+   \                     ??ADC1_GetITStatus_3:
+   \   0000A8 B600                  LD        A, S:?b0
+   \   0000AA AC000000              JPF       L:?epilogue_w4
+    666          
+    667          }
+    668          
+    669          /**
+    670            * @brief  Clear the ADC1 End of Conversion pending bit.
+    671            * @param   ITPendingBit : the IT pending bit to clear.
+    672            * This parameter can be one of the following values:
+    673            *    - ADC1_IT_AWD   : Analog WDG IT status
+    674            *    - ADC1_IT_AWS0 : Analog channel 0 IT status
+    675            *    - ADC1_IT_AWS1 : Analog channel 1 IT status
+    676            *    - ADC1_IT_AWS2 : Analog channel 2 IT status
+    677            *    - ADC1_IT_AWS3 : Analog channel 3 IT status
+    678            *    - ADC1_IT_AWS4 : Analog channel 4 IT status
+    679            *    - ADC1_IT_AWS5 : Analog channel 5 IT status
+    680            *    - ADC1_IT_AWS6 : Analog channel 6 IT status
+    681            *    - ADC1_IT_AWS7 : Analog channel 7 IT status
+    682            *    - ADC1_IT_AWS8 : Analog channel 8 IT status
+    683            *    - ADC1_IT_AWS9 : Analog channel 9 IT status
+    684            *    - ADC1_IT_EOC  : EOC pending bit
+    685            * @retval None
+    686            */
+
+   \                                 In section .far_func.text, align 1
+    687          void ADC1_ClearITPendingBit(ADC1_IT_TypeDef ITPendingBit)
+    688          {
+   \                     ADC1_ClearITPendingBit:
+   \   000000 8D000000              CALLF     L:?push_w4
+   \   000004 BF00                  LDW       S:?w4, X
+    689              uint8_t temp = 0;
+   \   000006 4F                    CLR       A
+    690          
+    691              /* Check the parameters */
+    692              assert_param(IS_ADC1_ITPENDINGBIT_OK(ITPendingBit));
+   \   000007 BE00                  LDW       X, S:?w4
+   \   000009 A30080                CPW       X, #0x80
+   \   00000C 2763                  JREQ      L:??ADC1_ClearITPendingBit_0
+   \   00000E BE00                  LDW       X, S:?w4
+   \   000010 A30140                CPW       X, #0x140
+   \   000013 275C                  JREQ      L:??ADC1_ClearITPendingBit_0
+   \   000015 BE00                  LDW       X, S:?w4
+   \   000017 A30110                CPW       X, #0x110
+   \   00001A 2755                  JREQ      L:??ADC1_ClearITPendingBit_0
+   \   00001C BE00                  LDW       X, S:?w4
+   \   00001E A30111                CPW       X, #0x111
+   \   000021 274E                  JREQ      L:??ADC1_ClearITPendingBit_0
+   \   000023 BE00                  LDW       X, S:?w4
+   \   000025 A30112                CPW       X, #0x112
+   \   000028 2747                  JREQ      L:??ADC1_ClearITPendingBit_0
+   \   00002A BE00                  LDW       X, S:?w4
+   \   00002C A30113                CPW       X, #0x113
+   \   00002F 2740                  JREQ      L:??ADC1_ClearITPendingBit_0
+   \   000031 BE00                  LDW       X, S:?w4
+   \   000033 A30114                CPW       X, #0x114
+   \   000036 2739                  JREQ      L:??ADC1_ClearITPendingBit_0
+   \   000038 BE00                  LDW       X, S:?w4
+   \   00003A A30115                CPW       X, #0x115
+   \   00003D 2732                  JREQ      L:??ADC1_ClearITPendingBit_0
+   \   00003F BE00                  LDW       X, S:?w4
+   \   000041 A30116                CPW       X, #0x116
+   \   000044 272B                  JREQ      L:??ADC1_ClearITPendingBit_0
+   \   000046 BE00                  LDW       X, S:?w4
+   \   000048 A30117                CPW       X, #0x117
+   \   00004B 2724                  JREQ      L:??ADC1_ClearITPendingBit_0
+   \   00004D BE00                  LDW       X, S:?w4
+   \   00004F A30118                CPW       X, #0x118
+   \   000052 271D                  JREQ      L:??ADC1_ClearITPendingBit_0
+   \   000054 BE00                  LDW       X, S:?w4
+   \   000056 A3011C                CPW       X, #0x11c
+   \   000059 2716                  JREQ      L:??ADC1_ClearITPendingBit_0
+   \   00005B BE00                  LDW       X, S:?w4
+   \   00005D A30119                CPW       X, #0x119
+   \   000060 270F                  JREQ      L:??ADC1_ClearITPendingBit_0
+   \   000062 AE02B4                LDW       X, #0x2b4
+   \   000065 BF00                  LDW       S:?w1, X
+   \   000067 5F                    CLRW      X
+   \   000068 BF00                  LDW       S:?w0, X
+   \   00006A AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00006D 8D000000              CALLF     assert_failed
+    693          
+    694              if (((uint16_t)ITPendingBit & 0xF0) == 0x10)
+   \                     ??ADC1_ClearITPendingBit_0:
+   \   000071 B600                  LD        A, S:?b9
+   \   000073 A4F0                  AND       A, #0xf0
+   \   000075 A110                  CP        A, #0x10
+   \   000077 262E                  JRNE      L:??ADC1_ClearITPendingBit_1
+    695              {
+    696                  /* Clear analog watchdog channel status */
+    697                  temp = (uint8_t)((uint16_t)ITPendingBit & 0x0F);
+   \   000079 B600                  LD        A, S:?b9
+   \   00007B A40F                  AND       A, #0xf
+    698                  if (temp < 8)
+   \   00007D A108                  CP        A, #0x8
+   \   00007F 2412                  JRNC      L:??ADC1_ClearITPendingBit_2
+    699                  {
+    700                      ADC1->AWSRL &= (uint8_t)~(uint8_t)((uint8_t)1 << temp);
+   \   000081 5F                    CLRW      X
+   \   000082 5C                    INCW      X
+   \   000083 8D000000              CALLF     L:?sll16_x_x_a
+   \   000087 9F                    LD        A, XL
+   \   000088 43                    CPL       A
+   \   000089 C4540D                AND       A, L:0x540d
+   \   00008C C7540D                LD        L:0x540d, A
+   \   00008F AC000000              JPF       L:?epilogue_w4
+    701                  }
+    702                  else
+    703                  {
+    704                      ADC1->AWSRH &= (uint8_t)~(uint8_t)((uint8_t)1 << (temp - 8));
+   \                     ??ADC1_ClearITPendingBit_2:
+   \   000093 ABF8                  ADD       A, #0xf8
+   \   000095 5F                    CLRW      X
+   \   000096 5C                    INCW      X
+   \   000097 8D000000              CALLF     L:?sll16_x_x_a
+   \   00009B 9F                    LD        A, XL
+   \   00009C 43                    CPL       A
+   \   00009D C4540C                AND       A, L:0x540c
+   \   0000A0 C7540C                LD        L:0x540c, A
+   \   0000A3 AC000000              JPF       L:?epilogue_w4
+    705                  }
+    706              }
+    707              else  /* Clear EOC | AWD flag status */
+    708              {
+    709                  ADC1->CSR &= (uint8_t)((uint16_t)~(uint16_t)ITPendingBit);
+   \                     ??ADC1_ClearITPendingBit_1:
+   \   0000A7 B600                  LD        A, S:?b9
+   \   0000A9 43                    CPL       A
+   \   0000AA C45400                AND       A, L:0x5400
+   \   0000AD C75400                LD        L:0x5400, A
+    710              }
+    711          }
+   \   0000B0 AC000000              JPF       L:?epilogue_w4
+
+   \                                 In section .near.rodata, align 1
+   \                     `?<Constant "D:\\\\Project\\\\STM8S_StdP...">`:
+   \   000000 443A5C50726F          DC8 44H, 3AH, 5CH, 50H, 72H, 6FH, 6AH, 65H
+   \   000008 63745C53544D          DC8 63H, 74H, 5CH, 53H, 54H, 4DH, 38H, 53H
+   \   000010 5F5374645065          DC8 5FH, 53H, 74H, 64H, 50H, 65H, 72H, 69H
+   \   000018 70685F4C6962          DC8 70H, 68H, 5FH, 4CH, 69H, 62H, 5FH, 56H
+   \   000020 322E312E305C          DC8 32H, 2EH, 31H, 2EH, 30H, 5CH, 4CH, 69H
+   \   000028 627261726965          DC8 62H, 72H, 61H, 72H, 69H, 65H, 73H, 5CH
+   \   000030 53544D38535F          DC8 53H, 54H, 4DH, 38H, 53H, 5FH, 53H, 74H
+   \   000038 645065726970          DC8 64H, 50H, 65H, 72H, 69H, 70H, 68H, 5FH
+   \   000040 447269766572          DC8 44H, 72H, 69H, 76H, 65H, 72H, 5CH, 73H
+   \   000048 72635C73746D          DC8 72H, 63H, 5CH, 73H, 74H, 6DH, 38H, 73H
+   \   000050 5F6164633120          DC8 5FH, 61H, 64H, 63H, 31H, 20H, 2DH, 20H
+   \   000058 436F70792E63          DC8 43H, 6FH, 70H, 79H, 2EH, 63H, 0
+    712          
+    713          /**
+    714            * @}
+    715            */
+    716            
+    717          /**
+    718            * @}
+    719            */
+    720            
+    721          /******************* (C) COPYRIGHT 2011 STMicroelectronics *****END OF FILE****/
+
+   Section sizes:
+
+     Function/Label                           Bytes
+     --------------                           -----
+     ADC1_DeInit                                49
+     ADC1_Init                                 425
+     ADC1_Cmd                                   48
+     ADC1_ScanModeCmd                           48
+     ADC1_DataBufferCmd                         48
+     ADC1_ITConfig                              95
+     ADC1_PrescalerConfig                       86
+     ADC1_SchmittTriggerConfig                 265
+     ADC1_ConversionConfig                     195
+     ADC1_ExternalTriggerConfig                 93
+     ADC1_StartConversion                        5
+     ADC1_GetConversionValue                    85
+     ADC1_AWDChannelConfig                     209
+     ADC1_SetHighThreshold                      15
+     ADC1_SetLowThreshold                       11
+     ADC1_GetBufferValue                       138
+     ADC1_GetAWDChannelStatus                  123
+     ADC1_GetFlagStatus                        186
+     ADC1_ClearFlag                            186
+     ADC1_GetITStatus                          174
+     ADC1_ClearITPendingBit                    180
+     ?<Constant "D:\\Project\\STM8S_StdP...">   95
+
+ 
+ 2 664 bytes in section .far_func.text
+    95 bytes in section .near.rodata
+ 
+ 2 664 bytes of CODE  memory
+    95 bytes of CONST memory
+
+Errors: none
+Warnings: none

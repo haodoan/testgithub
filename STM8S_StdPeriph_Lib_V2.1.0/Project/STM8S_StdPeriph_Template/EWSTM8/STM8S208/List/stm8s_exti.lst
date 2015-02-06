@@ -1,0 +1,462 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.1.50036 for STM8             24/Jan/2015  12:33:13 #
+# Copyright 2010-2011 IAR Systems AB.                                         #
+#                                                                             #
+#    Source file  =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_St #
+#                    dPeriph_Driver\src\stm8s_exti.c                          #
+#    Command line =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_St #
+#                    dPeriph_Driver\src\stm8s_exti.c -e -Ol --no_cse          #
+#                    --no_unroll --no_inline --no_code_motion --no_tbaa       #
+#                    --no_cross_call --debug --code_model medium              #
+#                    --data_model medium -o D:\Project\STM8S_StdPeriph_Lib_V2 #
+#                    .1.0\Project\STM8S_StdPeriph_Template\EWSTM8\STM8S208\Ob #
+#                    j\ --dlib_config "C:\Program Files\IAR Systems\Embedded  #
+#                    Workbench 6.0\stm8\LIB\dlstm8mmn.h" -D                   #
+#                    USE_STM8_128_EVAL -D STM8S003 -lC                        #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\List\ -lb                 #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\List\ -I                  #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\..\ -I                             #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\..\..\..\Libraries\STM8S_StdPeriph #
+#                    _Driver\inc\ -I D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Pr #
+#                    oject\STM8S_StdPeriph_Template\EWSTM8\..\..\..\Utilities #
+#                    \STM8S_EVAL\ -I D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Pr #
+#                    oject\STM8S_StdPeriph_Template\EWSTM8\..\..\..\Utilities #
+#                    \STM8S_EVAL\STM8S-128_EVAL\ -I                           #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\..\..\..\Utilities\STM8S_EVAL\Comm #
+#                    on\ --vregs 16                                           #
+#    List file    =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\List\stm8s_exti.lst       #
+#    Object file  =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\Obj\stm8s_exti.o          #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_StdPeriph_Driver\src\stm8s_exti.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    stm8s_exti.c
+      4            * @author  MCD Application Team
+      5            * @version V2.1.0
+      6            * @date    18-November-2011
+      7            * @brief   This file contains all the functions for the EXTI peripheral.
+      8            ******************************************************************************
+      9            * @attention
+     10            *
+     11            * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+     12            * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+     13            * TIME. AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY
+     14            * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+     15            * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+     16            * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+     17            *
+     18            * <h2><center>&copy; COPYRIGHT 2011 STMicroelectronics</center></h2>
+     19            ******************************************************************************
+     20            */
+     21          
+     22          /* Includes ------------------------------------------------------------------*/
+     23          #include "stm8s_exti.h"
+     24          
+     25          /** @addtogroup STM8S_StdPeriph_Driver
+     26            * @{
+     27            */
+     28          /* Private typedef -----------------------------------------------------------*/
+     29          /* Private define ------------------------------------------------------------*/
+     30          /* Private macro -------------------------------------------------------------*/
+     31          /* Private variables ---------------------------------------------------------*/
+     32          /* Private function prototypes -----------------------------------------------*/
+     33          /* Private functions ---------------------------------------------------------*/
+     34          
+     35          /* Public functions ----------------------------------------------------------*/
+     36          
+     37          /**
+     38            * @addtogroup EXTI_Public_Functions
+     39            * @{
+     40            */
+     41          
+     42          /**
+     43            * @brief  Deinitializes the external interrupt control registers to their default reset value.
+     44            * @param  None
+     45            * @retval None
+     46            */
+
+   \                                 In section .far_func.text, align 1
+     47          void EXTI_DeInit(void)
+     48          {
+     49              EXTI->CR1 = EXTI_CR1_RESET_VALUE;
+   \                     EXTI_DeInit:
+   \   000000 350050A0              MOV       L:0x50a0, #0x0
+     50              EXTI->CR2 = EXTI_CR2_RESET_VALUE;
+   \   000004 350050A1              MOV       L:0x50a1, #0x0
+     51          }
+   \   000008 87                    RETF
+     52          
+     53          /**
+     54            * @brief  Set the external interrupt sensitivity of the selected port.
+     55            * @warning
+     56            * - The modification of external interrupt sensitivity is only possible when the interrupts are disabled.
+     57            * - The normal behavior is to disable the interrupts before calling this function, and re-enable them after.
+     58            * @param   Port The port number to access.
+     59            * @param   SensitivityValue The external interrupt sensitivity value to set.
+     60            * @retval None
+     61            * @par Required preconditions:
+     62            * Global interrupts must be disabled before calling this function.
+     63            */
+
+   \                                 In section .far_func.text, align 1
+     64          void EXTI_SetExtIntSensitivity(EXTI_Port_TypeDef Port, EXTI_Sensitivity_TypeDef SensitivityValue)
+     65          {
+   \                     EXTI_SetExtIntSensitivity:
+   \   000000 8D000000              CALLF     L:?push_w4
+   \   000004 B700                  LD        S:?b8, A
+   \   000006 450000                MOV       S:?b9, S:?b0
+     66          
+     67              /* Check function parameters */
+     68              assert_param(IS_EXTI_PORT_OK(Port));
+   \   000009 3D00                  TNZ       S:?b8
+   \   00000B 2727                  JREQ      L:??EXTI_SetExtIntSensitivity_0
+   \   00000D B600                  LD        A, S:?b8
+   \   00000F A101                  CP        A, #0x1
+   \   000011 2721                  JREQ      L:??EXTI_SetExtIntSensitivity_0
+   \   000013 B600                  LD        A, S:?b8
+   \   000015 A102                  CP        A, #0x2
+   \   000017 271B                  JREQ      L:??EXTI_SetExtIntSensitivity_0
+   \   000019 B600                  LD        A, S:?b8
+   \   00001B A103                  CP        A, #0x3
+   \   00001D 2715                  JREQ      L:??EXTI_SetExtIntSensitivity_0
+   \   00001F B600                  LD        A, S:?b8
+   \   000021 A104                  CP        A, #0x4
+   \   000023 270F                  JREQ      L:??EXTI_SetExtIntSensitivity_0
+   \   000025 AE0044                LDW       X, #0x44
+   \   000028 BF00                  LDW       S:?w1, X
+   \   00002A 5F                    CLRW      X
+   \   00002B BF00                  LDW       S:?w0, X
+   \   00002D AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   000030 8D000000              CALLF     assert_failed
+     69              assert_param(IS_EXTI_SENSITIVITY_OK(SensitivityValue));
+   \                     ??EXTI_SetExtIntSensitivity_0:
+   \   000034 3D00                  TNZ       S:?b9
+   \   000036 2721                  JREQ      L:??EXTI_SetExtIntSensitivity_1
+   \   000038 B600                  LD        A, S:?b9
+   \   00003A A101                  CP        A, #0x1
+   \   00003C 271B                  JREQ      L:??EXTI_SetExtIntSensitivity_1
+   \   00003E B600                  LD        A, S:?b9
+   \   000040 A102                  CP        A, #0x2
+   \   000042 2715                  JREQ      L:??EXTI_SetExtIntSensitivity_1
+   \   000044 B600                  LD        A, S:?b9
+   \   000046 A103                  CP        A, #0x3
+   \   000048 270F                  JREQ      L:??EXTI_SetExtIntSensitivity_1
+   \   00004A AE0045                LDW       X, #0x45
+   \   00004D BF00                  LDW       S:?w1, X
+   \   00004F 5F                    CLRW      X
+   \   000050 BF00                  LDW       S:?w0, X
+   \   000052 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   000055 8D000000              CALLF     assert_failed
+     70          
+     71              /* Set external interrupt sensitivity */
+     72              switch (Port)
+   \                     ??EXTI_SetExtIntSensitivity_1:
+   \   000059 B600                  LD        A, S:?b8
+   \   00005B 4D                    TNZ       A
+   \   00005C 2710                  JREQ      L:??EXTI_SetExtIntSensitivity_2
+   \   00005E 4A                    DEC       A
+   \   00005F 2721                  JREQ      L:??EXTI_SetExtIntSensitivity_3
+   \   000061 4A                    DEC       A
+   \   000062 2734                  JREQ      L:??EXTI_SetExtIntSensitivity_4
+   \   000064 4A                    DEC       A
+   \   000065 2748                  JREQ      L:??EXTI_SetExtIntSensitivity_5
+   \   000067 4A                    DEC       A
+   \   000068 275D                  JREQ      L:??EXTI_SetExtIntSensitivity_6
+   \   00006A AC000000              JPF       L:?epilogue_w4
+     73              {
+     74              case EXTI_PORT_GPIOA:
+     75                  EXTI->CR1 &= (uint8_t)(~EXTI_CR1_PAIS);
+   \                     ??EXTI_SetExtIntSensitivity_2:
+   \   00006E C650A0                LD        A, L:0x50a0
+   \   000071 A4FC                  AND       A, #0xfc
+   \   000073 C750A0                LD        L:0x50a0, A
+     76                  EXTI->CR1 |= (uint8_t)(SensitivityValue);
+   \   000076 B600                  LD        A, S:?b9
+   \   000078 CA50A0                OR        A, L:0x50a0
+   \   00007B C750A0                LD        L:0x50a0, A
+     77                  break;
+   \   00007E AC000000              JPF       L:?epilogue_w4
+     78              case EXTI_PORT_GPIOB:
+     79                  EXTI->CR1 &= (uint8_t)(~EXTI_CR1_PBIS);
+   \                     ??EXTI_SetExtIntSensitivity_3:
+   \   000082 C650A0                LD        A, L:0x50a0
+   \   000085 A4F3                  AND       A, #0xf3
+   \   000087 C750A0                LD        L:0x50a0, A
+     80                  EXTI->CR1 |= (uint8_t)((uint8_t)(SensitivityValue) << 2);
+   \   00008A B600                  LD        A, S:?b9
+   \   00008C 48                    SLL       A
+   \   00008D 48                    SLL       A
+   \   00008E CA50A0                OR        A, L:0x50a0
+   \   000091 C750A0                LD        L:0x50a0, A
+     81                  break;
+   \   000094 AC000000              JPF       L:?epilogue_w4
+     82              case EXTI_PORT_GPIOC:
+     83                  EXTI->CR1 &= (uint8_t)(~EXTI_CR1_PCIS);
+   \                     ??EXTI_SetExtIntSensitivity_4:
+   \   000098 C650A0                LD        A, L:0x50a0
+   \   00009B A4CF                  AND       A, #0xcf
+   \   00009D C750A0                LD        L:0x50a0, A
+     84                  EXTI->CR1 |= (uint8_t)((uint8_t)(SensitivityValue) << 4);
+   \   0000A0 B600                  LD        A, S:?b9
+   \   0000A2 4E                    SWAP      A
+   \   0000A3 A4F0                  AND       A, #0xf0
+   \   0000A5 CA50A0                OR        A, L:0x50a0
+   \   0000A8 C750A0                LD        L:0x50a0, A
+     85                  break;
+   \   0000AB AC000000              JPF       L:?epilogue_w4
+     86              case EXTI_PORT_GPIOD:
+     87                  EXTI->CR1 &= (uint8_t)(~EXTI_CR1_PDIS);
+   \                     ??EXTI_SetExtIntSensitivity_5:
+   \   0000AF C650A0                LD        A, L:0x50a0
+   \   0000B2 A43F                  AND       A, #0x3f
+   \   0000B4 C750A0                LD        L:0x50a0, A
+     88                  EXTI->CR1 |= (uint8_t)((uint8_t)(SensitivityValue) << 6);
+   \   0000B7 B600                  LD        A, S:?b9
+   \   0000B9 8D000000              CALLF     L:?sll8_a_a_6
+   \   0000BD CA50A0                OR        A, L:0x50a0
+   \   0000C0 C750A0                LD        L:0x50a0, A
+     89                  break;
+   \   0000C3 AC000000              JPF       L:?epilogue_w4
+     90              case EXTI_PORT_GPIOE:
+     91                  EXTI->CR2 &= (uint8_t)(~EXTI_CR2_PEIS);
+   \                     ??EXTI_SetExtIntSensitivity_6:
+   \   0000C7 C650A1                LD        A, L:0x50a1
+   \   0000CA A4FC                  AND       A, #0xfc
+   \   0000CC C750A1                LD        L:0x50a1, A
+     92                  EXTI->CR2 |= (uint8_t)(SensitivityValue);
+   \   0000CF B600                  LD        A, S:?b9
+   \   0000D1 CA50A1                OR        A, L:0x50a1
+   \   0000D4 C750A1                LD        L:0x50a1, A
+     93                  break;
+     94              default:
+     95                  break;
+     96              }
+     97          }
+   \   0000D7 AC000000              JPF       L:?epilogue_w4
+     98          
+     99          /**
+    100            * @brief  Set the TLI interrupt sensitivity.
+    101            * @param   SensitivityValue The TLI interrupt sensitivity value.
+    102            * @retval None
+    103            * @par Required preconditions:
+    104            * Global interrupts must be disabled before calling this function.
+    105            */
+
+   \                                 In section .far_func.text, align 1
+    106          void EXTI_SetTLISensitivity(EXTI_TLISensitivity_TypeDef SensitivityValue)
+    107          {
+   \                     EXTI_SetTLISensitivity:
+   \   000000 3B0000                PUSH      S:?b8
+   \   000003 B700                  LD        S:?b8, A
+    108              /* Check function parameters */
+    109              assert_param(IS_EXTI_TLISENSITIVITY_OK(SensitivityValue));
+   \   000005 3D00                  TNZ       S:?b8
+   \   000007 2715                  JREQ      L:??EXTI_SetTLISensitivity_0
+   \   000009 B600                  LD        A, S:?b8
+   \   00000B A104                  CP        A, #0x4
+   \   00000D 270F                  JREQ      L:??EXTI_SetTLISensitivity_0
+   \   00000F AE006D                LDW       X, #0x6d
+   \   000012 BF00                  LDW       S:?w1, X
+   \   000014 5F                    CLRW      X
+   \   000015 BF00                  LDW       S:?w0, X
+   \   000017 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00001A 8D000000              CALLF     assert_failed
+    110          
+    111              /* Set TLI interrupt sensitivity */
+    112              EXTI->CR2 &= (uint8_t)(~EXTI_CR2_TLIS);
+   \                     ??EXTI_SetTLISensitivity_0:
+   \   00001E 721550A1              BRES      L:0x50a1, #0x2
+    113              EXTI->CR2 |= (uint8_t)(SensitivityValue);
+   \   000022 B600                  LD        A, S:?b8
+   \   000024 CA50A1                OR        A, L:0x50a1
+   \   000027 C750A1                LD        L:0x50a1, A
+    114          }
+   \   00002A 320000                POP       S:?b8
+   \   00002D 87                    RETF
+    115          
+    116          /**
+    117            * @brief  Get the external interrupt sensitivity of the selected port.
+    118            * @param   Port The port number to access.
+    119            * @retval EXTI_Sensitivity_TypeDef The external interrupt sensitivity of the selected port.
+    120            */
+
+   \                                 In section .far_func.text, align 1
+    121          EXTI_Sensitivity_TypeDef EXTI_GetExtIntSensitivity(EXTI_Port_TypeDef Port)
+    122          {
+   \                     EXTI_GetExtIntSensitivity:
+   \   000000 8D000000              CALLF     L:?push_w4
+   \   000004 B700                  LD        S:?b9, A
+    123              uint8_t value = 0;
+   \   000006 3F00                  CLR       S:?b8
+    124          
+    125              /* Check function parameters */
+    126              assert_param(IS_EXTI_PORT_OK(Port));
+   \   000008 3D00                  TNZ       S:?b9
+   \   00000A 2727                  JREQ      L:??EXTI_GetExtIntSensitivity_0
+   \   00000C B600                  LD        A, S:?b9
+   \   00000E A101                  CP        A, #0x1
+   \   000010 2721                  JREQ      L:??EXTI_GetExtIntSensitivity_0
+   \   000012 B600                  LD        A, S:?b9
+   \   000014 A102                  CP        A, #0x2
+   \   000016 271B                  JREQ      L:??EXTI_GetExtIntSensitivity_0
+   \   000018 B600                  LD        A, S:?b9
+   \   00001A A103                  CP        A, #0x3
+   \   00001C 2715                  JREQ      L:??EXTI_GetExtIntSensitivity_0
+   \   00001E B600                  LD        A, S:?b9
+   \   000020 A104                  CP        A, #0x4
+   \   000022 270F                  JREQ      L:??EXTI_GetExtIntSensitivity_0
+   \   000024 AE007E                LDW       X, #0x7e
+   \   000027 BF00                  LDW       S:?w1, X
+   \   000029 5F                    CLRW      X
+   \   00002A BF00                  LDW       S:?w0, X
+   \   00002C AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00002F 8D000000              CALLF     assert_failed
+    127          
+    128              switch (Port)
+   \                     ??EXTI_GetExtIntSensitivity_0:
+   \   000033 B600                  LD        A, S:?b9
+   \   000035 4D                    TNZ       A
+   \   000036 270E                  JREQ      L:??EXTI_GetExtIntSensitivity_1
+   \   000038 4A                    DEC       A
+   \   000039 2714                  JREQ      L:??EXTI_GetExtIntSensitivity_2
+   \   00003B 4A                    DEC       A
+   \   00003C 271C                  JREQ      L:??EXTI_GetExtIntSensitivity_3
+   \   00003E 4A                    DEC       A
+   \   00003F 2725                  JREQ      L:??EXTI_GetExtIntSensitivity_4
+   \   000041 4A                    DEC       A
+   \   000042 272D                  JREQ      L:??EXTI_GetExtIntSensitivity_5
+   \   000044 2032                  JRA       L:??EXTI_GetExtIntSensitivity_6
+    129              {
+    130              case EXTI_PORT_GPIOA:
+    131                  value = (uint8_t)(EXTI->CR1 & EXTI_CR1_PAIS);
+   \                     ??EXTI_GetExtIntSensitivity_1:
+   \   000046 C650A0                LD        A, L:0x50a0
+   \   000049 A403                  AND       A, #0x3
+   \   00004B B700                  LD        S:?b8, A
+    132                  break;
+   \   00004D 2029                  JRA       L:??EXTI_GetExtIntSensitivity_6
+    133              case EXTI_PORT_GPIOB:
+    134                  value = (uint8_t)((uint8_t)(EXTI->CR1 & EXTI_CR1_PBIS) >> 2);
+   \                     ??EXTI_GetExtIntSensitivity_2:
+   \   00004F C650A0                LD        A, L:0x50a0
+   \   000052 A40C                  AND       A, #0xc
+   \   000054 44                    SRL       A
+   \   000055 44                    SRL       A
+   \   000056 B700                  LD        S:?b8, A
+    135                  break;
+   \   000058 201E                  JRA       L:??EXTI_GetExtIntSensitivity_6
+    136              case EXTI_PORT_GPIOC:
+    137                  value = (uint8_t)((uint8_t)(EXTI->CR1 & EXTI_CR1_PCIS) >> 4);
+   \                     ??EXTI_GetExtIntSensitivity_3:
+   \   00005A C650A0                LD        A, L:0x50a0
+   \   00005D A430                  AND       A, #0x30
+   \   00005F 4E                    SWAP      A
+   \   000060 A40F                  AND       A, #0xf
+   \   000062 B700                  LD        S:?b8, A
+    138                  break;
+   \   000064 2012                  JRA       L:??EXTI_GetExtIntSensitivity_6
+    139              case EXTI_PORT_GPIOD:
+    140                  value = (uint8_t)((uint8_t)(EXTI->CR1 & EXTI_CR1_PDIS) >> 6);
+   \                     ??EXTI_GetExtIntSensitivity_4:
+   \   000066 C650A0                LD        A, L:0x50a0
+   \   000069 8D000000              CALLF     L:?srl8_a_a_6
+   \   00006D B700                  LD        S:?b8, A
+    141                  break;
+   \   00006F 2007                  JRA       L:??EXTI_GetExtIntSensitivity_6
+    142              case EXTI_PORT_GPIOE:
+    143                  value = (uint8_t)(EXTI->CR2 & EXTI_CR2_PEIS);
+   \                     ??EXTI_GetExtIntSensitivity_5:
+   \   000071 C650A1                LD        A, L:0x50a1
+   \   000074 A403                  AND       A, #0x3
+   \   000076 B700                  LD        S:?b8, A
+    144                  break;
+    145              default:
+    146                  break;
+    147              }
+    148          
+    149              return((EXTI_Sensitivity_TypeDef)value);
+   \                     ??EXTI_GetExtIntSensitivity_6:
+   \   000078 B600                  LD        A, S:?b8
+   \   00007A AC000000              JPF       L:?epilogue_w4
+    150          }
+    151          
+    152          /**
+    153            * @brief  Get the TLI interrupt sensitivity.
+    154            * @param  None
+    155            * @retval EXTI_TLISensitivity_TypeDef The TLI interrupt sensitivity read.
+    156            */
+
+   \                                 In section .far_func.text, align 1
+    157          EXTI_TLISensitivity_TypeDef EXTI_GetTLISensitivity(void)
+    158          {
+    159          
+    160              uint8_t value = 0;
+   \                     EXTI_GetTLISensitivity:
+   \   000000 3F00                  CLR       S:?b0
+    161          
+    162              /* Get TLI interrupt sensitivity */
+    163              value = (uint8_t)(EXTI->CR2 & EXTI_CR2_TLIS);
+   \   000002 C650A1                LD        A, L:0x50a1
+   \   000005 A404                  AND       A, #0x4
+   \   000007 B700                  LD        S:?b0, A
+    164          
+    165              return((EXTI_TLISensitivity_TypeDef)value);
+   \   000009 B600                  LD        A, S:?b0
+   \   00000B 87                    RETF
+    166          }
+
+   \                                 In section .near.rodata, align 1
+   \                     `?<Constant "D:\\\\Project\\\\STM8S_StdP...">`:
+   \   000000 443A5C50726F          DC8 44H, 3AH, 5CH, 50H, 72H, 6FH, 6AH, 65H
+   \   000008 63745C53544D          DC8 63H, 74H, 5CH, 53H, 54H, 4DH, 38H, 53H
+   \   000010 5F5374645065          DC8 5FH, 53H, 74H, 64H, 50H, 65H, 72H, 69H
+   \   000018 70685F4C6962          DC8 70H, 68H, 5FH, 4CH, 69H, 62H, 5FH, 56H
+   \   000020 322E312E305C          DC8 32H, 2EH, 31H, 2EH, 30H, 5CH, 4CH, 69H
+   \   000028 627261726965          DC8 62H, 72H, 61H, 72H, 69H, 65H, 73H, 5CH
+   \   000030 53544D38535F          DC8 53H, 54H, 4DH, 38H, 53H, 5FH, 53H, 74H
+   \   000038 645065726970          DC8 64H, 50H, 65H, 72H, 69H, 70H, 68H, 5FH
+   \   000040 447269766572          DC8 44H, 72H, 69H, 76H, 65H, 72H, 5CH, 73H
+   \   000048 72635C73746D          DC8 72H, 63H, 5CH, 73H, 74H, 6DH, 38H, 73H
+   \   000050 5F657874692E          DC8 5FH, 65H, 78H, 74H, 69H, 2EH, 63H, 0
+    167          
+    168          /**
+    169            * @}
+    170            */
+    171            
+    172          /**
+    173            * @}
+    174            */
+    175            
+    176          /******************* (C) COPYRIGHT 2011 STMicroelectronics *****END OF FILE****/
+
+   Section sizes:
+
+     Function/Label                           Bytes
+     --------------                           -----
+     EXTI_DeInit                                 9
+     EXTI_SetExtIntSensitivity                 219
+     EXTI_SetTLISensitivity                     46
+     EXTI_GetExtIntSensitivity                 126
+     EXTI_GetTLISensitivity                     12
+     ?<Constant "D:\\Project\\STM8S_StdP...">   88
+
+ 
+ 412 bytes in section .far_func.text
+  88 bytes in section .near.rodata
+ 
+ 412 bytes of CODE  memory
+  88 bytes of CONST memory
+
+Errors: none
+Warnings: none

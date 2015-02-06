@@ -1,0 +1,575 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.1.50036 for STM8             24/Jan/2015  12:33:13 #
+# Copyright 2010-2011 IAR Systems AB.                                         #
+#                                                                             #
+#    Source file  =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_St #
+#                    dPeriph_Driver\src\stm8s_gpio.c                          #
+#    Command line =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_St #
+#                    dPeriph_Driver\src\stm8s_gpio.c -e -Ol --no_cse          #
+#                    --no_unroll --no_inline --no_code_motion --no_tbaa       #
+#                    --no_cross_call --debug --code_model medium              #
+#                    --data_model medium -o D:\Project\STM8S_StdPeriph_Lib_V2 #
+#                    .1.0\Project\STM8S_StdPeriph_Template\EWSTM8\STM8S208\Ob #
+#                    j\ --dlib_config "C:\Program Files\IAR Systems\Embedded  #
+#                    Workbench 6.0\stm8\LIB\dlstm8mmn.h" -D                   #
+#                    USE_STM8_128_EVAL -D STM8S003 -lC                        #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\List\ -lb                 #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\List\ -I                  #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\..\ -I                             #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\..\..\..\Libraries\STM8S_StdPeriph #
+#                    _Driver\inc\ -I D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Pr #
+#                    oject\STM8S_StdPeriph_Template\EWSTM8\..\..\..\Utilities #
+#                    \STM8S_EVAL\ -I D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Pr #
+#                    oject\STM8S_StdPeriph_Template\EWSTM8\..\..\..\Utilities #
+#                    \STM8S_EVAL\STM8S-128_EVAL\ -I                           #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\..\..\..\Utilities\STM8S_EVAL\Comm #
+#                    on\ --vregs 16                                           #
+#    List file    =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\List\stm8s_gpio.lst       #
+#    Object file  =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\Obj\stm8s_gpio.o          #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_StdPeriph_Driver\src\stm8s_gpio.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    stm8s_gpio.c
+      4            * @author  MCD Application Team
+      5            * @version V2.1.0
+      6            * @date    18-November-2011
+      7            * @brief   This file contains all the functions for the GPIO peripheral.
+      8            ******************************************************************************
+      9            * @attention
+     10            *
+     11            * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+     12            * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+     13            * TIME. AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY
+     14            * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+     15            * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+     16            * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+     17            *
+     18            * <h2><center>&copy; COPYRIGHT 2011 STMicroelectronics</center></h2>
+     19            ******************************************************************************
+     20            */
+     21          
+     22          /* Includes ------------------------------------------------------------------*/
+     23          #include "stm8s_gpio.h"
+     24          
+     25          /** @addtogroup STM8S_StdPeriph_Driver
+     26            * @{
+     27            */
+     28          /* Private typedef -----------------------------------------------------------*/
+     29          /* Private define ------------------------------------------------------------*/
+     30          /* Private macro -------------------------------------------------------------*/
+     31          /* Private variables ---------------------------------------------------------*/
+     32          /* Private function prototypes -----------------------------------------------*/
+     33          /* Private functions ---------------------------------------------------------*/
+     34          
+     35          /* Public functions ----------------------------------------------------------*/
+     36          
+     37          /**
+     38            * @addtogroup GPIO_Public_Functions
+     39            * @{
+     40            */
+     41          
+     42          /**
+     43            * @brief  Deinitializes the GPIOx peripheral registers to their default reset values.
+     44            * @param  GPIOx: Select the GPIO peripheral number (x = A to I).
+     45            * @retval None
+     46            */
+
+   \                                 In section .far_func.text, align 1
+     47          void GPIO_DeInit(GPIO_TypeDef* GPIOx)
+     48          {
+     49              GPIOx->ODR = GPIO_ODR_RESET_VALUE; /* Reset Output Data Register */
+   \                     GPIO_DeInit:
+   \   000000 4F                    CLR       A
+   \   000001 F7                    LD        (X), A
+     50              GPIOx->DDR = GPIO_DDR_RESET_VALUE; /* Reset Data Direction Register */
+   \   000002 9093                  LDW       Y, X
+   \   000004 72A90002              ADDW      Y, #0x2
+   \   000008 4F                    CLR       A
+   \   000009 90F7                  LD        (Y), A
+     51              GPIOx->CR1 = GPIO_CR1_RESET_VALUE; /* Reset Control Register 1 */
+   \   00000B 9093                  LDW       Y, X
+   \   00000D 72A90003              ADDW      Y, #0x3
+   \   000011 4F                    CLR       A
+   \   000012 90F7                  LD        (Y), A
+     52              GPIOx->CR2 = GPIO_CR2_RESET_VALUE; /* Reset Control Register 2 */
+   \   000014 1C0004                ADDW      X, #0x4
+   \   000017 4F                    CLR       A
+   \   000018 F7                    LD        (X), A
+     53          }
+   \   000019 87                    RETF
+     54          
+     55          /**
+     56            * @brief  Initializes the GPIOx according to the specified parameters.
+     57            * @param  GPIOx : Select the GPIO peripheral number (x = A to I).
+     58            * @param  GPIO_Pin : This parameter contains the pin number, it can be any value
+     59            *         of the @ref GPIO_Pin_TypeDef enumeration.
+     60            * @param  GPIO_Mode : This parameter can be a value of the
+     61            *         @Ref GPIO_Mode_TypeDef enumeration.
+     62            * @retval None
+     63            */
+     64          
+
+   \                                 In section .far_func.text, align 1
+     65          void GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef GPIO_Pin, GPIO_Mode_TypeDef GPIO_Mode)
+     66          {
+   \                     GPIO_Init:
+   \   000000 8D000000              CALLF     L:?push_l2
+   \   000004 BF00                  LDW       S:?w4, X
+   \   000006 B700                  LD        S:?b10, A
+   \   000008 450000                MOV       S:?b11, S:?b0
+     67              /*----------------------*/
+     68              /* Check the parameters */
+     69              /*----------------------*/
+     70          
+     71              assert_param(IS_GPIO_MODE_OK(GPIO_Mode));
+   \   00000B 3D00                  TNZ       S:?b11
+   \   00000D 2751                  JREQ      L:??GPIO_Init_0
+   \   00000F B600                  LD        A, S:?b11
+   \   000011 A140                  CP        A, #0x40
+   \   000013 274B                  JREQ      L:??GPIO_Init_0
+   \   000015 B600                  LD        A, S:?b11
+   \   000017 A120                  CP        A, #0x20
+   \   000019 2745                  JREQ      L:??GPIO_Init_0
+   \   00001B B600                  LD        A, S:?b11
+   \   00001D A160                  CP        A, #0x60
+   \   00001F 273F                  JREQ      L:??GPIO_Init_0
+   \   000021 B600                  LD        A, S:?b11
+   \   000023 A1A0                  CP        A, #0xa0
+   \   000025 2739                  JREQ      L:??GPIO_Init_0
+   \   000027 B600                  LD        A, S:?b11
+   \   000029 A1E0                  CP        A, #0xe0
+   \   00002B 2733                  JREQ      L:??GPIO_Init_0
+   \   00002D B600                  LD        A, S:?b11
+   \   00002F A180                  CP        A, #0x80
+   \   000031 272D                  JREQ      L:??GPIO_Init_0
+   \   000033 B600                  LD        A, S:?b11
+   \   000035 A1C0                  CP        A, #0xc0
+   \   000037 2727                  JREQ      L:??GPIO_Init_0
+   \   000039 B600                  LD        A, S:?b11
+   \   00003B A1B0                  CP        A, #0xb0
+   \   00003D 2721                  JREQ      L:??GPIO_Init_0
+   \   00003F B600                  LD        A, S:?b11
+   \   000041 A1F0                  CP        A, #0xf0
+   \   000043 271B                  JREQ      L:??GPIO_Init_0
+   \   000045 B600                  LD        A, S:?b11
+   \   000047 A190                  CP        A, #0x90
+   \   000049 2715                  JREQ      L:??GPIO_Init_0
+   \   00004B B600                  LD        A, S:?b11
+   \   00004D A1D0                  CP        A, #0xd0
+   \   00004F 270F                  JREQ      L:??GPIO_Init_0
+   \   000051 AE0047                LDW       X, #0x47
+   \   000054 BF00                  LDW       S:?w1, X
+   \   000056 5F                    CLRW      X
+   \   000057 BF00                  LDW       S:?w0, X
+   \   000059 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00005C 8D000000              CALLF     assert_failed
+     72              assert_param(IS_GPIO_PIN_OK(GPIO_Pin));
+   \                     ??GPIO_Init_0:
+   \   000060 3D00                  TNZ       S:?b10
+   \   000062 260F                  JRNE      L:??GPIO_Init_1
+   \   000064 AE0048                LDW       X, #0x48
+   \   000067 BF00                  LDW       S:?w1, X
+   \   000069 5F                    CLRW      X
+   \   00006A BF00                  LDW       S:?w0, X
+   \   00006C AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00006F 8D000000              CALLF     assert_failed
+     73              
+     74            /* Reset corresponding bit to GPIO_Pin in CR2 register */
+     75            GPIOx->CR2 &= (uint8_t)(~(GPIO_Pin));
+   \                     ??GPIO_Init_1:
+   \   000073 BE00                  LDW       X, S:?w4
+   \   000075 1C0004                ADDW      X, #0x4
+   \   000078 B600                  LD        A, S:?b10
+   \   00007A 43                    CPL       A
+   \   00007B F4                    AND       A, (X)
+   \   00007C BE00                  LDW       X, S:?w4
+   \   00007E 1C0004                ADDW      X, #0x4
+   \   000081 F7                    LD        (X), A
+     76          
+     77              /*-----------------------------*/
+     78              /* Input/Output mode selection */
+     79              /*-----------------------------*/
+     80          
+     81              if ((((uint8_t)(GPIO_Mode)) & (uint8_t)0x80) != (uint8_t)0x00) /* Output mode */
+   \   000082 B600                  LD        A, S:?b11
+   \   000084 A480                  AND       A, #0x80
+   \   000086 A100                  CP        A, #0x0
+   \   000088 272B                  JREQ      L:??GPIO_Init_2
+     82              {
+     83                  if ((((uint8_t)(GPIO_Mode)) & (uint8_t)0x10) != (uint8_t)0x00) /* High level */
+   \   00008A B600                  LD        A, S:?b11
+   \   00008C A410                  AND       A, #0x10
+   \   00008E A100                  CP        A, #0x0
+   \   000090 270A                  JREQ      L:??GPIO_Init_3
+     84                  {
+     85                      GPIOx->ODR |= (uint8_t)GPIO_Pin;
+   \   000092 B600                  LD        A, S:?b10
+   \   000094 92CA00                OR        A, [S:?w4.w]
+   \   000097 92C700                LD        [S:?w4.w], A
+   \   00009A 2009                  JRA       L:??GPIO_Init_4
+     86                  } 
+     87                  else /* Low level */
+     88                  {
+     89                      GPIOx->ODR &= (uint8_t)(~(GPIO_Pin));
+   \                     ??GPIO_Init_3:
+   \   00009C B600                  LD        A, S:?b10
+   \   00009E 43                    CPL       A
+   \   00009F 92C400                AND       A, [S:?w4.w]
+   \   0000A2 92C700                LD        [S:?w4.w], A
+     90                  }
+     91                  /* Set Output mode */
+     92                  GPIOx->DDR |= (uint8_t)GPIO_Pin;
+   \                     ??GPIO_Init_4:
+   \   0000A5 BE00                  LDW       X, S:?w4
+   \   0000A7 1C0002                ADDW      X, #0x2
+   \   0000AA B600                  LD        A, S:?b10
+   \   0000AC FA                    OR        A, (X)
+   \   0000AD BE00                  LDW       X, S:?w4
+   \   0000AF 1C0002                ADDW      X, #0x2
+   \   0000B2 F7                    LD        (X), A
+   \   0000B3 200F                  JRA       L:??GPIO_Init_5
+     93              } 
+     94              else /* Input mode */
+     95              {
+     96                  /* Set Input mode */
+     97                  GPIOx->DDR &= (uint8_t)(~(GPIO_Pin));
+   \                     ??GPIO_Init_2:
+   \   0000B5 BE00                  LDW       X, S:?w4
+   \   0000B7 1C0002                ADDW      X, #0x2
+   \   0000BA B600                  LD        A, S:?b10
+   \   0000BC 43                    CPL       A
+   \   0000BD F4                    AND       A, (X)
+   \   0000BE BE00                  LDW       X, S:?w4
+   \   0000C0 1C0002                ADDW      X, #0x2
+   \   0000C3 F7                    LD        (X), A
+     98              }
+     99          
+    100              /*------------------------------------------------------------------------*/
+    101              /* Pull-Up/Float (Input) or Push-Pull/Open-Drain (Output) modes selection */
+    102              /*------------------------------------------------------------------------*/
+    103          
+    104              if ((((uint8_t)(GPIO_Mode)) & (uint8_t)0x40) != (uint8_t)0x00) /* Pull-Up or Push-Pull */
+   \                     ??GPIO_Init_5:
+   \   0000C4 B600                  LD        A, S:?b11
+   \   0000C6 A440                  AND       A, #0x40
+   \   0000C8 A100                  CP        A, #0x0
+   \   0000CA 2710                  JREQ      L:??GPIO_Init_6
+    105              {
+    106                  GPIOx->CR1 |= (uint8_t)GPIO_Pin;
+   \   0000CC BE00                  LDW       X, S:?w4
+   \   0000CE 1C0003                ADDW      X, #0x3
+   \   0000D1 B600                  LD        A, S:?b10
+   \   0000D3 FA                    OR        A, (X)
+   \   0000D4 BE00                  LDW       X, S:?w4
+   \   0000D6 1C0003                ADDW      X, #0x3
+   \   0000D9 F7                    LD        (X), A
+   \   0000DA 200F                  JRA       L:??GPIO_Init_7
+    107              } 
+    108              else /* Float or Open-Drain */
+    109              {
+    110                  GPIOx->CR1 &= (uint8_t)(~(GPIO_Pin));
+   \                     ??GPIO_Init_6:
+   \   0000DC BE00                  LDW       X, S:?w4
+   \   0000DE 1C0003                ADDW      X, #0x3
+   \   0000E1 B600                  LD        A, S:?b10
+   \   0000E3 43                    CPL       A
+   \   0000E4 F4                    AND       A, (X)
+   \   0000E5 BE00                  LDW       X, S:?w4
+   \   0000E7 1C0003                ADDW      X, #0x3
+   \   0000EA F7                    LD        (X), A
+    111              }
+    112          
+    113              /*-----------------------------------------------------*/
+    114              /* Interrupt (Input) or Slope (Output) modes selection */
+    115              /*-----------------------------------------------------*/
+    116          
+    117              if ((((uint8_t)(GPIO_Mode)) & (uint8_t)0x20) != (uint8_t)0x00) /* Interrupt or Slow slope */
+   \                     ??GPIO_Init_7:
+   \   0000EB B600                  LD        A, S:?b11
+   \   0000ED A420                  AND       A, #0x20
+   \   0000EF A100                  CP        A, #0x0
+   \   0000F1 2712                  JREQ      L:??GPIO_Init_8
+    118              {
+    119                  GPIOx->CR2 |= (uint8_t)GPIO_Pin;
+   \   0000F3 BE00                  LDW       X, S:?w4
+   \   0000F5 1C0004                ADDW      X, #0x4
+   \   0000F8 B600                  LD        A, S:?b10
+   \   0000FA FA                    OR        A, (X)
+   \   0000FB BE00                  LDW       X, S:?w4
+   \   0000FD 1C0004                ADDW      X, #0x4
+   \   000100 F7                    LD        (X), A
+   \   000101 AC000000              JPF       L:?epilogue_l2
+    120              } 
+    121              else /* No external interrupt or No slope control */
+    122              {
+    123                  GPIOx->CR2 &= (uint8_t)(~(GPIO_Pin));
+   \                     ??GPIO_Init_8:
+   \   000105 BE00                  LDW       X, S:?w4
+   \   000107 1C0004                ADDW      X, #0x4
+   \   00010A 3300                  CPL       S:?b10
+   \   00010C B600                  LD        A, S:?b10
+   \   00010E F4                    AND       A, (X)
+   \   00010F BE00                  LDW       X, S:?w4
+   \   000111 1C0004                ADDW      X, #0x4
+   \   000114 F7                    LD        (X), A
+    124              }
+    125          }
+   \   000115 AC000000              JPF       L:?epilogue_l2
+    126          
+    127          /**
+    128            * @brief  Writes data to the specified GPIO data port.
+    129            * @note   The port must be configured in output mode.
+    130            * @param  GPIOx : Select the GPIO peripheral number (x = A to I).
+    131            * @param  GPIO_PortVal : Specifies the value to be written to the port output
+    132            *         data register.
+    133            * @retval None
+    134            */
+
+   \                                 In section .far_func.text, align 1
+    135          void GPIO_Write(GPIO_TypeDef* GPIOx, uint8_t PortVal)
+    136          {
+    137              GPIOx->ODR = PortVal;
+   \                     GPIO_Write:
+   \   000000 F7                    LD        (X), A
+    138          }
+   \   000001 87                    RETF
+    139          
+    140          /**
+    141            * @brief  Writes high level to the specified GPIO pins.
+    142            * @note   The port must be configured in output mode.  
+    143            * @param  GPIOx : Select the GPIO peripheral number (x = A to I).
+    144            * @param  PortPins : Specifies the pins to be turned high to the port output.
+    145            *         data register.
+    146            * @retval None
+    147            */
+
+   \                                 In section .far_func.text, align 1
+    148          void GPIO_WriteHigh(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef PortPins)
+    149          {
+    150              GPIOx->ODR |= (uint8_t)PortPins;
+   \                     GPIO_WriteHigh:
+   \   000000 FA                    OR        A, (X)
+   \   000001 F7                    LD        (X), A
+    151          }
+   \   000002 87                    RETF
+    152          
+    153          /**
+    154            * @brief  Writes low level to the specified GPIO pins.
+    155            * @note   The port must be configured in output mode.  
+    156            * @param  GPIOx : Select the GPIO peripheral number (x = A to I).
+    157            * @param  PortPins : Specifies the pins to be turned low to the port output.
+    158            *         data register.
+    159            * @retval None
+    160            */
+
+   \                                 In section .far_func.text, align 1
+    161          void GPIO_WriteLow(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef PortPins)
+    162          {
+    163              GPIOx->ODR &= (uint8_t)(~PortPins);
+   \                     GPIO_WriteLow:
+   \   000000 43                    CPL       A
+   \   000001 F4                    AND       A, (X)
+   \   000002 F7                    LD        (X), A
+    164          }
+   \   000003 87                    RETF
+    165          
+    166          /**
+    167            * @brief  Writes reverse level to the specified GPIO pins.
+    168            * @note   The port must be configured in output mode.
+    169            * @param  GPIOx : Select the GPIO peripheral number (x = A to I).
+    170            * @param  PortPins : Specifies the pins to be reversed to the port output.
+    171            *         data register.
+    172            * @retval None
+    173            */
+
+   \                                 In section .far_func.text, align 1
+    174          void GPIO_WriteReverse(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef PortPins)
+    175          {
+    176              GPIOx->ODR ^= (uint8_t)PortPins;
+   \                     GPIO_WriteReverse:
+   \   000000 F8                    XOR       A, (X)
+   \   000001 F7                    LD        (X), A
+    177          }
+   \   000002 87                    RETF
+    178          
+    179          /**
+    180            * @brief  Reads the specified GPIO output data port.
+    181            * @note   The port must be configured in input mode.  
+    182            * @param  GPIOx : Select the GPIO peripheral number (x = A to I).
+    183            * @retval GPIO output data port value.
+    184            */
+
+   \                                 In section .far_func.text, align 1
+    185          uint8_t GPIO_ReadOutputData(GPIO_TypeDef* GPIOx)
+    186          {
+    187              return ((uint8_t)GPIOx->ODR);
+   \                     GPIO_ReadOutputData:
+   \   000000 F6                    LD        A, (X)
+   \   000001 87                    RETF
+    188          }
+    189          
+    190          /**
+    191            * @brief  Reads the specified GPIO input data port.
+    192            * @note   The port must be configured in input mode.   
+    193            * @param  GPIOx : Select the GPIO peripheral number (x = A to I).
+    194            * @retval GPIO input data port value.
+    195            */
+
+   \                                 In section .far_func.text, align 1
+    196          uint8_t GPIO_ReadInputData(GPIO_TypeDef* GPIOx)
+    197          {
+    198              return ((uint8_t)GPIOx->IDR);
+   \                     GPIO_ReadInputData:
+   \   000000 5C                    INCW      X
+   \   000001 F6                    LD        A, (X)
+   \   000002 87                    RETF
+    199          }
+    200          
+    201          /**
+    202            * @brief  Reads the specified GPIO input data pin.
+    203            * @param  GPIOx : Select the GPIO peripheral number (x = A to I).
+    204            * @param  GPIO_Pin : Specifies the pin number.
+    205            * @retval BitStatus : GPIO input pin status.
+    206            */
+
+   \                                 In section .far_func.text, align 1
+    207          BitStatus GPIO_ReadInputPin(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef GPIO_Pin)
+    208          {
+    209              return ((BitStatus)(GPIOx->IDR & (uint8_t)GPIO_Pin));
+   \                     GPIO_ReadInputPin:
+   \   000000 5C                    INCW      X
+   \   000001 F4                    AND       A, (X)
+   \   000002 87                    RETF
+    210          }
+    211          
+    212          /**
+    213            * @brief  Configures the external pull-up on GPIOx pins.
+    214            * @param  GPIOx : Select the GPIO peripheral number (x = A to I).
+    215            * @param  GPIO_Pin : Specifies the pin number
+    216            * @param  NewState : The new state of the pull up pin.
+    217            * @retval None
+    218            */
+
+   \                                 In section .far_func.text, align 1
+    219          void GPIO_ExternalPullUpConfig(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef GPIO_Pin, FunctionalState NewState)
+    220          {
+   \                     GPIO_ExternalPullUpConfig:
+   \   000000 8D000000              CALLF     L:?push_l2
+   \   000004 BF00                  LDW       S:?w4, X
+   \   000006 B700                  LD        S:?b10, A
+   \   000008 450000                MOV       S:?b11, S:?b0
+    221              /* Check the parameters */
+    222              assert_param(IS_GPIO_PIN_OK(GPIO_Pin));
+   \   00000B 3D00                  TNZ       S:?b10
+   \   00000D 260F                  JRNE      L:??GPIO_ExternalPullUpConfig_0
+   \   00000F AE00DE                LDW       X, #0xde
+   \   000012 BF00                  LDW       S:?w1, X
+   \   000014 5F                    CLRW      X
+   \   000015 BF00                  LDW       S:?w0, X
+   \   000017 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00001A 8D000000              CALLF     assert_failed
+    223              assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+   \                     ??GPIO_ExternalPullUpConfig_0:
+   \   00001E 3D00                  TNZ       S:?b11
+   \   000020 2715                  JREQ      L:??GPIO_ExternalPullUpConfig_1
+   \   000022 B600                  LD        A, S:?b11
+   \   000024 A101                  CP        A, #0x1
+   \   000026 270F                  JREQ      L:??GPIO_ExternalPullUpConfig_1
+   \   000028 AE00DF                LDW       X, #0xdf
+   \   00002B BF00                  LDW       S:?w1, X
+   \   00002D 5F                    CLRW      X
+   \   00002E BF00                  LDW       S:?w0, X
+   \   000030 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   000033 8D000000              CALLF     assert_failed
+    224          
+    225              if (NewState != DISABLE) /* External Pull-Up Set*/
+   \                     ??GPIO_ExternalPullUpConfig_1:
+   \   000037 3D00                  TNZ       S:?b11
+   \   000039 2712                  JREQ      L:??GPIO_ExternalPullUpConfig_2
+    226              {
+    227                  GPIOx->CR1 |= (uint8_t)GPIO_Pin;
+   \   00003B BE00                  LDW       X, S:?w4
+   \   00003D 1C0003                ADDW      X, #0x3
+   \   000040 B600                  LD        A, S:?b10
+   \   000042 FA                    OR        A, (X)
+   \   000043 BE00                  LDW       X, S:?w4
+   \   000045 1C0003                ADDW      X, #0x3
+   \   000048 F7                    LD        (X), A
+   \   000049 AC000000              JPF       L:?epilogue_l2
+    228              } else /* External Pull-Up Reset*/
+    229              {
+    230                  GPIOx->CR1 &= (uint8_t)(~(GPIO_Pin));
+   \                     ??GPIO_ExternalPullUpConfig_2:
+   \   00004D BE00                  LDW       X, S:?w4
+   \   00004F 1C0003                ADDW      X, #0x3
+   \   000052 3300                  CPL       S:?b10
+   \   000054 B600                  LD        A, S:?b10
+   \   000056 F4                    AND       A, (X)
+   \   000057 BE00                  LDW       X, S:?w4
+   \   000059 1C0003                ADDW      X, #0x3
+   \   00005C F7                    LD        (X), A
+    231              }
+    232          }
+   \   00005D AC000000              JPF       L:?epilogue_l2
+
+   \                                 In section .near.rodata, align 1
+   \                     `?<Constant "D:\\\\Project\\\\STM8S_StdP...">`:
+   \   000000 443A5C50726F          DC8 44H, 3AH, 5CH, 50H, 72H, 6FH, 6AH, 65H
+   \   000008 63745C53544D          DC8 63H, 74H, 5CH, 53H, 54H, 4DH, 38H, 53H
+   \   000010 5F5374645065          DC8 5FH, 53H, 74H, 64H, 50H, 65H, 72H, 69H
+   \   000018 70685F4C6962          DC8 70H, 68H, 5FH, 4CH, 69H, 62H, 5FH, 56H
+   \   000020 322E312E305C          DC8 32H, 2EH, 31H, 2EH, 30H, 5CH, 4CH, 69H
+   \   000028 627261726965          DC8 62H, 72H, 61H, 72H, 69H, 65H, 73H, 5CH
+   \   000030 53544D38535F          DC8 53H, 54H, 4DH, 38H, 53H, 5FH, 53H, 74H
+   \   000038 645065726970          DC8 64H, 50H, 65H, 72H, 69H, 70H, 68H, 5FH
+   \   000040 447269766572          DC8 44H, 72H, 69H, 76H, 65H, 72H, 5CH, 73H
+   \   000048 72635C73746D          DC8 72H, 63H, 5CH, 73H, 74H, 6DH, 38H, 73H
+   \   000050 5F6770696F2E          DC8 5FH, 67H, 70H, 69H, 6FH, 2EH, 63H, 0
+    233          
+    234          /**
+    235            * @}
+    236            */
+    237            
+    238          /**
+    239            * @}
+    240            */
+    241            
+    242          /******************* (C) COPYRIGHT 2011 STMicroelectronics *****END OF FILE****/
+
+   Section sizes:
+
+     Function/Label                           Bytes
+     --------------                           -----
+     GPIO_DeInit                                26
+     GPIO_Init                                 281
+     GPIO_Write                                  2
+     GPIO_WriteHigh                              3
+     GPIO_WriteLow                               4
+     GPIO_WriteReverse                           3
+     GPIO_ReadOutputData                         2
+     GPIO_ReadInputData                          3
+     GPIO_ReadInputPin                           3
+     GPIO_ExternalPullUpConfig                  97
+     ?<Constant "D:\\Project\\STM8S_StdP...">   88
+
+ 
+ 424 bytes in section .far_func.text
+  88 bytes in section .near.rodata
+ 
+ 424 bytes of CODE  memory
+  88 bytes of CONST memory
+
+Errors: none
+Warnings: none

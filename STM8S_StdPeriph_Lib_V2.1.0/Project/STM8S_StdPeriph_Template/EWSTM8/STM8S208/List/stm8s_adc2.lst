@@ -1,0 +1,590 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.1.50036 for STM8             05/Dec/2014  23:42:04 #
+# Copyright 2010-2011 IAR Systems AB.                                         #
+#                                                                             #
+#    Source file  =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_St #
+#                    dPeriph_Driver\src\stm8s_adc2.c                          #
+#    Command line =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_St #
+#                    dPeriph_Driver\src\stm8s_adc2.c -e -Om --no_unroll       #
+#                    --no_inline --no_tbaa --no_cross_call --debug            #
+#                    --code_model medium --data_model medium -o               #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\Obj\ --dlib_config        #
+#                    "C:\Program Files\IAR Systems\Embedded Workbench         #
+#                    6.0\stm8\LIB\dlstm8mmn.h" -D USE_STM8_128_EVAL -D        #
+#                    STM8S003 -lC D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Proje #
+#                    ct\STM8S_StdPeriph_Template\EWSTM8\STM8S208\List\ -lb    #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\List\ -I                  #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\..\ -I                             #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\..\..\..\Libraries\STM8S_StdPeriph #
+#                    _Driver\inc\ -I D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Pr #
+#                    oject\STM8S_StdPeriph_Template\EWSTM8\..\..\..\Utilities #
+#                    \STM8S_EVAL\ -I D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Pr #
+#                    oject\STM8S_StdPeriph_Template\EWSTM8\..\..\..\Utilities #
+#                    \STM8S_EVAL\STM8S-128_EVAL\ -I                           #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\..\..\..\Utilities\STM8S_EVAL\Comm #
+#                    on\ --vregs 16                                           #
+#    List file    =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\List\stm8s_adc2.lst       #
+#    Object file  =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\Obj\stm8s_adc2.o          #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_StdPeriph_Driver\src\stm8s_adc2.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    stm8s_adc2.c
+      4            * @author  MCD Application Team
+      5            * @version V2.1.0
+      6            * @date    18-November-2011
+      7            * @brief   This file contains all the functions/macros for the ADC2 peripheral.
+      8            ******************************************************************************
+      9            * @attention
+     10            *
+     11            * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+     12            * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+     13            * TIME. AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY
+     14            * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+     15            * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+     16            * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+     17            *
+     18            * <h2><center>&copy; COPYRIGHT 2011 STMicroelectronics</center></h2>
+     19            ******************************************************************************
+     20            */
+     21          
+     22          /* Includes ------------------------------------------------------------------*/
+     23          #include "stm8s_adc2.h"
+     24          
+     25          /** @addtogroup STM8S_StdPeriph_Driver
+     26            * @{
+     27            */
+     28          /* Private typedef -----------------------------------------------------------*/
+     29          /* Private define ------------------------------------------------------------*/
+     30          /* Private macro -------------------------------------------------------------*/
+     31          /* Private variables ---------------------------------------------------------*/
+     32          /* Private function prototypes -----------------------------------------------*/
+     33          /* Private functions ---------------------------------------------------------*/
+     34          
+     35          /* Public functions ----------------------------------------------------------*/
+     36          
+     37          /**
+     38            * @addtogroup ADC2_Public_Functions
+     39            * @{
+     40            */
+     41          
+     42          /**
+     43            * @brief  Deinitializes the ADC2 peripheral registers to their default reset
+     44            * values.
+     45            * @param  None
+     46            * @retval None
+     47            */
+     48          void ADC2_DeInit(void)
+     49          {
+     50              ADC2->CSR  = ADC2_CSR_RESET_VALUE;
+                     ^
+Error[Pe020]: identifier "ADC2" is undefined
+
+      ADC2->CSR  = ADC2_CSR_RESET_VALUE;
+                   ^
+"D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_StdPeriph_Driver\src\stm8s_adc2.c",50  Error[Pe020]: 
+          identifier "ADC2_CSR_RESET_VALUE" is undefined
+     51              ADC2->CR1  = ADC2_CR1_RESET_VALUE;
+                                  ^
+Error[Pe020]: identifier "ADC2_CR1_RESET_VALUE" is undefined
+     52              ADC2->CR2  = ADC2_CR2_RESET_VALUE;
+                                  ^
+Error[Pe020]: identifier "ADC2_CR2_RESET_VALUE" is undefined
+     53              ADC2->TDRH = ADC2_TDRH_RESET_VALUE;
+                                  ^
+Error[Pe020]: identifier "ADC2_TDRH_RESET_VALUE" is undefined
+     54              ADC2->TDRL = ADC2_TDRL_RESET_VALUE;
+                                  ^
+Error[Pe020]: identifier "ADC2_TDRL_RESET_VALUE" is undefined
+     55          }
+     56          
+     57          /**
+     58            * @brief  Initializes the ADC2 peripheral according to the specified parameters
+     59            * @param   ADC2_ConversionMode: specifies the conversion mode
+     60            * can be one of the values of @ref ADC2_ConvMode_TypeDef.
+     61            * @param   ADC2_Channel: specifies the channel to convert
+     62            * can be one of the values of @ref ADC2_Channel_TypeDef.
+     63            * @param   ADC2_PrescalerSelection: specifies the ADC2 prescaler
+     64            * can be one of the values of @ref ADC2_PresSel_TypeDef.
+     65            * @param   ADC2_ExtTrigger: specifies the external trigger
+     66            * can be one of the values of @ref ADC2_ExtTrig_TypeDef.
+     67            * @param   ADC2_ExtTriggerState: specifies the external trigger new state
+     68            * can be one of the values of @ref FunctionalState.
+     69            * @param   ADC2_Align: specifies the converted data alignment
+     70            * can be one of the values of @ref ADC2_Align_TypeDef.
+     71            * @param   ADC2_SchmittTriggerChannel: specifies the schmitt trigger channel
+     72            * can be one of the values of @ref ADC2_SchmittTrigg_TypeDef.
+     73            * @param   ADC2_SchmittTriggerState: specifies the schmitt trigger state
+     74            * can be one of the values of @ref FunctionalState.
+     75            * @retval None
+     76            */
+     77          void ADC2_Init(ADC2_ConvMode_TypeDef ADC2_ConversionMode, ADC2_Channel_TypeDef ADC2_Channel, ADC2_PresSel_TypeDef ADC2_PrescalerSelection, ADC2_ExtTrig_TypeDef ADC2_ExtTrigger, FunctionalState ADC2_ExtTriggerState, ADC2_Align_TypeDef ADC2_Align, ADC2_SchmittTrigg_TypeDef ADC2_SchmittTriggerChannel, FunctionalState ADC2_SchmittTriggerState)
+     78          {
+     79          
+     80              /* Check the parameters */
+     81              assert_param(IS_ADC2_CONVERSIONMODE_OK(ADC2_ConversionMode));
+     82              assert_param(IS_ADC2_CHANNEL_OK(ADC2_Channel));
+     83              assert_param(IS_ADC2_PRESSEL_OK(ADC2_PrescalerSelection));
+     84              assert_param(IS_ADC2_EXTTRIG_OK(ADC2_ExtTrigger));
+     85              assert_param(IS_FUNCTIONALSTATE_OK(((ADC2_ExtTriggerState))));
+     86              assert_param(IS_ADC2_ALIGN_OK(ADC2_Align));
+     87              assert_param(IS_ADC2_SCHMITTTRIG_OK(ADC2_SchmittTriggerChannel));
+     88              assert_param(IS_FUNCTIONALSTATE_OK(ADC2_SchmittTriggerState));
+     89          
+     90              /*-----------------CR1 & CSR configuration --------------------*/
+     91              /* Configure the conversion mode and the channel to convert
+     92              respectively according to ADC2_ConversionMode & ADC2_Channel values  &  ADC2_Align values */
+     93              ADC2_ConversionConfig(ADC2_ConversionMode, ADC2_Channel, ADC2_Align);
+     94              /* Select the prescaler division factor according to ADC2_PrescalerSelection values */
+     95              ADC2_PrescalerConfig(ADC2_PrescalerSelection);
+     96          
+     97              /*-----------------CR2 configuration --------------------*/
+     98              /* Configure the external trigger state and event respectively
+     99              according to ADC2_ExtTrigStatus, ADC2_ExtTrigger */
+    100              ADC2_ExternalTriggerConfig(ADC2_ExtTrigger, ADC2_ExtTriggerState);
+    101          
+    102              /*------------------TDR configuration ---------------------------*/
+    103              /* Configure the schmitt trigger channel and state respectively
+    104              according to ADC2_SchmittTriggerChannel & ADC2_SchmittTriggerNewState  values */
+    105              ADC2_SchmittTriggerConfig(ADC2_SchmittTriggerChannel, ADC2_SchmittTriggerState);
+    106          
+    107              /* Enable the ADC2 peripheral */
+    108              ADC2->CR1 |= ADC2_CR1_ADON;
+                     ^
+Error[Pe020]: identifier "ADC2" is undefined
+
+      ADC2->CR1 |= ADC2_CR1_ADON;
+                   ^
+"D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_StdPeriph_Driver\src\stm8s_adc2.c",108  Error[Pe020]: 
+          identifier "ADC2_CR1_ADON" is undefined
+    109          
+    110          }
+    111          
+    112          
+    113          /**
+    114            * @brief  Enables or Disables the ADC2 peripheral.
+    115            * @param   NewState: specifies the peripheral enabled or disabled state.
+    116            * @retval None
+    117            */
+    118          void ADC2_Cmd(FunctionalState NewState)
+    119          {
+    120          
+    121              /* Check the parameters */
+    122              assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+    123          
+    124              if (NewState != DISABLE)
+    125              {
+    126                  ADC2->CR1 |= ADC2_CR1_ADON;
+                         ^
+Error[Pe020]: identifier "ADC2" is undefined
+
+          ADC2->CR1 |= ADC2_CR1_ADON;
+                       ^
+"D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_StdPeriph_Driver\src\stm8s_adc2.c",126  Error[Pe020]: 
+          identifier "ADC2_CR1_ADON" is undefined
+    127              }
+    128              else /* NewState == DISABLE */
+    129              {
+    130                  ADC2->CR1 &= (uint8_t)(~ADC2_CR1_ADON);
+                         ^
+Error[Pe020]: identifier "ADC2" is undefined
+
+          ADC2->CR1 &= (uint8_t)(~ADC2_CR1_ADON);
+                                  ^
+"D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_StdPeriph_Driver\src\stm8s_adc2.c",130  Error[Pe020]: 
+          identifier "ADC2_CR1_ADON" is undefined
+    131              }
+    132          
+    133          }
+    134          
+    135          /**
+    136            * @brief  Enables or disables the ADC2 interrupt.
+    137            * @param   NewState specifies the state of ADC2 interrupt.
+    138            * @retval None
+    139            */
+    140          void ADC2_ITConfig(FunctionalState NewState)
+    141          {
+    142          
+    143              /* Check the parameters */
+    144              assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+    145          
+    146              if (NewState != DISABLE)
+    147              {
+    148                  /* Enable the ADC2 interrupts */
+    149                  ADC2->CSR |= (uint8_t)ADC2_CSR_EOCIE;
+                         ^
+Error[Pe020]: identifier "ADC2" is undefined
+
+          ADC2->CSR |= (uint8_t)ADC2_CSR_EOCIE;
+                                ^
+"D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_StdPeriph_Driver\src\stm8s_adc2.c",149  Error[Pe020]: 
+          identifier "ADC2_CSR_EOCIE" is undefined
+    150              }
+    151              else  /*NewState == DISABLE */
+    152              {
+    153                  /* Disable the ADC2 interrupts */
+    154                  ADC2->CSR &= (uint8_t)(~ADC2_CSR_EOCIE);
+                         ^
+Error[Pe020]: identifier "ADC2" is undefined
+
+          ADC2->CSR &= (uint8_t)(~ADC2_CSR_EOCIE);
+                                  ^
+"D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_StdPeriph_Driver\src\stm8s_adc2.c",154  Error[Pe020]: 
+          identifier "ADC2_CSR_EOCIE" is undefined
+    155              }
+    156          
+    157          }
+    158          
+    159          /**
+    160            * @brief  Configure the ADC2 prescaler division factor.
+    161            * @param   ADC2_Prescaler: the selected prescaler.
+    162            * It can be one of the values of @ref ADC2_PresSel_TypeDef.
+    163            * @retval None
+    164            */
+    165          void ADC2_PrescalerConfig(ADC2_PresSel_TypeDef ADC2_Prescaler)
+    166          {
+    167          
+    168              /* Check the parameter */
+    169              assert_param(IS_ADC2_PRESSEL_OK(ADC2_Prescaler));
+    170          
+    171              /* Clear the SPSEL bits */
+    172              ADC2->CR1 &= (uint8_t)(~ADC2_CR1_SPSEL);
+                     ^
+Error[Pe020]: identifier "ADC2" is undefined
+
+      ADC2->CR1 &= (uint8_t)(~ADC2_CR1_SPSEL);
+                              ^
+"D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_StdPeriph_Driver\src\stm8s_adc2.c",172  Error[Pe020]: 
+          identifier "ADC2_CR1_SPSEL" is undefined
+    173              /* Select the prescaler division factor according to ADC2_PrescalerSelection values */
+    174              ADC2->CR1 |= (uint8_t)(ADC2_Prescaler);
+    175          
+    176          }
+    177          
+    178          
+    179          /**
+    180            * @brief  Enables or disables the ADC2 Schmitt Trigger on a selected channel.
+    181            * @param   ADC2_SchmittTriggerChannel specifies the desired Channel.
+    182            * It can be set of the values of @ref ADC2_SchmittTrigg_TypeDef.
+    183            * @param   NewState specifies the Channel  ADC2 Schmitt Trigger new status.
+    184            * can have one of the values of @ref FunctionalState.
+    185            * @retval None
+    186            */
+    187          void ADC2_SchmittTriggerConfig(ADC2_SchmittTrigg_TypeDef ADC2_SchmittTriggerChannel, FunctionalState NewState)
+    188          {
+    189          
+    190              /* Check the parameters */
+    191              assert_param(IS_ADC2_SCHMITTTRIG_OK(ADC2_SchmittTriggerChannel));
+    192              assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+    193          
+    194              if (ADC2_SchmittTriggerChannel == ADC2_SCHMITTTRIG_ALL)
+    195              {
+    196                  if (NewState != DISABLE)
+    197                  {
+    198                      ADC2->TDRL &= (uint8_t)0x0;
+                             ^
+Error[Pe020]: identifier "ADC2" is undefined
+    199                      ADC2->TDRH &= (uint8_t)0x0;
+    200                  }
+    201                  else /* NewState == DISABLE */
+    202                  {
+    203                      ADC2->TDRL |= (uint8_t)0xFF;
+                             ^
+Error[Pe020]: identifier "ADC2" is undefined
+    204                      ADC2->TDRH |= (uint8_t)0xFF;
+    205                  }
+    206              }
+    207              else if (ADC2_SchmittTriggerChannel < ADC2_SCHMITTTRIG_CHANNEL8)
+    208              {
+    209                  if (NewState != DISABLE)
+    210                  {
+    211                      ADC2->TDRL &= (uint8_t)(~(uint8_t)((uint8_t)0x01 << (uint8_t)ADC2_SchmittTriggerChannel));
+                             ^
+Error[Pe020]: identifier "ADC2" is undefined
+    212                  }
+    213                  else /* NewState == DISABLE */
+    214                  {
+    215                      ADC2->TDRL |= (uint8_t)((uint8_t)0x01 << (uint8_t)ADC2_SchmittTriggerChannel);
+                             ^
+Error[Pe020]: identifier "ADC2" is undefined
+    216                  }
+    217              }
+    218              else /* ADC2_SchmittTriggerChannel >= ADC2_SCHMITTTRIG_CHANNEL8 */
+    219              {
+    220                  if (NewState != DISABLE)
+    221                  {
+    222                      ADC2->TDRH &= (uint8_t)(~(uint8_t)((uint8_t)0x01 << ((uint8_t)ADC2_SchmittTriggerChannel - (uint8_t)8)));
+                             ^
+Error[Pe020]: identifier "ADC2" is undefined
+    223                  }
+    224                  else /* NewState == DISABLE */
+    225                  {
+    226                      ADC2->TDRH |= (uint8_t)((uint8_t)0x01 << ((uint8_t)ADC2_SchmittTriggerChannel - (uint8_t)8));
+                             ^
+Error[Pe020]: identifier "ADC2" is undefined
+    227                  }
+    228              }
+    229          
+    230          }
+    231          
+    232          /**
+    233            * @brief  Configure the ADC2 conversion on selected channel.
+    234            * @param   ADC2_ConversionMode Specifies the conversion type.
+    235            * It can be set of the values of @ref ADC2_ConvMode_TypeDef
+    236            * @param   ADC2_Channel specifies the ADC2 Channel.
+    237            * It can be set of the values of @ref ADC2_Channel_TypeDef
+    238            * @param   ADC2_Align specifies the converted data alignment.
+    239            * It can be set of the values of @ref ADC2_Align_TypeDef
+    240            * @retval None
+    241            */
+    242          void ADC2_ConversionConfig(ADC2_ConvMode_TypeDef ADC2_ConversionMode, ADC2_Channel_TypeDef ADC2_Channel, ADC2_Align_TypeDef ADC2_Align)
+    243          {
+    244          
+    245              /* Check the parameters */
+    246              assert_param(IS_ADC2_CONVERSIONMODE_OK(ADC2_ConversionMode));
+    247              assert_param(IS_ADC2_CHANNEL_OK(ADC2_Channel));
+    248              assert_param(IS_ADC2_ALIGN_OK(ADC2_Align));
+    249          
+    250              /* Clear the align bit */
+    251              ADC2->CR2 &= (uint8_t)(~ADC2_CR2_ALIGN);
+                     ^
+Error[Pe020]: identifier "ADC2" is undefined
+
+      ADC2->CR2 &= (uint8_t)(~ADC2_CR2_ALIGN);
+                              ^
+"D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_StdPeriph_Driver\src\stm8s_adc2.c",251  Error[Pe020]: 
+          identifier "ADC2_CR2_ALIGN" is undefined
+    252              /* Configure the data alignment */
+    253              ADC2->CR2 |= (uint8_t)(ADC2_Align);
+    254          
+    255              if (ADC2_ConversionMode == ADC2_CONVERSIONMODE_CONTINUOUS)
+    256              {
+    257                  /* Set the continuous conversion mode */
+    258                  ADC2->CR1 |= ADC2_CR1_CONT;
+                                      ^
+Error[Pe020]: identifier "ADC2_CR1_CONT" is undefined
+    259              }
+    260              else /* ADC2_ConversionMode == ADC2_CONVERSIONMODE_SINGLE */
+    261              {
+    262                  /* Set the single conversion mode */
+    263                  ADC2->CR1 &= (uint8_t)(~ADC2_CR1_CONT);
+                                                 ^
+Error[Pe020]: identifier "ADC2_CR1_CONT" is undefined
+    264              }
+    265          
+    266              /* Clear the ADC2 channels */
+    267              ADC2->CSR &= (uint8_t)(~ADC2_CSR_CH);
+                                             ^
+Error[Pe020]: identifier "ADC2_CSR_CH" is undefined
+    268              /* Select the ADC2 channel */
+    269              ADC2->CSR |= (uint8_t)(ADC2_Channel);
+    270          
+    271          }
+    272          
+    273          
+    274          /**
+    275            * @brief  Configure the ADC2 conversion on external trigger event.
+    276            * @par Full description:
+    277            * The selected external trigger event can be enabled or disabled.
+    278            * @param   ADC2_ExtTrigger to select the External trigger event.
+    279            * can have one of the values of @ref ADC2_ExtTrig_TypeDef.
+    280            * @param   NewState to enable/disable the selected external trigger
+    281            * can have one of the values of @ref FunctionalState.
+    282            * @retval None
+    283            */
+    284          void ADC2_ExternalTriggerConfig(ADC2_ExtTrig_TypeDef ADC2_ExtTrigger, FunctionalState NewState)
+    285          {
+    286          
+    287              /* Check the parameters */
+    288              assert_param(IS_ADC2_EXTTRIG_OK(ADC2_ExtTrigger));
+    289              assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+    290          
+    291              /* Clear the external trigger selection bits */
+    292              ADC2->CR2 &= (uint8_t)(~ADC2_CR2_EXTSEL);
+                     ^
+Error[Pe020]: identifier "ADC2" is undefined
+
+      ADC2->CR2 &= (uint8_t)(~ADC2_CR2_EXTSEL);
+                              ^
+"D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_StdPeriph_Driver\src\stm8s_adc2.c",292  Error[Pe020]: 
+          identifier "ADC2_CR2_EXTSEL" is undefined
+    293          
+    294              if (NewState != DISABLE)
+    295              {
+    296                  /* Enable the selected external Trigger */
+    297                  ADC2->CR2 |= (uint8_t)(ADC2_CR2_EXTTRIG);
+                                                ^
+Error[Pe020]: identifier "ADC2_CR2_EXTTRIG" is undefined
+    298              }
+    299              else /* NewState == DISABLE */
+    300              {
+    301                  /* Disable the selected external trigger */
+    302                  ADC2->CR2 &= (uint8_t)(~ADC2_CR2_EXTTRIG);
+                                                 ^
+Error[Pe020]: identifier "ADC2_CR2_EXTTRIG" is undefined
+    303              }
+    304          
+    305              /* Set the slected external trigger */
+    306              ADC2->CR2 |= (uint8_t)(ADC2_ExtTrigger);
+    307          
+    308          }
+    309          
+    310          
+    311          /**
+    312            * @brief  Start ADC2 conversion
+    313            * @par Full description:
+    314            * This function  triggers the start of conversion, after ADC2 configuration.
+    315            * @param  None
+    316            * @retval None
+    317            * @par Required preconditions:
+    318            * Enable the ADC2 peripheral before calling this function
+    319            */
+    320          void ADC2_StartConversion(void)
+    321          {
+    322              ADC2->CR1 |= ADC2_CR1_ADON;
+                     ^
+Error[Pe020]: identifier "ADC2" is undefined
+
+      ADC2->CR1 |= ADC2_CR1_ADON;
+                   ^
+"D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_StdPeriph_Driver\src\stm8s_adc2.c",322  Error[Pe020]: 
+          identifier "ADC2_CR1_ADON" is undefined
+    323          }
+    324          
+    325          /**
+    326            * @brief  Get one sample of measured signal.
+    327            * @param  None
+    328            * @retval ConversionValue:  value of the measured signal.
+    329            * @par Required preconditions:
+    330            * ADC2 conversion finished.
+    331            */
+    332          uint16_t ADC2_GetConversionValue(void)
+    333          {
+    334          
+    335              uint16_t temph = 0;
+    336              uint8_t templ = 0;
+    337          
+    338              if ((ADC2->CR2 & ADC2_CR2_ALIGN) != 0) /* Right alignment */
+                          ^
+Error[Pe020]: identifier "ADC2" is undefined
+
+      if ((ADC2->CR2 & ADC2_CR2_ALIGN) != 0) /* Right alignment */
+                       ^
+"D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_StdPeriph_Driver\src\stm8s_adc2.c",338  Error[Pe020]: 
+          identifier "ADC2_CR2_ALIGN" is undefined
+    339              {
+    340                  /* Read LSB first */
+    341                  templ = ADC2->DRL;
+    342                  /* Then read MSB */
+    343                  temph = ADC2->DRH;
+    344          
+    345                  temph = (uint16_t)(templ | (uint16_t)(temph << (uint8_t)8));
+    346              }
+    347              else /* Left alignment */
+    348              {
+    349                  /* Read MSB firts*/
+    350                  temph = ADC2->DRH;
+    351                  /* Then read LSB */
+    352                  templ = ADC2->DRL;
+    353          
+    354                  temph = (uint16_t)((uint16_t)((uint16_t)templ << 6) | (uint16_t)((uint16_t)temph << 8));
+    355              }
+    356          
+    357              return ((uint16_t)temph);
+    358          
+    359          }
+    360          
+    361          /**
+    362            * @brief  Checks the ADC2 EOC flag status.
+    363            * @param  None
+    364            * @retval FlagStatus Status of the ADC2 EOC flag.
+    365            */
+    366          FlagStatus ADC2_GetFlagStatus(void)
+    367          {
+    368              /* Get EOC  flag status */
+    369              return (FlagStatus)(ADC2->CSR & ADC2_CSR_EOC);
+                                         ^
+Error[Pe020]: identifier "ADC2" is undefined
+
+      return (FlagStatus)(ADC2->CSR & ADC2_CSR_EOC);
+                                      ^
+"D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_StdPeriph_Driver\src\stm8s_adc2.c",369  Error[Pe020]: 
+          identifier "ADC2_CSR_EOC" is undefined
+    370          
+    371          }
+    372          
+    373          /**
+    374            * @brief  Clear the ADC2 EOC Flag.
+    375            * @param  None
+    376            * @retval None
+    377            */
+    378          void ADC2_ClearFlag(void)
+    379          {
+    380              ADC2->CSR &= (uint8_t)(~ADC2_CSR_EOC);
+                     ^
+Error[Pe020]: identifier "ADC2" is undefined
+
+      ADC2->CSR &= (uint8_t)(~ADC2_CSR_EOC);
+                              ^
+"D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_StdPeriph_Driver\src\stm8s_adc2.c",380  Error[Pe020]: 
+          identifier "ADC2_CSR_EOC" is undefined
+    381          }
+    382          
+    383          /**
+    384            * @brief  Returns the EOC  pending bit status
+    385           * @par Parameters:
+    386            * None
+    387            * @retval FlagStatus: status of the EOC pending bit.
+    388            */
+    389          ITStatus ADC2_GetITStatus(void)
+    390          {
+    391              return (ITStatus)(ADC2->CSR & ADC2_CSR_EOC);
+                                       ^
+Error[Pe020]: identifier "ADC2" is undefined
+
+      return (ITStatus)(ADC2->CSR & ADC2_CSR_EOC);
+                                    ^
+"D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_StdPeriph_Driver\src\stm8s_adc2.c",391  Error[Pe020]: 
+          identifier "ADC2_CSR_EOC" is undefined
+    392          }
+    393          
+    394          /**
+    395            * @brief  Clear the ADC2 End of Conversion pending bit.
+    396            * @param  None
+    397            * @retval None
+    398            */
+    399          void ADC2_ClearITPendingBit(void)
+    400          {
+    401              ADC2->CSR &= (uint8_t)(~ADC2_CSR_EOC);
+                     ^
+Error[Pe020]: identifier "ADC2" is undefined
+
+      ADC2->CSR &= (uint8_t)(~ADC2_CSR_EOC);
+                              ^
+"D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_StdPeriph_Driver\src\stm8s_adc2.c",401  Error[Pe020]: 
+          identifier "ADC2_CSR_EOC" is undefined
+    402          }
+    403          
+    404          /**
+    405            * @}
+    406            */
+    407            
+    408          /**
+    409            * @}
+    410            */
+    411            
+    412          /******************* (C) COPYRIGHT 2011 STMicroelectronics *****END OF FILE****/
+
+Errors: 45
+Warnings: none

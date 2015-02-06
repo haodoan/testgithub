@@ -1,0 +1,744 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.1.50036 for STM8             24/Jan/2015  12:33:28 #
+# Copyright 2010-2011 IAR Systems AB.                                         #
+#                                                                             #
+#    Source file  =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_St #
+#                    dPeriph_Driver\src\stm8s_itc.c                           #
+#    Command line =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_St #
+#                    dPeriph_Driver\src\stm8s_itc.c -e -Ol --no_cse           #
+#                    --no_unroll --no_inline --no_code_motion --no_tbaa       #
+#                    --no_cross_call --debug --code_model medium              #
+#                    --data_model medium -o D:\Project\STM8S_StdPeriph_Lib_V2 #
+#                    .1.0\Project\STM8S_StdPeriph_Template\EWSTM8\STM8S208\Ob #
+#                    j\ --dlib_config "C:\Program Files\IAR Systems\Embedded  #
+#                    Workbench 6.0\stm8\LIB\dlstm8mmn.h" -D                   #
+#                    USE_STM8_128_EVAL -D STM8S003 -lC                        #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\List\ -lb                 #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\List\ -I                  #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\..\ -I                             #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\..\..\..\Libraries\STM8S_StdPeriph #
+#                    _Driver\inc\ -I D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Pr #
+#                    oject\STM8S_StdPeriph_Template\EWSTM8\..\..\..\Utilities #
+#                    \STM8S_EVAL\ -I D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Pr #
+#                    oject\STM8S_StdPeriph_Template\EWSTM8\..\..\..\Utilities #
+#                    \STM8S_EVAL\STM8S-128_EVAL\ -I                           #
+#                    D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\..\..\..\Utilities\STM8S_EVAL\Comm #
+#                    on\ --vregs 16                                           #
+#    List file    =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\List\stm8s_itc.lst        #
+#    Object file  =  D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Project\STM8S_StdP #
+#                    eriph_Template\EWSTM8\STM8S208\Obj\stm8s_itc.o           #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\Project\STM8S_StdPeriph_Lib_V2.1.0\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    stm8s_itc.c
+      4            * @author  MCD Application Team
+      5            * @version V2.1.0
+      6            * @date    18-November-2011
+      7            * @brief   This file contains all the functions for the ITC peripheral.
+      8            ******************************************************************************
+      9            * @attention
+     10            *
+     11            * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+     12            * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+     13            * TIME. AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY
+     14            * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+     15            * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+     16            * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+     17            *
+     18            * <h2><center>&copy; COPYRIGHT 2011 STMicroelectronics</center></h2>
+     19            ******************************************************************************
+     20            */
+     21          
+     22          /* Includes ------------------------------------------------------------------*/
+     23          #include "stm8s_itc.h"
+     24          
+     25          /** @addtogroup STM8S_StdPeriph_Driver
+     26            * @{
+     27            */
+     28          /* Private typedef -----------------------------------------------------------*/
+     29          /* Private define ------------------------------------------------------------*/
+     30          /* Private macro -------------------------------------------------------------*/
+     31          /* Private variables ---------------------------------------------------------*/
+     32          /* Private function prototypes -----------------------------------------------*/
+     33          /* Private functions ---------------------------------------------------------*/
+     34          
+     35          /** @addtogroup ITC_Private_Functions
+     36            * @{
+     37            */
+     38          
+     39          /**
+     40            * @brief  Utility function used to read CC register.
+     41            * @param  None
+     42            * @retval CPU CC register value
+     43            */
+
+   \                                 In section .far_func.text, align 1
+     44          uint8_t ITC_GetCPUCC(void)
+     45          {
+     46          #ifdef _COSMIC_
+     47            _asm("push cc");
+     48            _asm("pop a");
+     49            return; /* Ignore compiler warning, the returned value is in A register */
+     50          #elif defined _RAISONANCE_ /* _RAISONANCE_ */
+     51            return _getCC_();
+     52          #else /* _IAR_ */
+     53            asm("push cc");
+   \                     ITC_GetCPUCC:
+   \   000000 8A                    push cc
+     54            asm("pop a"); /* Ignore compiler warning, the returned value is in A register */
+   \   000001 84                    pop a
+     55          #endif /* _COSMIC_*/
+     56          }
+                 ^
+Warning[Pe940]: missing return statement at end of non-void function
+          "ITC_GetCPUCC"
+   \   000002 87                    RETF
+     57          
+     58          
+     59          /**
+     60            * @}
+     61            */
+     62          
+     63          /* Public functions ----------------------------------------------------------*/
+     64          
+     65          /** @addtogroup ITC_Public_Functions
+     66            * @{
+     67            */
+     68          
+     69          /**
+     70            * @brief  Deinitializes the ITC registers to their default reset value.
+     71            * @param  None
+     72            * @retval None
+     73            */
+
+   \                                 In section .far_func.text, align 1
+     74          void ITC_DeInit(void)
+     75          {
+     76              ITC->ISPR1 = ITC_SPRX_RESET_VALUE;
+   \                     ITC_DeInit:
+   \   000000 35FF7F70              MOV       L:0x7f70, #0xff
+     77              ITC->ISPR2 = ITC_SPRX_RESET_VALUE;
+   \   000004 35FF7F71              MOV       L:0x7f71, #0xff
+     78              ITC->ISPR3 = ITC_SPRX_RESET_VALUE;
+   \   000008 35FF7F72              MOV       L:0x7f72, #0xff
+     79              ITC->ISPR4 = ITC_SPRX_RESET_VALUE;
+   \   00000C 35FF7F73              MOV       L:0x7f73, #0xff
+     80              ITC->ISPR5 = ITC_SPRX_RESET_VALUE;
+   \   000010 35FF7F74              MOV       L:0x7f74, #0xff
+     81              ITC->ISPR6 = ITC_SPRX_RESET_VALUE;
+   \   000014 35FF7F75              MOV       L:0x7f75, #0xff
+     82              ITC->ISPR7 = ITC_SPRX_RESET_VALUE;
+   \   000018 35FF7F76              MOV       L:0x7f76, #0xff
+     83              ITC->ISPR8 = ITC_SPRX_RESET_VALUE;
+   \   00001C 35FF7F77              MOV       L:0x7f77, #0xff
+     84          }
+   \   000020 87                    RETF
+     85          
+     86          /**
+     87            * @brief  Gets the interrupt software priority bits (I1, I0) value from CPU CC register.
+     88            * @param  None
+     89            * @retval The interrupt software priority bits value.
+     90            */
+
+   \                                 In section .far_func.text, align 1
+     91          uint8_t ITC_GetSoftIntStatus(void)
+     92          {
+     93              return (uint8_t)(ITC_GetCPUCC() & CPU_CC_I1I0);
+   \                     ITC_GetSoftIntStatus:
+   \   000000 8D000000              CALLF     ITC_GetCPUCC
+   \   000004 A428                  AND       A, #0x28
+   \   000006 87                    RETF
+     94          }
+     95          
+     96          /**
+     97            * @brief  Gets the software priority of the specified interrupt source.
+     98            * @param  IrqNum : Specifies the peripheral interrupt source.
+     99            * @retval ITC_PriorityLevel_TypeDef : Specifies the software priority of the interrupt source.
+    100            */
+
+   \                                 In section .far_func.text, align 1
+    101          ITC_PriorityLevel_TypeDef ITC_GetSoftwarePriority(ITC_Irq_TypeDef IrqNum)
+    102          {
+   \                     ITC_GetSoftwarePriority:
+   \   000000 8D000000              CALLF     L:?push_w4
+   \   000004 B700                  LD        S:?b8, A
+    103          
+    104              uint8_t Value = 0;
+   \   000006 3F00                  CLR       S:?b9
+    105              uint8_t Mask = 0;
+   \   000008 3F00                  CLR       S:?b0
+    106          
+    107              /* Check function parameters */
+    108              assert_param(IS_ITC_IRQ_OK((uint8_t)IrqNum));
+   \   00000A B600                  LD        A, S:?b8
+   \   00000C A119                  CP        A, #0x19
+   \   00000E 250F                  JRC       L:??ITC_GetSoftwarePriority_0
+   \   000010 AE006C                LDW       X, #0x6c
+   \   000013 BF00                  LDW       S:?w1, X
+   \   000015 5F                    CLRW      X
+   \   000016 BF00                  LDW       S:?w0, X
+   \   000018 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00001B 8D000000              CALLF     assert_failed
+    109          
+    110              /* Define the mask corresponding to the bits position in the SPR register */
+    111              Mask = (uint8_t)(0x03U << (((uint8_t)IrqNum % 4U) * 2U));
+   \                     ??ITC_GetSoftwarePriority_0:
+   \   00001F A604                  LD        A, #0x4
+   \   000021 5F                    CLRW      X
+   \   000022 01                    RRWA      X, A
+   \   000023 B600                  LD        A, S:?b8
+   \   000025 02                    RLWA      X, A
+   \   000026 62                    DIV       X, A
+   \   000027 35020000              MOV       S:?b0, #0x2
+   \   00002B 97                    LD        XL, A
+   \   00002C B600                  LD        A, S:?b0
+   \   00002E 42                    MUL       X, A
+   \   00002F 9F                    LD        A, XL
+   \   000030 AE0003                LDW       X, #0x3
+   \   000033 8D000000              CALLF     L:?sll16_x_x_a
+   \   000037 41                    EXG       A, XL
+   \   000038 B700                  LD        S:?b0, A
+   \   00003A 41                    EXG       A, XL
+    112          
+    113              switch (IrqNum)
+   \   00003B B600                  LD        A, S:?b8
+   \   00003D 4D                    TNZ       A
+   \   00003E 2740                  JREQ      L:??ITC_GetSoftwarePriority_1
+   \   000040 4A                    DEC       A
+   \   000041 273D                  JREQ      L:??ITC_GetSoftwarePriority_1
+   \   000043 4A                    DEC       A
+   \   000044 273A                  JREQ      L:??ITC_GetSoftwarePriority_1
+   \   000046 4A                    DEC       A
+   \   000047 2737                  JREQ      L:??ITC_GetSoftwarePriority_1
+   \   000049 4A                    DEC       A
+   \   00004A 273D                  JREQ      L:??ITC_GetSoftwarePriority_2
+   \   00004C 4A                    DEC       A
+   \   00004D 273A                  JREQ      L:??ITC_GetSoftwarePriority_2
+   \   00004F 4A                    DEC       A
+   \   000050 2737                  JREQ      L:??ITC_GetSoftwarePriority_2
+   \   000052 4A                    DEC       A
+   \   000053 2734                  JREQ      L:??ITC_GetSoftwarePriority_2
+   \   000055 A003                  SUB       A, #0x3
+   \   000057 2739                  JREQ      L:??ITC_GetSoftwarePriority_3
+   \   000059 4A                    DEC       A
+   \   00005A 2736                  JREQ      L:??ITC_GetSoftwarePriority_3
+   \   00005C 4A                    DEC       A
+   \   00005D 273C                  JREQ      L:??ITC_GetSoftwarePriority_4
+   \   00005F 4A                    DEC       A
+   \   000060 2739                  JREQ      L:??ITC_GetSoftwarePriority_4
+   \   000062 4A                    DEC       A
+   \   000063 2736                  JREQ      L:??ITC_GetSoftwarePriority_4
+   \   000065 4A                    DEC       A
+   \   000066 2733                  JREQ      L:??ITC_GetSoftwarePriority_4
+   \   000068 4A                    DEC       A
+   \   000069 2739                  JREQ      L:??ITC_GetSoftwarePriority_5
+   \   00006B 4A                    DEC       A
+   \   00006C 2736                  JREQ      L:??ITC_GetSoftwarePriority_5
+   \   00006E 4A                    DEC       A
+   \   00006F 2733                  JREQ      L:??ITC_GetSoftwarePriority_5
+   \   000071 4A                    DEC       A
+   \   000072 2730                  JREQ      L:??ITC_GetSoftwarePriority_5
+   \   000074 A003                  SUB       A, #0x3
+   \   000076 2735                  JREQ      L:??ITC_GetSoftwarePriority_6
+   \   000078 4A                    DEC       A
+   \   000079 2732                  JREQ      L:??ITC_GetSoftwarePriority_6
+   \   00007B 4A                    DEC       A
+   \   00007C 2738                  JREQ      L:??ITC_GetSoftwarePriority_7
+   \   00007E 203D                  JRA       L:??ITC_GetSoftwarePriority_8
+    114              {
+    115              case ITC_IRQ_TLI: /* TLI software priority can be read but has no meaning */
+    116              case ITC_IRQ_AWU:
+    117              case ITC_IRQ_CLK:
+    118              case ITC_IRQ_PORTA:
+    119                  Value = (uint8_t)(ITC->ISPR1 & Mask); /* Read software priority */
+   \                     ??ITC_GetSoftwarePriority_1:
+   \   000080 B600                  LD        A, S:?b0
+   \   000082 C47F70                AND       A, L:0x7f70
+   \   000085 B700                  LD        S:?b9, A
+    120                  break;
+   \   000087 2034                  JRA       L:??ITC_GetSoftwarePriority_8
+    121              case ITC_IRQ_PORTB:
+    122              case ITC_IRQ_PORTC:
+    123              case ITC_IRQ_PORTD:
+    124              case ITC_IRQ_PORTE:
+    125                  Value = (uint8_t)(ITC->ISPR2 & Mask); /* Read software priority */
+   \                     ??ITC_GetSoftwarePriority_2:
+   \   000089 B600                  LD        A, S:?b0
+   \   00008B C47F71                AND       A, L:0x7f71
+   \   00008E B700                  LD        S:?b9, A
+    126                  break;
+   \   000090 202B                  JRA       L:??ITC_GetSoftwarePriority_8
+    127          #if defined(STM8S208) || defined(STM8AF52Ax)
+    128              case ITC_IRQ_CAN_RX:
+    129              case ITC_IRQ_CAN_TX:
+    130          #endif /*STM8S208 or STM8AF52Ax */
+    131          
+    132          #ifdef STM8S903
+    133              case ITC_IRQ_PORTF:
+    134          #endif /*STM8S903*/
+    135          
+    136              case ITC_IRQ_SPI:
+    137              case ITC_IRQ_TIM1_OVF:
+    138                  Value = (uint8_t)(ITC->ISPR3 & Mask); /* Read software priority */
+   \                     ??ITC_GetSoftwarePriority_3:
+   \   000092 B600                  LD        A, S:?b0
+   \   000094 C47F72                AND       A, L:0x7f72
+   \   000097 B700                  LD        S:?b9, A
+    139                  break;
+   \   000099 2022                  JRA       L:??ITC_GetSoftwarePriority_8
+    140              case ITC_IRQ_TIM1_CAPCOM:
+    141          #ifdef STM8S903
+    142              case ITC_IRQ_TIM5_OVFTRI:
+    143              case ITC_IRQ_TIM5_CAPCOM:
+    144          #else
+    145              case ITC_IRQ_TIM2_OVF:
+    146              case ITC_IRQ_TIM2_CAPCOM:
+    147          #endif /*STM8S903*/
+    148          
+    149              case ITC_IRQ_TIM3_OVF:
+    150                  Value = (uint8_t)(ITC->ISPR4 & Mask); /* Read software priority */
+   \                     ??ITC_GetSoftwarePriority_4:
+   \   00009B B600                  LD        A, S:?b0
+   \   00009D C47F73                AND       A, L:0x7f73
+   \   0000A0 B700                  LD        S:?b9, A
+    151                  break;
+   \   0000A2 2019                  JRA       L:??ITC_GetSoftwarePriority_8
+    152              case ITC_IRQ_TIM3_CAPCOM:
+    153              case ITC_IRQ_UART1_TX:
+    154              case ITC_IRQ_UART1_RX:
+    155              case ITC_IRQ_I2C:
+    156                  Value = (uint8_t)(ITC->ISPR5 & Mask); /* Read software priority */
+   \                     ??ITC_GetSoftwarePriority_5:
+   \   0000A4 B600                  LD        A, S:?b0
+   \   0000A6 C47F74                AND       A, L:0x7f74
+   \   0000A9 B700                  LD        S:?b9, A
+    157                  break;
+   \   0000AB 2010                  JRA       L:??ITC_GetSoftwarePriority_8
+    158          #if defined(STM8S105) || defined(STM8S005) || defined(STM8AF626x)
+    159              case ITC_IRQ_UART2_TX:
+    160              case ITC_IRQ_UART2_RX:
+    161          #endif /*STM8S105 or STM8AF626x*/
+    162          
+    163          #if defined(STM8S208) || defined(STM8S207) || defined(STM8S007) || defined(STM8AF52Ax) || \
+    164              defined(STM8AF62Ax)
+    165              case ITC_IRQ_UART3_TX:
+    166              case ITC_IRQ_UART3_RX:
+    167              case ITC_IRQ_ADC2:
+    168          #endif /*STM8S208 or STM8S207 or STM8AF52Ax or STM8AF62Ax */
+    169          
+    170          #if defined(STM8S105) || defined(STM8S005) || defined(STM8S103) || defined(STM8S003) || \
+    171              defined(STM8S903) || defined(STM8AF626x)
+    172              case ITC_IRQ_ADC1:
+    173          #endif /*STM8S105, STM8S103 or STM8S905 or STM8AF626x */
+    174          
+    175          #ifdef STM8S903
+    176              case ITC_IRQ_TIM6_OVFTRI:
+    177          #else
+    178              case ITC_IRQ_TIM4_OVF:
+    179          #endif /*STM8S903*/
+    180                  Value = (uint8_t)(ITC->ISPR6 & Mask); /* Read software priority */
+   \                     ??ITC_GetSoftwarePriority_6:
+   \   0000AD B600                  LD        A, S:?b0
+   \   0000AF C47F75                AND       A, L:0x7f75
+   \   0000B2 B700                  LD        S:?b9, A
+    181                  break;
+   \   0000B4 2007                  JRA       L:??ITC_GetSoftwarePriority_8
+    182              case ITC_IRQ_EEPROM_EEC:
+    183                  Value = (uint8_t)(ITC->ISPR7 & Mask); /* Read software priority */
+   \                     ??ITC_GetSoftwarePriority_7:
+   \   0000B6 B600                  LD        A, S:?b0
+   \   0000B8 C47F76                AND       A, L:0x7f76
+   \   0000BB B700                  LD        S:?b9, A
+    184                  break;
+    185              default:
+    186                  break;
+    187              }
+    188          
+    189              Value >>= (uint8_t)(((uint8_t)IrqNum % 4u) * 2u);
+   \                     ??ITC_GetSoftwarePriority_8:
+   \   0000BD A604                  LD        A, #0x4
+   \   0000BF 5F                    CLRW      X
+   \   0000C0 01                    RRWA      X, A
+   \   0000C1 B600                  LD        A, S:?b8
+   \   0000C3 02                    RLWA      X, A
+   \   0000C4 62                    DIV       X, A
+   \   0000C5 35020000              MOV       S:?b0, #0x2
+   \   0000C9 97                    LD        XL, A
+   \   0000CA B600                  LD        A, S:?b0
+   \   0000CC 42                    MUL       X, A
+   \   0000CD 41                    EXG       A, XL
+   \   0000CE B700                  LD        S:?b0, A
+   \   0000D0 41                    EXG       A, XL
+   \   0000D1 B600                  LD        A, S:?b9
+   \   0000D3 8D000000              CALLF     L:?srl8_a_a_b0
+   \   0000D7 B700                  LD        S:?b9, A
+    190          
+    191              return((ITC_PriorityLevel_TypeDef)Value);
+   \   0000D9 B600                  LD        A, S:?b9
+   \   0000DB AC000000              JPF       L:?epilogue_w4
+    192          
+    193          }
+    194          
+    195          /**
+    196            * @brief  Sets the software priority of the specified interrupt source.
+    197            * @note   - The modification of the software priority is only possible when
+    198            *         the interrupts are disabled.
+    199            *         - The normal behavior is to disable the interrupt before calling
+    200            *         this function, and re-enable it after.
+    201            *         - The priority level 0 cannot be set (see product specification
+    202            *         for more details).
+    203            * @param  IrqNum : Specifies the peripheral interrupt source.
+    204            * @param  PriorityValue : Specifies the software priority value to set,
+    205            *         can be a value of @ref  ITC_PriorityLevel_TypeDef .
+    206            * @retval None
+    207          */
+
+   \                                 In section .far_func.text, align 1
+    208          void ITC_SetSoftwarePriority(ITC_Irq_TypeDef IrqNum, ITC_PriorityLevel_TypeDef PriorityValue)
+    209          {
+   \                     ITC_SetSoftwarePriority:
+   \   000000 8D000000              CALLF     L:?push_w4
+   \   000004 B700                  LD        S:?b8, A
+   \   000006 450000                MOV       S:?b9, S:?b0
+    210          
+    211              uint8_t Mask = 0;
+   \   000009 3F00                  CLR       S:?b0
+    212              uint8_t NewPriority = 0;
+   \   00000B 3F00                  CLR       S:?b1
+    213          
+    214              /* Check function parameters */
+    215              assert_param(IS_ITC_IRQ_OK((uint8_t)IrqNum));
+   \   00000D B600                  LD        A, S:?b8
+   \   00000F A119                  CP        A, #0x19
+   \   000011 250F                  JRC       L:??ITC_SetSoftwarePriority_0
+   \   000013 AE00D7                LDW       X, #0xd7
+   \   000016 BF00                  LDW       S:?w1, X
+   \   000018 5F                    CLRW      X
+   \   000019 BF00                  LDW       S:?w0, X
+   \   00001B AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00001E 8D000000              CALLF     assert_failed
+    216              assert_param(IS_ITC_PRIORITY_OK(PriorityValue));
+   \                     ??ITC_SetSoftwarePriority_0:
+   \   000022 B600                  LD        A, S:?b9
+   \   000024 A102                  CP        A, #0x2
+   \   000026 271F                  JREQ      L:??ITC_SetSoftwarePriority_1
+   \   000028 B600                  LD        A, S:?b9
+   \   00002A A101                  CP        A, #0x1
+   \   00002C 2719                  JREQ      L:??ITC_SetSoftwarePriority_1
+   \   00002E 3D00                  TNZ       S:?b9
+   \   000030 2715                  JREQ      L:??ITC_SetSoftwarePriority_1
+   \   000032 B600                  LD        A, S:?b9
+   \   000034 A103                  CP        A, #0x3
+   \   000036 270F                  JREQ      L:??ITC_SetSoftwarePriority_1
+   \   000038 AE00D8                LDW       X, #0xd8
+   \   00003B BF00                  LDW       S:?w1, X
+   \   00003D 5F                    CLRW      X
+   \   00003E BF00                  LDW       S:?w0, X
+   \   000040 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   000043 8D000000              CALLF     assert_failed
+    217          
+    218              /* Check if interrupts are disabled */
+    219              assert_param(IS_ITC_INTERRUPTS_DISABLED);
+   \                     ??ITC_SetSoftwarePriority_1:
+   \   000047 8D000000              CALLF     ITC_GetSoftIntStatus
+   \   00004B A128                  CP        A, #0x28
+   \   00004D 270F                  JREQ      L:??ITC_SetSoftwarePriority_2
+   \   00004F AE00DB                LDW       X, #0xdb
+   \   000052 BF00                  LDW       S:?w1, X
+   \   000054 5F                    CLRW      X
+   \   000055 BF00                  LDW       S:?w0, X
+   \   000057 AE0000                LDW       X, #`?<Constant "D:\\\\Project\\\\STM8S_StdP...">`
+   \   00005A 8D000000              CALLF     assert_failed
+    220          
+    221              /* Define the mask corresponding to the bits position in the SPR register */
+    222              /* The mask is reversed in order to clear the 2 bits after more easily */
+    223              Mask = (uint8_t)(~(uint8_t)(0x03U << (((uint8_t)IrqNum % 4U) * 2U)));
+   \                     ??ITC_SetSoftwarePriority_2:
+   \   00005E A604                  LD        A, #0x4
+   \   000060 5F                    CLRW      X
+   \   000061 01                    RRWA      X, A
+   \   000062 B600                  LD        A, S:?b8
+   \   000064 02                    RLWA      X, A
+   \   000065 62                    DIV       X, A
+   \   000066 35020000              MOV       S:?b0, #0x2
+   \   00006A 97                    LD        XL, A
+   \   00006B B600                  LD        A, S:?b0
+   \   00006D 42                    MUL       X, A
+   \   00006E 9F                    LD        A, XL
+   \   00006F AE0003                LDW       X, #0x3
+   \   000072 8D000000              CALLF     L:?sll16_x_x_a
+   \   000076 41                    EXG       A, XL
+   \   000077 B700                  LD        S:?b0, A
+   \   000079 41                    EXG       A, XL
+   \   00007A 3300                  CPL       S:?b0
+    224          
+    225              /* Define the new priority to write */
+    226              NewPriority = (uint8_t)((uint8_t)(PriorityValue) << (((uint8_t)IrqNum % 4U) * 2U));
+   \   00007C A604                  LD        A, #0x4
+   \   00007E 5F                    CLRW      X
+   \   00007F 01                    RRWA      X, A
+   \   000080 B600                  LD        A, S:?b8
+   \   000082 02                    RLWA      X, A
+   \   000083 62                    DIV       X, A
+   \   000084 35020000              MOV       S:?b1, #0x2
+   \   000088 97                    LD        XL, A
+   \   000089 B600                  LD        A, S:?b1
+   \   00008B 42                    MUL       X, A
+   \   00008C 9F                    LD        A, XL
+   \   00008D 5F                    CLRW      X
+   \   00008E 41                    EXG       A, XL
+   \   00008F B600                  LD        A, S:?b9
+   \   000091 41                    EXG       A, XL
+   \   000092 8D000000              CALLF     L:?sll16_x_x_a
+   \   000096 41                    EXG       A, XL
+   \   000097 B700                  LD        S:?b1, A
+   \   000099 41                    EXG       A, XL
+    227          
+    228              switch (IrqNum)
+   \   00009A B600                  LD        A, S:?b8
+   \   00009C 4D                    TNZ       A
+   \   00009D 2742                  JREQ      L:??ITC_SetSoftwarePriority_3
+   \   00009F 4A                    DEC       A
+   \   0000A0 273F                  JREQ      L:??ITC_SetSoftwarePriority_3
+   \   0000A2 4A                    DEC       A
+   \   0000A3 273C                  JREQ      L:??ITC_SetSoftwarePriority_3
+   \   0000A5 4A                    DEC       A
+   \   0000A6 2739                  JREQ      L:??ITC_SetSoftwarePriority_3
+   \   0000A8 4A                    DEC       A
+   \   0000A9 274A                  JREQ      L:??ITC_SetSoftwarePriority_4
+   \   0000AB 4A                    DEC       A
+   \   0000AC 2747                  JREQ      L:??ITC_SetSoftwarePriority_4
+   \   0000AE 4A                    DEC       A
+   \   0000AF 2744                  JREQ      L:??ITC_SetSoftwarePriority_4
+   \   0000B1 4A                    DEC       A
+   \   0000B2 2741                  JREQ      L:??ITC_SetSoftwarePriority_4
+   \   0000B4 A003                  SUB       A, #0x3
+   \   0000B6 2751                  JREQ      L:??ITC_SetSoftwarePriority_5
+   \   0000B8 4A                    DEC       A
+   \   0000B9 274E                  JREQ      L:??ITC_SetSoftwarePriority_5
+   \   0000BB 4A                    DEC       A
+   \   0000BC 275F                  JREQ      L:??ITC_SetSoftwarePriority_6
+   \   0000BE 4A                    DEC       A
+   \   0000BF 275C                  JREQ      L:??ITC_SetSoftwarePriority_6
+   \   0000C1 4A                    DEC       A
+   \   0000C2 2759                  JREQ      L:??ITC_SetSoftwarePriority_6
+   \   0000C4 4A                    DEC       A
+   \   0000C5 2756                  JREQ      L:??ITC_SetSoftwarePriority_6
+   \   0000C7 4A                    DEC       A
+   \   0000C8 2767                  JREQ      L:??ITC_SetSoftwarePriority_7
+   \   0000CA 4A                    DEC       A
+   \   0000CB 2764                  JREQ      L:??ITC_SetSoftwarePriority_7
+   \   0000CD 4A                    DEC       A
+   \   0000CE 2761                  JREQ      L:??ITC_SetSoftwarePriority_7
+   \   0000D0 4A                    DEC       A
+   \   0000D1 275E                  JREQ      L:??ITC_SetSoftwarePriority_7
+   \   0000D3 A003                  SUB       A, #0x3
+   \   0000D5 276E                  JREQ      L:??ITC_SetSoftwarePriority_8
+   \   0000D7 4A                    DEC       A
+   \   0000D8 276B                  JREQ      L:??ITC_SetSoftwarePriority_8
+   \   0000DA 4A                    DEC       A
+   \   0000DB 277C                  JREQ      L:??ITC_SetSoftwarePriority_9
+   \   0000DD AC000000              JPF       L:?epilogue_w4
+    229              {
+    230          
+    231              case ITC_IRQ_TLI: /* TLI software priority can be written but has no meaning */
+    232              case ITC_IRQ_AWU:
+    233              case ITC_IRQ_CLK:
+    234              case ITC_IRQ_PORTA:
+    235                  ITC->ISPR1 &= Mask;
+   \                     ??ITC_SetSoftwarePriority_3:
+   \   0000E1 B600                  LD        A, S:?b0
+   \   0000E3 C47F70                AND       A, L:0x7f70
+   \   0000E6 C77F70                LD        L:0x7f70, A
+    236                  ITC->ISPR1 |= NewPriority;
+   \   0000E9 B600                  LD        A, S:?b1
+   \   0000EB CA7F70                OR        A, L:0x7f70
+   \   0000EE C77F70                LD        L:0x7f70, A
+    237                  break;
+   \   0000F1 AC000000              JPF       L:?epilogue_w4
+    238          
+    239              case ITC_IRQ_PORTB:
+    240              case ITC_IRQ_PORTC:
+    241              case ITC_IRQ_PORTD:
+    242              case ITC_IRQ_PORTE:
+    243                  ITC->ISPR2 &= Mask;
+   \                     ??ITC_SetSoftwarePriority_4:
+   \   0000F5 B600                  LD        A, S:?b0
+   \   0000F7 C47F71                AND       A, L:0x7f71
+   \   0000FA C77F71                LD        L:0x7f71, A
+    244                  ITC->ISPR2 |= NewPriority;
+   \   0000FD B600                  LD        A, S:?b1
+   \   0000FF CA7F71                OR        A, L:0x7f71
+   \   000102 C77F71                LD        L:0x7f71, A
+    245                  break;
+   \   000105 AC000000              JPF       L:?epilogue_w4
+    246          
+    247          #if defined(STM8S208) || defined(STM8AF52Ax)
+    248              case ITC_IRQ_CAN_RX:
+    249              case ITC_IRQ_CAN_TX:
+    250          #endif /*STM8S208 or STM8AF52Ax */
+    251          
+    252          #ifdef STM8S903
+    253              case ITC_IRQ_PORTF:
+    254          #endif /*STM8S903*/
+    255              case ITC_IRQ_SPI:
+    256              case ITC_IRQ_TIM1_OVF:
+    257                  ITC->ISPR3 &= Mask;
+   \                     ??ITC_SetSoftwarePriority_5:
+   \   000109 B600                  LD        A, S:?b0
+   \   00010B C47F72                AND       A, L:0x7f72
+   \   00010E C77F72                LD        L:0x7f72, A
+    258                  ITC->ISPR3 |= NewPriority;
+   \   000111 B600                  LD        A, S:?b1
+   \   000113 CA7F72                OR        A, L:0x7f72
+   \   000116 C77F72                LD        L:0x7f72, A
+    259                  break;
+   \   000119 AC000000              JPF       L:?epilogue_w4
+    260          
+    261              case ITC_IRQ_TIM1_CAPCOM:
+    262          #ifdef STM8S903
+    263              case ITC_IRQ_TIM5_OVFTRI:
+    264              case ITC_IRQ_TIM5_CAPCOM:
+    265          #else
+    266              case ITC_IRQ_TIM2_OVF:
+    267              case ITC_IRQ_TIM2_CAPCOM:
+    268          #endif /*STM8S903*/
+    269          
+    270              case ITC_IRQ_TIM3_OVF:
+    271                  ITC->ISPR4 &= Mask;
+   \                     ??ITC_SetSoftwarePriority_6:
+   \   00011D B600                  LD        A, S:?b0
+   \   00011F C47F73                AND       A, L:0x7f73
+   \   000122 C77F73                LD        L:0x7f73, A
+    272                  ITC->ISPR4 |= NewPriority;
+   \   000125 B600                  LD        A, S:?b1
+   \   000127 CA7F73                OR        A, L:0x7f73
+   \   00012A C77F73                LD        L:0x7f73, A
+    273                  break;
+   \   00012D AC000000              JPF       L:?epilogue_w4
+    274          
+    275              case ITC_IRQ_TIM3_CAPCOM:
+    276              case ITC_IRQ_UART1_TX:
+    277              case ITC_IRQ_UART1_RX:
+    278              case ITC_IRQ_I2C:
+    279                  ITC->ISPR5 &= Mask;
+   \                     ??ITC_SetSoftwarePriority_7:
+   \   000131 B600                  LD        A, S:?b0
+   \   000133 C47F74                AND       A, L:0x7f74
+   \   000136 C77F74                LD        L:0x7f74, A
+    280                  ITC->ISPR5 |= NewPriority;
+   \   000139 B600                  LD        A, S:?b1
+   \   00013B CA7F74                OR        A, L:0x7f74
+   \   00013E C77F74                LD        L:0x7f74, A
+    281                  break;
+   \   000141 AC000000              JPF       L:?epilogue_w4
+    282          
+    283          #if defined(STM8S105) || defined(STM8S005) || defined(STM8AF626x)
+    284              case ITC_IRQ_UART2_TX:
+    285              case ITC_IRQ_UART2_RX:
+    286          #endif /*STM8S105 or STM8AF626x */
+    287          
+    288          #if defined(STM8S208) || defined(STM8S207) || defined(STM8S007) || defined(STM8AF52Ax) || \
+    289              defined(STM8AF62Ax)
+    290              case ITC_IRQ_UART3_TX:
+    291              case ITC_IRQ_UART3_RX:
+    292              case ITC_IRQ_ADC2:
+    293          #endif /*STM8S208 or STM8S207 or STM8AF52Ax or STM8AF62Ax */
+    294          
+    295          #if defined(STM8S105) || defined(STM8S005) || defined(STM8S103) || defined(STM8S003) || \
+    296              defined(STM8S903) || defined(STM8AF626x)
+    297              case ITC_IRQ_ADC1:
+    298          #endif /*STM8S105, STM8S103 or STM8S905 or STM8AF626x */
+    299          
+    300          #ifdef STM8S903
+    301              case ITC_IRQ_TIM6_OVFTRI:
+    302          #else
+    303              case ITC_IRQ_TIM4_OVF:
+    304          #endif /*STM8S903*/
+    305                  ITC->ISPR6 &= Mask;
+   \                     ??ITC_SetSoftwarePriority_8:
+   \   000145 B600                  LD        A, S:?b0
+   \   000147 C47F75                AND       A, L:0x7f75
+   \   00014A C77F75                LD        L:0x7f75, A
+    306                  ITC->ISPR6 |= NewPriority;
+   \   00014D B600                  LD        A, S:?b1
+   \   00014F CA7F75                OR        A, L:0x7f75
+   \   000152 C77F75                LD        L:0x7f75, A
+    307                  break;
+   \   000155 AC000000              JPF       L:?epilogue_w4
+    308          
+    309              case ITC_IRQ_EEPROM_EEC:
+    310                  ITC->ISPR7 &= Mask;
+   \                     ??ITC_SetSoftwarePriority_9:
+   \   000159 B600                  LD        A, S:?b0
+   \   00015B C47F76                AND       A, L:0x7f76
+   \   00015E C77F76                LD        L:0x7f76, A
+    311                  ITC->ISPR7 |= NewPriority;
+   \   000161 B600                  LD        A, S:?b1
+   \   000163 CA7F76                OR        A, L:0x7f76
+   \   000166 C77F76                LD        L:0x7f76, A
+    312                  break;
+    313          
+    314              default:
+    315                  break;
+    316          
+    317              }
+    318          
+    319          }
+   \   000169 AC000000              JPF       L:?epilogue_w4
+
+   \                                 In section .near.rodata, align 1
+   \                     `?<Constant "D:\\\\Project\\\\STM8S_StdP...">`:
+   \   000000 443A5C50726F          DC8 44H, 3AH, 5CH, 50H, 72H, 6FH, 6AH, 65H
+   \   000008 63745C53544D          DC8 63H, 74H, 5CH, 53H, 54H, 4DH, 38H, 53H
+   \   000010 5F5374645065          DC8 5FH, 53H, 74H, 64H, 50H, 65H, 72H, 69H
+   \   000018 70685F4C6962          DC8 70H, 68H, 5FH, 4CH, 69H, 62H, 5FH, 56H
+   \   000020 322E312E305C          DC8 32H, 2EH, 31H, 2EH, 30H, 5CH, 4CH, 69H
+   \   000028 627261726965          DC8 62H, 72H, 61H, 72H, 69H, 65H, 73H, 5CH
+   \   000030 53544D38535F          DC8 53H, 54H, 4DH, 38H, 53H, 5FH, 53H, 74H
+   \   000038 645065726970          DC8 64H, 50H, 65H, 72H, 69H, 70H, 68H, 5FH
+   \   000040 447269766572          DC8 44H, 72H, 69H, 76H, 65H, 72H, 5CH, 73H
+   \   000048 72635C73746D          DC8 72H, 63H, 5CH, 73H, 74H, 6DH, 38H, 73H
+   \   000050 5F6974632E63          DC8 5FH, 69H, 74H, 63H, 2EH, 63H, 0
+    320          
+    321          /**
+    322            * @}
+    323            */
+    324            
+    325          /**
+    326            * @}
+    327            */
+    328            
+    329          /******************* (C) COPYRIGHT 2011 STMicroelectronics *****END OF FILE****/
+
+   Section sizes:
+
+     Function/Label                           Bytes
+     --------------                           -----
+     ITC_GetCPUCC                                3
+     ITC_DeInit                                 33
+     ITC_GetSoftIntStatus                        7
+     ITC_GetSoftwarePriority                   223
+     ITC_SetSoftwarePriority                   365
+     ?<Constant "D:\\Project\\STM8S_StdP...">   87
+
+ 
+ 631 bytes in section .far_func.text
+  87 bytes in section .near.rodata
+ 
+ 631 bytes of CODE  memory
+  87 bytes of CONST memory
+
+Errors: none
+Warnings: 1
