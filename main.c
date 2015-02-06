@@ -44,7 +44,7 @@
 #endif /* _RAISONANCE_ */
 /* Private macro -------------------------------------------------------------*/
 
-char IP_ADDRESS_SERVER[] = "112.213.89.2:2082";//"www.google.com.vn"
+char IP_ADDRESS_SERVER[] = "www.google.com.vn"
 //char PORT_SERVER[] = "2082";
 
 #define PWKEY_GPIO_PORT  (GPIOD)
