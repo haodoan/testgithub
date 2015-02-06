@@ -22,7 +22,7 @@ void FLASH_Config_addd(void)
   {}
 }
 
-void FlashWriteEEprom(void *Data,uint16_t write_number)
+void FlashWriteEEprom(void *Data,uint16_t write_number
 {
         uint8_t *Tempdata = (uint8_t*)Data;
       /* Erase block 0 and verify it */
