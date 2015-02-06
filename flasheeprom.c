@@ -1,5 +1,5 @@
 #include "flasheeprom.h"
-#include "stm8s.h"
+
 /**
   * @brief  Configure the FLASH for block programming
   * @param  None
